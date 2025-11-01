@@ -1,0 +1,60 @@
+[project]
+name = "mcp-studies"
+version = "0.1.0"
+description = "Various studies and experiments using the mcp package."
+readme = "README.md"
+license = {text = "Apache-2.0"}
+authors = [
+    {name = "Ilja Heitlager", email = "iheitlager@schubergphilis.com"}
+]
+maintainers = [
+    {name = "Ilja Heitlager", email = "iheitlager@schubergphilis.com"}
+]
+keywords = ["mcp", "model-context-protocol", "experiments", "lab271", "schuberg-philis"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13",
+]
+requires-python = ">=3.13"
+dependencies = [
+    "aiohttp==3.13.2",
+    "mcp[cli]==1.20.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/LAB271/mcp-studies"
+Repository = "https://github.com/LAB271/mcp-studies"
+
+[dependency-groups]
+dev = [
+    "pytest==8.4.2",
+    "pytest-asyncio==0.24.0",
+    "ruff==0.8.0",
+]
+
+[tool.ruff]
+line-length = 120
+target-version = "py313"
+
+[tool.ruff.lint]
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "B",  # flake8-bugbear
+    "C4", # flake8-comprehensions
+    "UP", # pyupgrade
+]
+ignore = [
+    "E501", # line too long, handled by black/ruff formatter
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
