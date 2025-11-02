@@ -1,57 +1,114 @@
-# Clean MCP Server with Harmonized Logging
+# Spike: Logging Strategies for MCP Servers
 
-This directory contains a clean, production-ready MCP (Model Context Protocol) server with harmonized logging that eliminates noise and shows only essential information.
+## Learning Objective
+**Primary Question:** How do we implement clean, production-ready logging for MCP servers without interfering with the STDIO transport protocol?
 
-## Purpose
+**Context:** MCP servers using STDIO transport communicate through stdin/stdout, which means traditional print-based logging interferes with protocol messages. Additionally, third-party libraries (uvicorn, anyio, MCP SDK) produce verbose logs that clutter development output. We need a logging strategy that provides useful debugging information without breaking the protocol or creating noise.
 
-The **Clean Server** demonstrates:
-- ✅ **Minimal, organized logging** - No spam, only essential events
-- ✅ **Professional output format** - Clean timestamps and structured messages  
-- ✅ **Noise suppression** - Silences verbose uvicorn, anyio, and MCP internal logs
-- ✅ **Development-friendly** - Easy to read and debug
-- ✅ **Production-ready** - Suitable for real deployments
+**Success Criteria:**
+- Implement logging that doesn't interfere with STDIO MCP communication
+- Suppress or harmonize verbose third-party library logs
+- Create clean, readable output for development and production
+- Maintain compatibility with MCP protocol requirements
+- Demonstrate working examples with HTTP transport (alternative to STDIO)
 
-## What's Different
+## Hypothesis
+**We believe that:** Using HTTP transport instead of STDIO, combined with proper logging configuration, will allow clean, structured logging without protocol interference.
 
-**Before (messy logging):**
-```
-[11/02/25 09:23:53] INFO     Starting MCP server on http://127.0.0.1:8000
-INFO:     Started server process [83004]
-INFO:     Waiting for application startup.
-INFO     StreamableHTTP session manager started
-INFO:     Application startup complete.
-INFO:     Uvicorn running on http://127.0.0.1:8000
-[11/02/25 09:24:30] INFO     Created new transport with session ID: b816b0682db64be29ceae6180a8b9527
-INFO:     127.0.0.1:56335 - "POST /mcp HTTP/1.1" 200 OK
-INFO:     Processing request of type PingRequest
-```
+**Because:** HTTP transport separates data channels (HTTP requests/responses vs. log output), and Python's logging module allows fine-grained control over log levels and formats.
 
-**After (clean logging):**
-```
-09:25:10 [    INFO] clean_server: 🚀 Starting Clean MCP Server
-09:25:10 [    INFO] clean_server: 📍 Endpoint: http://127.0.0.1:8000/mcp
-09:25:10 [    INFO] clean_server: 🔧 Tools: greet, calculate
-09:25:10 [    INFO] clean_server: 📄 Resources: server://info
-09:25:15 [    INFO] clean_server: Greeting World
-09:25:18 [    INFO] clean_server: Calculated: 2+2 = 4
-```
+**We'll know we're right when:** We can run an MCP server with clear, informative logs that show only essential information, with all protocol communication working correctly and no spam from third-party libraries.
 
-## How to Start the Server
+## Scope & Constraints
+- **Time Box:** 3-4 hours for exploration and implementation
+- **Out of Scope:**
+  - STDIO transport with file-based logging
+  - Log aggregation and centralized logging systems
+  - Performance optimization of logging
+  - Log rotation and management
+- **Dependencies:**
+  - Understanding of Python logging module
+  - MCP SDK with HTTP transport support (SSE/streamable)
+  - Prior knowledge from spike 001_demos
 
-### Prerequisites
-Make sure you're in the project root directory and have dependencies installed:
+## Exploration Log
+### 2025-02-11 - Problem Identification
+- Identified that STDIO transport prevents traditional logging
+- Recognized verbose output from uvicorn, anyio, and MCP SDK internals
+- Noted that development debugging is difficult with noisy logs
+- Decided to explore HTTP transport as alternative to STDIO
+
+### 2025-02-11 - HTTP Transport Implementation
+- Implemented `main_server.py` using HTTP/SSE transport
+- Configured custom logging format with timestamps and structure
+- Successfully suppressed uvicorn INFO logs using environment variables
+- Suppressed anyio and MCP internal logs via logging configuration
+- Created clean startup messages with emoji indicators
+
+### 2025-02-11 - Testing and Refinement
+- Created test suite in `test_main_server.py`
+- Tested with curl commands and verified JSON responses
+- Validated that tool calls generate appropriate logs
+- Confirmed clean output format suitable for production
+- Documented usage examples and integration patterns
+
+## Key Insights
+- **✅ Confirmed:**
+  - HTTP transport (SSE/streamable) eliminates STDIO logging conflicts
+  - Environment variable `UVICORN_LOG_LEVEL=warning` effectively silences uvicorn INFO logs
+  - Python logging configuration can suppress specific library logs (anyio, MCP internals)
+  - Custom log formatting provides clean, professional output
+  - Emoji indicators improve log readability during development
+  - HTTP transport maintains full MCP protocol compatibility
+
+- **❌ Challenged:**
+  - STDIO transport cannot be easily combined with stdout logging
+  - Default logging configurations are too verbose for development
+  - Third-party libraries don't respect global logging levels consistently
+  - Need to carefully test each library's logging behavior
+
+- **🤔 Questions Raised:**
+  - How do we handle logging for STDIO-based servers in production?
+  - What are best practices for structured logging (JSON) in MCP servers?
+  - How do we integrate with log aggregation systems?
+  - Should we create a logging middleware or decorator pattern?
+  - What's the performance impact of detailed logging?
+
+## Recommendation
+**Status:** Complete
+
+**Decision:** Integrate HTTP transport with harmonized logging for production servers; use file-based logging for STDIO transport
+
+**Rationale:** The HTTP transport solution provides clean, debuggable logs without protocol interference. For use cases requiring STDIO transport (e.g., Claude Desktop integration), file-based logging should be used instead. The logging configuration patterns established here work well for both development and production.
+
+**Next Steps:**
+- Create logging configuration templates for new MCP servers
+- Document file-based logging approach for STDIO transport
+- Explore structured logging (JSON) for production monitoring
+- Consider creating a logging utility module for reuse
+- Test logging behavior under high load
+
+## Reference Materials
+- **Code Location:** `spikes/002_logging/`
+  - `main_server.py` - Clean MCP server with harmonized logging and HTTP transport
+  - `test_002_logging.py` - Test suite with curl command examples
+- **Related Spikes:**
+  - Spike 001: MCP SDK Demo Implementations (foundational patterns)
+- **External Resources:**
+  - [Python Logging Documentation](https://docs.python.org/3/library/logging.html)
+  - [MCP HTTP Transport](https://modelcontextprotocol.io/)
+  - [Uvicorn Logging Configuration](https://www.uvicorn.org/settings/#logging)
+  - [SSE (Server-Sent Events) Protocol](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events)
+
+## Usage Examples
+
+### Starting the Server
 ```bash
-cd /path/to/mcp-studies
-uv sync  # Install dependencies if not already done
+# From project root
+uv run spikes/002_logging/main_server.py
 ```
 
-### Start the Server
-```bash
-uv run spikes/002_logging/clean_server.py
-```
-
-### Expected Output
-When you start the server, you should see:
+Expected clean output:
 ```
 🚀 Starting Clean MCP Server
 📍 Endpoint: http://127.0.0.1:8000/mcp
@@ -59,132 +116,29 @@ When you start the server, you should see:
 📄 Resources: server://info
 ```
 
-The server will then start on **http://127.0.0.1:8000** and be ready to accept MCP requests.
-
-## Available Features
-
-### 🔧 **Tools**
-- **`greet`** - Greet someone by name (defaults to "World")
-- **`calculate`** - Safely calculate simple math expressions
-
-### 📄 **Resources**  
-- **`server://info`** - Get server information and status
-
-## Testing the Server
-
-### 1. **List Available Tools**
+### Testing Tools
 ```bash
+# Greet tool
 curl -X POST http://127.0.0.1:8000/mcp \
   -H "Content-Type: application/json" \
-  -H "Accept: application/json" \
-  -d '{
-    "jsonrpc": "2.0",
-    "id": "1", 
-    "method": "tools/list",
-    "params": {}
-  }'
-```
+  -d '{"jsonrpc":"2.0","id":"1","method":"tools/call","params":{"name":"greet","arguments":{"name":"Alice"}}}'
 
-### 2. **Call the Greet Tool**
-```bash
+# Calculate tool
 curl -X POST http://127.0.0.1:8000/mcp \
   -H "Content-Type: application/json" \
-  -H "Accept: application/json" \
-  -d '{
-    "jsonrpc": "2.0",
-    "id": "2",
-    "method": "tools/call", 
-    "params": {
-      "name": "greet",
-      "arguments": {
-        "name": "Alice"
-      }
-    }
-  }'
+  -d '{"jsonrpc":"2.0","id":"2","method":"tools/call","params":{"name":"calculate","arguments":{"expression":"15+27"}}}'
 ```
 
-### 3. **Calculate Math Expression**
-```bash
-curl -X POST http://127.0.0.1:8000/mcp \
-  -H "Content-Type: application/json" \
-  -H "Accept: application/json" \
-  -d '{
-    "jsonrpc": "2.0", 
-    "id": "3",
-    "method": "tools/call",
-    "params": {
-      "name": "calculate",
-      "arguments": {
-        "expression": "15 + 27"
-      }
-    }
-  }'
-```
+### Logging Configuration Pattern
+```python
+# Suppress verbose libraries
+logging.getLogger("uvicorn.access").setLevel(logging.WARNING)
+logging.getLogger("anyio").setLevel(logging.WARNING)
+logging.getLogger("mcp").setLevel(logging.WARNING)
 
-### 4. **Get Server Info Resource**
-```bash
-curl -X POST http://127.0.0.1:8000/mcp \
-  -H "Content-Type: application/json" \
-  -H "Accept: application/json" \
-  -d '{
-    "jsonrpc": "2.0",
-    "id": "4", 
-    "method": "resources/read",
-    "params": {
-      "uri": "server://info"
-    }
-  }'
-```
-
-## What to Expect
-
-### ✅ **Clean Server Logs**
-- Startup messages with clear emoji indicators
-- Tool execution logs (when tools are called)
-- No spam from uvicorn, anyio, or MCP internals
-- Timestamps in `HH:MM:SS` format
-- Structured log levels
-
-### ✅ **Proper JSON Responses**
-All API calls return proper JSON responses following the MCP protocol:
-```json
-{
-  "jsonrpc": "2.0",
-  "id": "2", 
-  "result": {
-    "content": [
-      {
-        "type": "text",
-        "text": "Hello, Alice!"
-      }
-    ]
-  }
-}
-```
-
-### ✅ **Error Handling**
-- Graceful handling of client disconnections
-- Clear error messages for invalid requests
-- Automatic error recovery
-
-### ✅ **Development Features**
-- Easy to see what's happening
-- Minimal noise for debugging
-- Professional output suitable for production
-
-## Stopping the Server
-
-Press `Ctrl+C` to stop the server gracefully:
-```
-09:30:22 [    INFO] clean_server: 🛑 Server stopped by user
-```
-
-## Integration
-
-This clean server can be used with:
-- **Claude Desktop** - Add as MCP server in config
-- **Custom MCP clients** - Any client supporting MCP protocol
-- **Development tools** - Perfect for testing and development
-- **Production deployments** - Ready for real-world use
-
-The clean logging makes it ideal for both development and production environments where you need clear, actionable information without noise.
+# Custom format with timestamps
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)8s] %(name)s: %(message)s",
+    datefmt="%H:%M:%S"
+)

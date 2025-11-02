@@ -2,9 +2,22 @@
 
 This directory contains various experimental spikes and proof-of-concepts for exploring MCP (Model Context Protocol) functionality.
 
+## What is a Spike?
+
+A **spike** is a concept from [Extreme Programming (XP)](http://www.extremeprogramming.org/rules/spike.html) - a time-boxed research activity designed to explore and reduce uncertainty around technical problems or user stories. 
+
+In the context of this project, spikes serve to:
+- 🔬 **Explore unknown technical territory** - Investigate MCP features, patterns, and capabilities
+- 📚 **Gather information** - Learn how different MCP components work together
+- ⚡ **Reduce risk** - Test assumptions and validate approaches before full implementation
+- 🧪 **Experiment safely** - Try new ideas without affecting main codebase
+- 📖 **Create reference material** - Build reusable examples and documentation
+
+Each spike is **scoped**, **time-boxed** and **focused** on answering specific questions about MCP development, such as "How do we implement clean logging?" or "What's the best way to structure tools and prompts?"
+
 ## Overview
 
-Each spike focuses on a specific aspect of MCP development, providing working examples, documentation, and tests that can be used as reference or starting points for further development.
+Each spike focuses on a specific aspect of MCP development, providing working examples, documentation, and tests that can be used as reference or starting points for further development. Unlike traditional prototypes, spikes are meant to be **exploratory** and **educational** - they may be thrown away once their knowledge goal is achieved, or evolved into production code. However, our approach is to remain keeping them part of the code base in a separate [spikes](../spikes) folder.
 
 ## Available Spikes
 
@@ -24,39 +37,6 @@ Each spike focuses on a specific aspect of MCP development, providing working ex
 | ⚠️ **Deprecated** | No longer maintained |
 | 🔄 **Updated** | Recently updated or improved |
 
-## Quick Start
-
-### Spike 001 - MCP Demos
-```bash
-# Start the basic MCP server
-uv run spikes/001_demos/stream_config.py
-
-# Run comprehensive tests
-uv run python -m pytest spikes/001_demos/test_stream_config.py -v
-```
-
-### Spike 002 - Clean Logging
-```bash
-# Start the clean server with minimal logging
-uv run spikes/002_logging/clean_server.py
-```
-
-## Usage Patterns
-
-### For Learning MCP
-- Start with **Spike 001** for basic MCP concepts
-- Review tests to understand expected behavior
-- Experiment with tools, prompts, and resources
-
-### For Production Use
-- Use **Spike 002** as a template for production servers
-- Copy the clean logging configuration
-- Adapt the server structure for your use case
-
-### For Development
-- Both spikes include error handling patterns
-- Test examples show proper MCP client implementation
-- Logging configurations suitable for debugging
 
 ## Adding New Spikes
 
@@ -64,11 +44,10 @@ When creating a new spike, follow this structure:
 
 ```
 spikes/XXX_spike_name/
-├── README.md           # Spike-specific documentation
-├── main_server.py      # Primary server implementation
-├── test_*.py          # Tests for the spike
-├── examples/          # Usage examples (optional)
-└── docs/              # Additional documentation (optional)
+├── README.md          # Spike-specific documentation with they hypothesis
+├── main_server.py     # Main spike solution
+├── test_*.py          # (Unit) Tests for the spike
+└── try_*.py           # (Exploratory) local tests for the spike
 ```
 
 ### Spike Naming Convention

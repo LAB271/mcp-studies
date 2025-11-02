@@ -1,16 +1,25 @@
+#!/usr/bin/env python3
 """
+MCP Server Platform - spike demonstration
+
 Clean MCP Server with Harmonized Logging
 
 This version has clean, organized logging with minimal noise.
 Only shows what you actually need to see.
 
-Run with: uv run spikes/002_logging/clean_server.py
+Run with: 
+    $ uv run spikes/002_logging/main_server.py
+
+Copyright (c) 2025 LAB271
+SPDX-License-Identifier: Apache-2.0
 """
 
 import logging
 import sys
+
 from mcp.server.fastmcp import FastMCP
 from uvicorn.config import LOGGING_CONFIG
+
 
 # CLEAN LOGGING CONFIGURATION
 def setup_clean_logging(
@@ -97,8 +106,7 @@ def mcp_factory(
         logger.info(f"Greeting {name}")
         return f"Hello, {name}!"
 
-
-    @mcp.tool() 
+    @mcp.tool()
     def calculate(expression: str) -> str:
         """Safely calculate a simple math expression."""
         try:
@@ -114,11 +122,16 @@ def mcp_factory(
             logger.warning(f"Calculation error: {e}")
             return f"Error: {e}"
 
-    # Add a simple prompt template
     @mcp.prompt()
-    def simple_greeting_prompt(name: str = "World") -> str:
-        """A simple greeting prompt template."""
-        return f"Please write a friendly greeting for {name}. Make it warm and welcoming."  
+    def greet_user(name: str, style: str = "friendly") -> str:
+        """Generate a greeting prompt"""
+        styles = {
+            "friendly": "Please write a warm, friendly greeting",
+            "formal": "Please write a formal, professional greeting",
+            "casual": "Please write a casual, relaxed greeting",
+        }
+
+        return f"{styles.get(style, styles['friendly'])} for someone named {name}."
 
     @mcp.resource("server://info")
     def get_server_info() -> str:

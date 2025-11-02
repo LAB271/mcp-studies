@@ -1,12 +1,15 @@
+#!/usr/bin/env python3
 """
+MCP Server Platform - spike demonstration
+
 Run from the repository root:
-    uv run spikes/001_demos/stream_config.py
+    uv run spikes/001_demos/main_server.py
 
 This demo shows how to configure a FastMCP server with different session
 persistence options and run it with the "streamable-http" transport.
 
 To test the server, you can use the provided test client:
-    uv run spikes/001_demos/try_stream_config.py
+    $ uv run spikes/001_demos/try_stream_config.py
 
 Or use the Context app and point it to the URL:
     http://127.0.0.1:8000/mcp
@@ -15,10 +18,12 @@ You will find one tool and one resource available for testing.
 
 Origin:
     https://github.com/modelcontextprotocol/python-sdk?tab=readme-ov-file#streamable-http-transport
+
+Copyright (c) 2025 LAB271
+SPDX-License-Identifier: Apache-2.0
 """
 
 from mcp.server.fastmcp import FastMCP
-
 
 # Stateful server (maintains session state)
 # mcp = FastMCP("StatefulServer")
@@ -38,12 +43,16 @@ def greet(name: str) -> str:
     return f"Hello, {name}!"
 
 
-# Add a simple prompt template
 @mcp.prompt()
-def simple_greeting_prompt(name: str = "World") -> str:
-    """A simple greeting prompt template."""
-    return f"Please write a friendly greeting for {name}. Make it warm and welcoming."
+def greet_user(name: str, style: str = "friendly") -> str:
+    """Generate a greeting prompt"""
+    styles = {
+        "friendly": "Please write a warm, friendly greeting",
+        "formal": "Please write a formal, professional greeting",
+        "casual": "Please write a casual, relaxed greeting",
+    }
 
+    return f"{styles.get(style, styles['friendly'])} for someone named {name}."
 
 # Add a simple resource to test resources endpoint
 @mcp.resource("example://test")
@@ -65,11 +74,10 @@ def main():
     print("\nExample usage:")
     print("  Test with: uv run spikes/001_demos/test_client.py")
     print("  Or use in Context with URL: http://127.0.0.1:8000/mcp")
-    
+
     mcp.run(transport="streamable-http")
 
 
 # Run server with streamable-http transport (with error handling)
 if __name__ == "__main__":
     main()
-

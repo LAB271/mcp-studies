@@ -1,22 +1,22 @@
 #!/usr/bin/env python3
 """
-Unit tests for stream_config.py MCP server
+MCP Server Platform - Spike unit tests
+
+Unit tests for main_server.py MCP server
 
 Run tests with:
-    >>> uv run pytest spikes/001_demos/test_stream_config.py -v
+    $ uv run pytest spikes/001_demos/test_001_demos.py -v
 Or with unittest:
-    uv run python -m unittest spikes/001_demos/test_stream_config.py
+    $ uv run python -m unittest spikes/001_demos/test_001_demos.py
+
+Copyright (c) 2025 LAB271
+SPDX-License-Identifier: Apache-2.0
 """
 
 import asyncio
-import os
-import sys
 import unittest
 
 import aiohttp
-
-# Add parent directory to path to import stream_config
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 # Import the functions from stream_config
 # Note: We import the functions before the FastMCP instance to avoid server startup
@@ -70,79 +70,105 @@ class TestPromptFunction(unittest.TestCase):
 
         # Register the prompt function
         @self.mcp.prompt()
-        def simple_greeting_prompt(name: str = "World") -> str:
-            """A simple greeting prompt template."""
-            return f"Please write a friendly greeting for {name}. Make it warm and welcoming."
+        def greet_user(name: str, style: str = "friendly") -> str:
+            """Generate a greeting prompt"""
+            styles = {
+                "friendly": "Please write a warm, friendly greeting",
+                "formal": "Please write a formal, professional greeting",
+                "casual": "Please write a casual, relaxed greeting",
+            }
 
-        self.simple_greeting_prompt = simple_greeting_prompt
+            return f"{styles.get(style, styles['friendly'])} for someone named {name}."
 
-    def test_prompt_with_default_name(self):
-        """Test prompt function with default name parameter"""
-        result = self.simple_greeting_prompt()
-        expected = "Please write a friendly greeting for World. Make it warm and welcoming."
+        self.greet_user = greet_user
+
+    def test_greet_user_with_default_style(self):
+        """Test greet_user prompt with default friendly style"""
+        result = self.greet_user(name="Alice")
+        expected = "Please write a warm, friendly greeting for someone named Alice."
         self.assertEqual(result, expected)
         self.assertIsInstance(result, str)
 
-    def test_prompt_with_specific_name(self):
-        """Test prompt function with specific name"""
-        result = self.simple_greeting_prompt(name="Alice")
-        expected = "Please write a friendly greeting for Alice. Make it warm and welcoming."
+    def test_greet_user_with_friendly_style(self):
+        """Test greet_user prompt with explicit friendly style"""
+        result = self.greet_user(name="Bob", style="friendly")
+        expected = "Please write a warm, friendly greeting for someone named Bob."
         self.assertEqual(result, expected)
 
-    def test_prompt_with_empty_name(self):
-        """Test prompt function with empty name"""
-        result = self.simple_greeting_prompt(name="")
-        expected = "Please write a friendly greeting for . Make it warm and welcoming."
+    def test_greet_user_with_formal_style(self):
+        """Test greet_user prompt with formal style"""
+        result = self.greet_user(name="Dr. Smith", style="formal")
+        expected = "Please write a formal, professional greeting for someone named Dr. Smith."
         self.assertEqual(result, expected)
 
-    def test_prompt_with_special_characters(self):
-        """Test prompt function with special characters in name"""
-        result = self.simple_greeting_prompt(name="Dr. Smith & Co.")
-        expected = "Please write a friendly greeting for Dr. Smith & Co.. Make it warm and welcoming."
+    def test_greet_user_with_casual_style(self):
+        """Test greet_user prompt with casual style"""
+        result = self.greet_user(name="Charlie", style="casual")
+        expected = "Please write a casual, relaxed greeting for someone named Charlie."
         self.assertEqual(result, expected)
 
-    def test_prompt_with_unicode_characters(self):
-        """Test prompt function with unicode characters"""
-        result = self.simple_greeting_prompt(name="José")
-        expected = "Please write a friendly greeting for José. Make it warm and welcoming."
+    def test_greet_user_with_invalid_style(self):
+        """Test greet_user prompt with invalid style defaults to friendly"""
+        result = self.greet_user(name="Eve", style="nonexistent")
+        expected = "Please write a warm, friendly greeting for someone named Eve."
         self.assertEqual(result, expected)
 
-    def test_prompt_with_long_name(self):
-        """Test prompt function with very long name"""
-        long_name = "A" * 100
-        result = self.simple_greeting_prompt(name=long_name)
-        expected = f"Please write a friendly greeting for {long_name}. Make it warm and welcoming."
+    def test_greet_user_with_empty_name(self):
+        """Test greet_user prompt with empty name"""
+        result = self.greet_user(name="")
+        expected = "Please write a warm, friendly greeting for someone named ."
         self.assertEqual(result, expected)
-        self.assertIn(long_name, result)
 
-    def test_prompt_return_type(self):
-        """Test that prompt function returns correct type"""
-        result = self.simple_greeting_prompt(name="Test")
+    def test_greet_user_with_special_characters(self):
+        """Test greet_user prompt with special characters in name"""
+        result = self.greet_user(name="José María", style="formal")
+        expected = "Please write a formal, professional greeting for someone named José María."
+        self.assertEqual(result, expected)
+
+    def test_greet_user_style_case_sensitivity(self):
+        """Test that style parameter is case sensitive"""
+        result = self.greet_user(name="Alex", style="FORMAL")
+        # Should default to friendly since "FORMAL" != "formal"
+        expected = "Please write a warm, friendly greeting for someone named Alex."
+        self.assertEqual(result, expected)
+
+    def test_greet_user_all_styles_available(self):
+        """Test that all defined styles work correctly"""
+        name = "TestUser"
+
+        # Test each style
+        styles_expected = {
+            "friendly": "Please write a warm, friendly greeting for someone named TestUser.",
+            "formal": "Please write a formal, professional greeting for someone named TestUser.",
+            "casual": "Please write a casual, relaxed greeting for someone named TestUser."
+        }
+
+        for style, expected in styles_expected.items():
+            with self.subTest(style=style):
+                result = self.greet_user(name=name, style=style)
+                self.assertEqual(result, expected)
+
+    def test_greet_user_return_type(self):
+        """Test that greet_user always returns a string"""
+        result = self.greet_user(name="TypeTest", style="formal")
         self.assertIsInstance(result, str)
         self.assertTrue(len(result) > 0)
 
-    def test_prompt_contains_expected_elements(self):
-        """Test that prompt contains expected instructional elements"""
-        result = self.simple_greeting_prompt(name="TestUser")
-        
-        # Check that the prompt contains key instructional words
-        self.assertIn("Please write", result)
-        self.assertIn("friendly greeting", result)
-        self.assertIn("TestUser", result)
-        self.assertIn("warm and welcoming", result)
-
-    def test_prompt_structure(self):
+    def test_greet_user_prompt_structure(self):
         """Test the overall structure of the prompt"""
-        result = self.simple_greeting_prompt(name="Example")
-        
-        # Should start with instruction
-        self.assertTrue(result.startswith("Please"))
-        
+        result = self.greet_user(name="StructureTest", style="casual")
+
+        # Should start with "Please write"
+        self.assertTrue(result.startswith("Please write"))
+
         # Should contain the name
-        self.assertIn("Example", result)
-        
-        # Should end with the completion instruction
-        self.assertTrue(result.endswith("warm and welcoming."))
+        self.assertIn("StructureTest", result)
+
+        # Should end with period
+        self.assertTrue(result.endswith("."))
+
+        # Should contain "greeting"
+        self.assertIn("greeting", result)
 
 
 class TestResourceFunction(unittest.TestCase):
@@ -214,10 +240,10 @@ class TestMCPServerHTTPEndpoint(unittest.TestCase):
                 headers={"Content-Type": "application/json", "Accept": "application/json"},
             ) as response:
                 self.assertEqual(response.status, 200)
-                
+
                 # Check if it's JSON response (our server config) or SSE
                 content_type = response.headers.get('content-type', '')
-                
+
                 if 'application/json' in content_type:
                     # JSON response format
                     result = await response.json()
@@ -292,16 +318,16 @@ class TestMCPServerHTTPEndpoint(unittest.TestCase):
             ) as response:
                 self.assertEqual(response.status, 200)
                 result = await response.json()
-                
+
                 # Check response structure
                 self.assertIn("result", result)
                 self.assertIn("prompts", result["result"])
-                
+
                 # Check that our prompt is listed
                 prompts = result["result"]["prompts"]
                 prompt_names = [p["name"] for p in prompts]
                 self.assertIn("simple_greeting_prompt", prompt_names)
-                
+
                 # Find our specific prompt
                 greeting_prompt = next(p for p in prompts if p["name"] == "simple_greeting_prompt")
                 self.assertEqual(greeting_prompt["description"], "A simple greeting prompt template.")
@@ -333,26 +359,26 @@ class TestMCPServerHTTPEndpoint(unittest.TestCase):
             ) as response:
                 self.assertEqual(response.status, 200)
                 result = await response.json()
-                
+
                 # Check response structure
                 self.assertIn("result", result)
                 self.assertIn("messages", result["result"])
-                
+
                 # Check message content
                 messages = result["result"]["messages"]
                 self.assertTrue(len(messages) > 0)
-                
+
                 message = messages[0]
                 self.assertEqual(message["role"], "user")
                 self.assertIn("content", message)
-                
+
                 # Check that the prompt content is correct
                 content = message["content"]
                 if isinstance(content, dict):
                     text_content = content.get("text", "")
                 else:
                     text_content = content
-                
+
                 expected_text = "Please write a friendly greeting for TestUser. Make it warm and welcoming."
                 self.assertIn("TestUser", text_content)
                 self.assertIn("friendly greeting", text_content)
@@ -364,7 +390,7 @@ class TestMCPServerHTTPEndpoint(unittest.TestCase):
     async def _test_prompts_get_with_default(self):
         """Test the prompts/get endpoint with default parameters"""
         get_request = {
-            "jsonrpc": "2.0", 
+            "jsonrpc": "2.0",
             "id": "prompts-3",
             "method": "prompts/get",
             "params": {
@@ -381,17 +407,17 @@ class TestMCPServerHTTPEndpoint(unittest.TestCase):
             ) as response:
                 self.assertEqual(response.status, 200)
                 result = await response.json()
-                
+
                 # Check that default "World" is used
                 messages = result["result"]["messages"]
                 message = messages[0]
                 content = message["content"]
-                
+
                 if isinstance(content, dict):
                     text_content = content.get("text", "")
                 else:
                     text_content = content
-                    
+
                 self.assertIn("World", text_content)
 
     def test_prompts_get_with_default(self):
