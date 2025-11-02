@@ -17,12 +17,8 @@ Origin:
     https://github.com/modelcontextprotocol/python-sdk?tab=readme-ov-file#streamable-http-transport
 """
 
-import logging
-
 from mcp.server.fastmcp import FastMCP
 
-# Set up logging to see what's happening (reduced verbosity)
-logging.basicConfig(level=logging.INFO)
 
 # Stateful server (maintains session state)
 # mcp = FastMCP("StatefulServer")
@@ -37,9 +33,16 @@ mcp = FastMCP("StatelessServer", stateless_http=True, json_response=True)
 
 # Add a simple tool to demonstrate the server
 @mcp.tool()
-def greet(name: str = "World") -> str:
+def greet(name: str) -> str:
     """Greet someone by name."""
     return f"Hello, {name}!"
+
+
+# Add a simple prompt template
+@mcp.prompt()
+def simple_greeting_prompt(name: str = "World") -> str:
+    """A simple greeting prompt template."""
+    return f"Please write a friendly greeting for {name}. Make it warm and welcoming."
 
 
 # Add a simple resource to test resources endpoint
@@ -49,15 +52,24 @@ def get_test_resource() -> str:
     return "This is a test resource"
 
 
-# Run server with streamable-http transport (with error handling)
-if __name__ == "__main__":
+def main():
+    """Main function to run the MCP server with error handling."""
     print("Starting MCP server on http://127.0.0.1:8000")
     print("Server configuration: Stateless HTTP with JSON responses")
     print("Available endpoints:")
     print("  - POST http://127.0.0.1:8000/mcp for MCP protocol messages")
+    print("\nAvailable features:")
+    print("  🔧 Tools: greet")
+    print("  📝 Prompts: simple_greeting_prompt")
+    print("  📄 Resources: example://test")
     print("\nExample usage:")
     print("  Test with: uv run spikes/001_demos/test_client.py")
     print("  Or use in Context with URL: http://127.0.0.1:8000/mcp")
-
+    
     mcp.run(transport="streamable-http")
+
+
+# Run server with streamable-http transport (with error handling)
+if __name__ == "__main__":
+    main()
 

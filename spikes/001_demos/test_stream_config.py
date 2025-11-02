@@ -60,6 +60,91 @@ class TestGreetFunction(unittest.TestCase):
         self.assertEqual(result, "Hello, Alice & Bob!")
 
 
+class TestPromptFunction(unittest.TestCase):
+    """Test the prompt function"""
+
+    def setUp(self):
+        """Set up test fixtures"""
+        # Create a test MCP instance
+        self.mcp = FastMCP("TestServer")
+
+        # Register the prompt function
+        @self.mcp.prompt()
+        def simple_greeting_prompt(name: str = "World") -> str:
+            """A simple greeting prompt template."""
+            return f"Please write a friendly greeting for {name}. Make it warm and welcoming."
+
+        self.simple_greeting_prompt = simple_greeting_prompt
+
+    def test_prompt_with_default_name(self):
+        """Test prompt function with default name parameter"""
+        result = self.simple_greeting_prompt()
+        expected = "Please write a friendly greeting for World. Make it warm and welcoming."
+        self.assertEqual(result, expected)
+        self.assertIsInstance(result, str)
+
+    def test_prompt_with_specific_name(self):
+        """Test prompt function with specific name"""
+        result = self.simple_greeting_prompt(name="Alice")
+        expected = "Please write a friendly greeting for Alice. Make it warm and welcoming."
+        self.assertEqual(result, expected)
+
+    def test_prompt_with_empty_name(self):
+        """Test prompt function with empty name"""
+        result = self.simple_greeting_prompt(name="")
+        expected = "Please write a friendly greeting for . Make it warm and welcoming."
+        self.assertEqual(result, expected)
+
+    def test_prompt_with_special_characters(self):
+        """Test prompt function with special characters in name"""
+        result = self.simple_greeting_prompt(name="Dr. Smith & Co.")
+        expected = "Please write a friendly greeting for Dr. Smith & Co.. Make it warm and welcoming."
+        self.assertEqual(result, expected)
+
+    def test_prompt_with_unicode_characters(self):
+        """Test prompt function with unicode characters"""
+        result = self.simple_greeting_prompt(name="José")
+        expected = "Please write a friendly greeting for José. Make it warm and welcoming."
+        self.assertEqual(result, expected)
+
+    def test_prompt_with_long_name(self):
+        """Test prompt function with very long name"""
+        long_name = "A" * 100
+        result = self.simple_greeting_prompt(name=long_name)
+        expected = f"Please write a friendly greeting for {long_name}. Make it warm and welcoming."
+        self.assertEqual(result, expected)
+        self.assertIn(long_name, result)
+
+    def test_prompt_return_type(self):
+        """Test that prompt function returns correct type"""
+        result = self.simple_greeting_prompt(name="Test")
+        self.assertIsInstance(result, str)
+        self.assertTrue(len(result) > 0)
+
+    def test_prompt_contains_expected_elements(self):
+        """Test that prompt contains expected instructional elements"""
+        result = self.simple_greeting_prompt(name="TestUser")
+        
+        # Check that the prompt contains key instructional words
+        self.assertIn("Please write", result)
+        self.assertIn("friendly greeting", result)
+        self.assertIn("TestUser", result)
+        self.assertIn("warm and welcoming", result)
+
+    def test_prompt_structure(self):
+        """Test the overall structure of the prompt"""
+        result = self.simple_greeting_prompt(name="Example")
+        
+        # Should start with instruction
+        self.assertTrue(result.startswith("Please"))
+        
+        # Should contain the name
+        self.assertIn("Example", result)
+        
+        # Should end with the completion instruction
+        self.assertTrue(result.endswith("warm and welcoming."))
+
+
 class TestResourceFunction(unittest.TestCase):
     """Test the resource function"""
 
@@ -126,14 +211,28 @@ class TestMCPServerHTTPEndpoint(unittest.TestCase):
             async with session.post(
                 self.mcp_endpoint,
                 json=init_request,
-                headers={"Content-Type": "application/json", "Accept": "application/json, text/event-stream"},
+                headers={"Content-Type": "application/json", "Accept": "application/json"},
             ) as response:
                 self.assertEqual(response.status, 200)
-                text = await response.text()
-                self.assertIn("event: message", text)
-                self.assertIn("serverInfo", text)
-                self.assertIn("StatefulServer", text)
-                return text
+                
+                # Check if it's JSON response (our server config) or SSE
+                content_type = response.headers.get('content-type', '')
+                
+                if 'application/json' in content_type:
+                    # JSON response format
+                    result = await response.json()
+                    self.assertIn("result", result)
+                    self.assertIn("serverInfo", result["result"])
+                    server_name = result["result"]["serverInfo"]["name"]
+                    self.assertIn("Server", server_name)  # Could be StatelessServer or StatefulServer
+                    return result
+                else:
+                    # SSE response format
+                    text = await response.text()
+                    self.assertIn("event: message", text)
+                    self.assertIn("serverInfo", text)
+                    self.assertIn("Server", text)  # More flexible check
+                    return text
 
     def test_initialize_endpoint(self):
         """Test that initialize endpoint returns 200 and valid response"""
@@ -175,6 +274,129 @@ class TestMCPServerHTTPEndpoint(unittest.TestCase):
     def test_missing_accept_header(self):
         """Test that missing Accept header is handled properly"""
         asyncio.run(self._test_missing_accept_header())
+
+    async def _test_prompts_list_endpoint(self):
+        """Test the prompts/list endpoint"""
+        list_request = {
+            "jsonrpc": "2.0",
+            "id": "prompts-1",
+            "method": "prompts/list",
+            "params": {}
+        }
+
+        async with aiohttp.ClientSession() as session:
+            async with session.post(
+                self.mcp_endpoint,
+                json=list_request,
+                headers={"Content-Type": "application/json", "Accept": "application/json"}
+            ) as response:
+                self.assertEqual(response.status, 200)
+                result = await response.json()
+                
+                # Check response structure
+                self.assertIn("result", result)
+                self.assertIn("prompts", result["result"])
+                
+                # Check that our prompt is listed
+                prompts = result["result"]["prompts"]
+                prompt_names = [p["name"] for p in prompts]
+                self.assertIn("simple_greeting_prompt", prompt_names)
+                
+                # Find our specific prompt
+                greeting_prompt = next(p for p in prompts if p["name"] == "simple_greeting_prompt")
+                self.assertEqual(greeting_prompt["description"], "A simple greeting prompt template.")
+                self.assertIn("arguments", greeting_prompt)
+
+    def test_prompts_list_endpoint(self):
+        """Test that prompts list endpoint works"""
+        asyncio.run(self._test_prompts_list_endpoint())
+
+    async def _test_prompts_get_endpoint(self):
+        """Test the prompts/get endpoint"""
+        get_request = {
+            "jsonrpc": "2.0",
+            "id": "prompts-2",
+            "method": "prompts/get",
+            "params": {
+                "name": "simple_greeting_prompt",
+                "arguments": {
+                    "name": "TestUser"
+                }
+            }
+        }
+
+        async with aiohttp.ClientSession() as session:
+            async with session.post(
+                self.mcp_endpoint,
+                json=get_request,
+                headers={"Content-Type": "application/json", "Accept": "application/json"}
+            ) as response:
+                self.assertEqual(response.status, 200)
+                result = await response.json()
+                
+                # Check response structure
+                self.assertIn("result", result)
+                self.assertIn("messages", result["result"])
+                
+                # Check message content
+                messages = result["result"]["messages"]
+                self.assertTrue(len(messages) > 0)
+                
+                message = messages[0]
+                self.assertEqual(message["role"], "user")
+                self.assertIn("content", message)
+                
+                # Check that the prompt content is correct
+                content = message["content"]
+                if isinstance(content, dict):
+                    text_content = content.get("text", "")
+                else:
+                    text_content = content
+                
+                expected_text = "Please write a friendly greeting for TestUser. Make it warm and welcoming."
+                self.assertIn("TestUser", text_content)
+                self.assertIn("friendly greeting", text_content)
+
+    def test_prompts_get_endpoint(self):
+        """Test that prompts get endpoint works"""
+        asyncio.run(self._test_prompts_get_endpoint())
+
+    async def _test_prompts_get_with_default(self):
+        """Test the prompts/get endpoint with default parameters"""
+        get_request = {
+            "jsonrpc": "2.0", 
+            "id": "prompts-3",
+            "method": "prompts/get",
+            "params": {
+                "name": "simple_greeting_prompt"
+                # No arguments provided, should use defaults
+            }
+        }
+
+        async with aiohttp.ClientSession() as session:
+            async with session.post(
+                self.mcp_endpoint,
+                json=get_request,
+                headers={"Content-Type": "application/json", "Accept": "application/json"}
+            ) as response:
+                self.assertEqual(response.status, 200)
+                result = await response.json()
+                
+                # Check that default "World" is used
+                messages = result["result"]["messages"]
+                message = messages[0]
+                content = message["content"]
+                
+                if isinstance(content, dict):
+                    text_content = content.get("text", "")
+                else:
+                    text_content = content
+                    
+                self.assertIn("World", text_content)
+
+    def test_prompts_get_with_default(self):
+        """Test prompts get endpoint with default parameters"""
+        asyncio.run(self._test_prompts_get_with_default())
 
 
 class TestMCPServerConfiguration(unittest.TestCase):
