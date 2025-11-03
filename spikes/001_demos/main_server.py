@@ -3,7 +3,7 @@
 MCP Server Platform - spike demonstration
 
 Run from the repository root:
-    uv run spikes/001_demos/main_server.py
+    $ uv run spikes/001_demos/main_server.py
 
 This demo shows how to configure a FastMCP server with different session
 persistence options and run it with the "streamable-http" transport.

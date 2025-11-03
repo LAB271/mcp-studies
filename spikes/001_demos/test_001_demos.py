@@ -382,6 +382,7 @@ class TestMCPServerHTTPEndpoint(unittest.TestCase):
                 expected_text = "Please write a friendly greeting for TestUser. Make it warm and welcoming."
                 self.assertIn("TestUser", text_content)
                 self.assertIn("friendly greeting", text_content)
+                self.assertEqual(text_content, expected_text)
 
     def test_prompts_get_endpoint(self):
         """Test that prompts get endpoint works"""

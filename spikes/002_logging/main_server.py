@@ -7,7 +7,7 @@ Clean MCP Server with Harmonized Logging
 This version has clean, organized logging with minimal noise.
 Only shows what you actually need to see.
 
-Run with: 
+Run with:
     $ uv run spikes/002_logging/main_server.py
 
 Copyright (c) 2025 LAB271

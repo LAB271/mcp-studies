@@ -30,7 +30,7 @@ env: ## setup the development environment
 	@uv venv --clear
 	@uv sync
 # 	@uv sync --group dev
-	@.env.sh || (echo "❌ Failed to create .env file. Please ensure 1Password CLI is installed and configured." && exit 1)
+# 	@.env.sh || (echo "❌ Failed to create .env file. Please ensure 1Password CLI is installed and configured." && exit 1)
 	@echo "✅ Development environment is set up. Activate it with: source .venv/bin/activate"
 
 clean: ## Clean up environment
