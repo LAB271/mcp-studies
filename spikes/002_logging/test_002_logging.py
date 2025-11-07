@@ -106,7 +106,7 @@ class TestGreetTool(unittest.TestCase):
 
     def test_greet_logging(self):
         """Test that greet function logs correctly"""
-        with patch.object(self.logger, 'info') as mock_log:
+        with patch.object(self.logger, "info") as mock_log:
             self.greet(name="LogTest")
             mock_log.assert_called_with("Greeting LogTest")
 
@@ -130,7 +130,7 @@ class TestCalculateTool(unittest.TestCase):
             """Safely calculate a simple math expression."""
             try:
                 # Only allow basic math operations for safety
-                allowed_chars = set('0123456789+-*/.() ')
+                allowed_chars = set("0123456789+-*/.() ")
                 if not all(c in allowed_chars for c in expression):
                     return "Error: Only basic math operations allowed"
 
@@ -185,13 +185,13 @@ class TestCalculateTool(unittest.TestCase):
 
     def test_calculate_logging_success(self):
         """Test calculate logs successful calculations"""
-        with patch.object(self.logger, 'info') as mock_log:
+        with patch.object(self.logger, "info") as mock_log:
             self.calculate("3 + 4")
             mock_log.assert_called_with("Calculated: 3 + 4 = 7")
 
     def test_calculate_logging_error(self):
         """Test calculate logs errors"""
-        with patch.object(self.logger, 'warning') as mock_log:
+        with patch.object(self.logger, "warning") as mock_log:
             self.calculate("1 / 0")
             mock_log.assert_called_once()
 
@@ -253,7 +253,7 @@ class TestGreetUserPrompt(unittest.TestCase):
         styles_expected = {
             "friendly": "Please write a warm, friendly greeting for someone named TestUser.",
             "formal": "Please write a formal, professional greeting for someone named TestUser.",
-            "casual": "Please write a casual, relaxed greeting for someone named TestUser."
+            "casual": "Please write a casual, relaxed greeting for someone named TestUser.",
         }
 
         for style, expected in styles_expected.items():
@@ -293,7 +293,7 @@ class TestServerInfoResource(unittest.TestCase):
 
     def test_server_info_logging(self):
         """Test server info logs access"""
-        with patch.object(self.logger, 'info') as mock_log:
+        with patch.object(self.logger, "info") as mock_log:
             self.get_server_info()
             mock_log.assert_called_with("Server info requested")
 
@@ -322,12 +322,7 @@ class TestLoggingConfiguration(unittest.TestCase):
 
     def test_setup_clean_logging_with_flags(self):
         """Test setup_clean_logging with different flag combinations"""
-        logger = setup_clean_logging(
-            level="INFO",
-            app_name="test_flags",
-            show_uvicorn=True,
-            show_mcp_internals=False
-        )
+        logger = setup_clean_logging(level="INFO", app_name="test_flags", show_uvicorn=True, show_mcp_internals=False)
         self.assertIsInstance(logger, logging.Logger)
 
 
@@ -343,6 +338,7 @@ class TestMCPServerHTTPEndpoints(unittest.TestCase):
 
         # Check if server is already running
         import socket
+
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         result = sock.connect_ex(("127.0.0.1", 8000))
         sock.close()
@@ -360,18 +356,13 @@ class TestMCPServerHTTPEndpoints(unittest.TestCase):
 
     async def _test_tools_list_endpoint(self):
         """Test the tools/list endpoint"""
-        request = {
-            "jsonrpc": "2.0",
-            "id": "tools-1",
-            "method": "tools/list",
-            "params": {}
-        }
+        request = {"jsonrpc": "2.0", "id": "tools-1", "method": "tools/list", "params": {}}
 
         async with aiohttp.ClientSession() as session:
             async with session.post(
                 self.mcp_endpoint,
                 json=request,
-                headers={"Content-Type": "application/json", "Accept": "application/json"}
+                headers={"Content-Type": "application/json", "Accept": "application/json"},
             ) as response:
                 self.assertEqual(response.status, 200)
                 result = await response.json()
@@ -394,17 +385,14 @@ class TestMCPServerHTTPEndpoints(unittest.TestCase):
             "jsonrpc": "2.0",
             "id": "greet-1",
             "method": "tools/call",
-            "params": {
-                "name": "greet",
-                "arguments": {"name": "TestUser"}
-            }
+            "params": {"name": "greet", "arguments": {"name": "TestUser"}},
         }
 
         async with aiohttp.ClientSession() as session:
             async with session.post(
                 self.mcp_endpoint,
                 json=request,
-                headers={"Content-Type": "application/json", "Accept": "application/json"}
+                headers={"Content-Type": "application/json", "Accept": "application/json"},
             ) as response:
                 self.assertEqual(response.status, 200)
                 result = await response.json()
@@ -423,17 +411,14 @@ class TestMCPServerHTTPEndpoints(unittest.TestCase):
             "jsonrpc": "2.0",
             "id": "calc-1",
             "method": "tools/call",
-            "params": {
-                "name": "calculate",
-                "arguments": {"expression": "10 + 15"}
-            }
+            "params": {"name": "calculate", "arguments": {"expression": "10 + 15"}},
         }
 
         async with aiohttp.ClientSession() as session:
             async with session.post(
                 self.mcp_endpoint,
                 json=request,
-                headers={"Content-Type": "application/json", "Accept": "application/json"}
+                headers={"Content-Type": "application/json", "Accept": "application/json"},
             ) as response:
                 self.assertEqual(response.status, 200)
                 result = await response.json()
@@ -448,18 +433,13 @@ class TestMCPServerHTTPEndpoints(unittest.TestCase):
 
     async def _test_prompts_list_endpoint(self):
         """Test the prompts/list endpoint"""
-        request = {
-            "jsonrpc": "2.0",
-            "id": "prompts-1",
-            "method": "prompts/list",
-            "params": {}
-        }
+        request = {"jsonrpc": "2.0", "id": "prompts-1", "method": "prompts/list", "params": {}}
 
         async with aiohttp.ClientSession() as session:
             async with session.post(
                 self.mcp_endpoint,
                 json=request,
-                headers={"Content-Type": "application/json", "Accept": "application/json"}
+                headers={"Content-Type": "application/json", "Accept": "application/json"},
             ) as response:
                 self.assertEqual(response.status, 200)
                 result = await response.json()
@@ -477,18 +457,13 @@ class TestMCPServerHTTPEndpoints(unittest.TestCase):
 
     async def _test_resources_list_endpoint(self):
         """Test the resources/list endpoint"""
-        request = {
-            "jsonrpc": "2.0",
-            "id": "resources-1",
-            "method": "resources/list",
-            "params": {}
-        }
+        request = {"jsonrpc": "2.0", "id": "resources-1", "method": "resources/list", "params": {}}
 
         async with aiohttp.ClientSession() as session:
             async with session.post(
                 self.mcp_endpoint,
                 json=request,
-                headers={"Content-Type": "application/json", "Accept": "application/json"}
+                headers={"Content-Type": "application/json", "Accept": "application/json"},
             ) as response:
                 self.assertEqual(response.status, 200)
                 result = await response.json()

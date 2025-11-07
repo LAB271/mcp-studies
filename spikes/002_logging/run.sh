@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 SCRIPT_DIR="$(dirname "${BASH_SOURCE[0]}")"
-uv run "$SCRIPT_DIR/main_server.py"
+uv run "$SCRIPT_DIR/main_mcp_server.py"
 
 # Test the server with:
 # curl -H "Accept: text/event-stream" http://localhost:8000/mcp

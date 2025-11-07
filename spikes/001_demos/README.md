@@ -38,7 +38,7 @@
 - Created basic server implementations based on SDK examples
 
 ### 2025-02-11 - Basic Server Implementation
-- Implemented `main_server.py` with basic tool and resource examples
+- Implemented `main_mcp_server.py` with basic tool and resource examples
 - Successfully tested server using MCP inspector
 - Experimented with different tool and resource patterns
 - Created `test_main_server.py` for automated testing
@@ -77,9 +77,9 @@
 
 ## Reference Materials
 - **Code Location:** `spikes/001_demos/`
-  - `main_server.py` - Basic MCP server with tools and resources
+  - `main_mcp_server.py` - Basic MCP server with tools and resources
   - `test_001_demos.py` - Test suite for server functionality
-  - `try_basic_server.py` - Additional experimental implementations
+  - `try_main_server.py` - Additional experimental implementations
 - **Related Spikes:** 
   - Spike 002: Logging strategies for MCP servers
 - **External Resources:** 

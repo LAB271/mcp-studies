@@ -68,7 +68,7 @@ ARG PACKAGE_CONTEXT=.
 # Set working directory
 WORKDIR /app
 
-COPY ${BUILD_CONTEXT}/main_server.py server.py
+COPY ${BUILD_CONTEXT}/main_mcp_server.py server.py
 
 USER mcp
 

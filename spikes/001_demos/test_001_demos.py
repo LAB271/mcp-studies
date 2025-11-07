@@ -140,7 +140,7 @@ class TestPromptFunction(unittest.TestCase):
         styles_expected = {
             "friendly": "Please write a warm, friendly greeting for someone named TestUser.",
             "formal": "Please write a formal, professional greeting for someone named TestUser.",
-            "casual": "Please write a casual, relaxed greeting for someone named TestUser."
+            "casual": "Please write a casual, relaxed greeting for someone named TestUser.",
         }
 
         for style, expected in styles_expected.items():
@@ -242,9 +242,9 @@ class TestMCPServerHTTPEndpoint(unittest.TestCase):
                 self.assertEqual(response.status, 200)
 
                 # Check if it's JSON response (our server config) or SSE
-                content_type = response.headers.get('content-type', '')
+                content_type = response.headers.get("content-type", "")
 
-                if 'application/json' in content_type:
+                if "application/json" in content_type:
                     # JSON response format
                     result = await response.json()
                     self.assertIn("result", result)
@@ -303,18 +303,13 @@ class TestMCPServerHTTPEndpoint(unittest.TestCase):
 
     async def _test_prompts_list_endpoint(self):
         """Test the prompts/list endpoint"""
-        list_request = {
-            "jsonrpc": "2.0",
-            "id": "prompts-1",
-            "method": "prompts/list",
-            "params": {}
-        }
+        list_request = {"jsonrpc": "2.0", "id": "prompts-1", "method": "prompts/list", "params": {}}
 
         async with aiohttp.ClientSession() as session:
             async with session.post(
                 self.mcp_endpoint,
                 json=list_request,
-                headers={"Content-Type": "application/json", "Accept": "application/json"}
+                headers={"Content-Type": "application/json", "Accept": "application/json"},
             ) as response:
                 self.assertEqual(response.status, 200)
                 result = await response.json()
@@ -343,19 +338,14 @@ class TestMCPServerHTTPEndpoint(unittest.TestCase):
             "jsonrpc": "2.0",
             "id": "prompts-2",
             "method": "prompts/get",
-            "params": {
-                "name": "simple_greeting_prompt",
-                "arguments": {
-                    "name": "TestUser"
-                }
-            }
+            "params": {"name": "simple_greeting_prompt", "arguments": {"name": "TestUser"}},
         }
 
         async with aiohttp.ClientSession() as session:
             async with session.post(
                 self.mcp_endpoint,
                 json=get_request,
-                headers={"Content-Type": "application/json", "Accept": "application/json"}
+                headers={"Content-Type": "application/json", "Accept": "application/json"},
             ) as response:
                 self.assertEqual(response.status, 200)
                 result = await response.json()
@@ -397,14 +387,14 @@ class TestMCPServerHTTPEndpoint(unittest.TestCase):
             "params": {
                 "name": "simple_greeting_prompt"
                 # No arguments provided, should use defaults
-            }
+            },
         }
 
         async with aiohttp.ClientSession() as session:
             async with session.post(
                 self.mcp_endpoint,
                 json=get_request,
-                headers={"Content-Type": "application/json", "Accept": "application/json"}
+                headers={"Content-Type": "application/json", "Accept": "application/json"},
             ) as response:
                 self.assertEqual(response.status, 200)
                 result = await response.json()
