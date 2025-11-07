@@ -23,9 +23,11 @@ Each spike focuses on a specific aspect of MCP development, providing working ex
 
 | Spike | Name | Description | Status | Key Features | Last Updated |
 |-------|------|-------------|--------|--------------|--------------|
-| **001** | [**MCP Demos**](./001_demos/) | Basic MCP server implementations with tools, prompts, and resources | ✅ **Complete** | • FastMCP server<br>• Tools & Resources<br>• Prompt templates<br>• HTTP endpoints<br>• Comprehensive tests | 2025-11-02 |
-| **002** | [**Clean Logging**](./002_logging/) | Production-ready MCP server with harmonized, noise-free logging | ✅ **Complete** | • Clean log output<br>• Noise suppression<br>• Professional formatting<br>• Development-friendly<br>• Production-ready | 2025-11-02 |
-| **003** | [**Docker + SSL + NGINX**](./003_docker/) | Production-like deployment with Docker containers, SSL/TLS, and NGINX gateway | ✅ **Complete** | • Docker containerization<br>• SSL/TLS with mkcert<br>• NGINX reverse proxy<br>• Docker Compose<br>• Makefile automation | 2025-11-03 |
+| **000** | [**Stdio Foundation**](./000_stdio/README.md) | Minimal MCP server using stdio transport - foundation for all other spikes | ✅ **Complete** | • Stdio transport<br>• Core MCP primitives<br>• IDE integration<br>• Simple & clean<br>• Reference implementation | 2025-11-07 |
+| **001** | [**MCP Demos**](./001_demos/README.md) | Basic MCP server implementations with tools, prompts, and resources | ✅ **Complete** | • FastMCP server<br>• Tools & Resources<br>• Prompt templates<br>• HTTP endpoints<br>• Comprehensive tests | 2025-11-02 |
+| **002** | [**Clean Logging**](./002_logging/README.md) | Production-ready MCP server with harmonized, noise-free logging | ✅ **Complete** | • Clean log output<br>• Noise suppression<br>• Professional formatting<br>• Development-friendly<br>• Production-ready | 2025-11-02 |
+| **003** | [**Docker + SSL + NGINX**](./003_docker/README.md) | Production-like deployment with Docker containers, SSL/TLS, and NGINX gateway | ✅ **Complete** | • Docker containerization<br>• SSL/TLS with mkcert<br>• NGINX reverse proxy<br>• Docker Compose<br>• Makefile automation | 2025-11-03 |
+| **004** | [**Post Office**](./004_post_office/README.md) | Package management system demonstrating structured CSV data handling with multiple query tools | ✅ **Complete** | • CSV data management<br>• 6 specialized tools<br>• Docker deployment<br>• Business logic demo<br>• Query patterns | 2025-11-07 |
 
 ## Spike status legend
 
