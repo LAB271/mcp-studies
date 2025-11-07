@@ -23,7 +23,7 @@ Each spike focuses on a specific aspect of MCP development, providing working ex
 
 | Spike | Name | Description | Status | Key Features | Last Updated |
 |-------|------|-------------|--------|--------------|--------------|
-| **000** | [**Stdio Foundation**](./000_stdio/README.md) | Minimal MCP server using stdio transport - foundation for all other spikes | ✅ **Complete** | • Stdio transport<br>• Core MCP primitives<br>• IDE integration<br>• Simple & clean<br>• Reference implementation | 2025-11-07 |
+| **000** | [**Stdio Foundation**](./000_stdio/README.md) | Minimal MCP server using stdio transport - foundation for all other spikes | ✅ **Complete** | • Stdio transport<br>• Core MCP primitives<br>• IDE integration<br>• Simple & clean<br>• Reference implementation | 2025-11-05 |
 | **001** | [**MCP Demos**](./001_demos/README.md) | Basic MCP server implementations with tools, prompts, and resources | ✅ **Complete** | • FastMCP server<br>• Tools & Resources<br>• Prompt templates<br>• HTTP endpoints<br>• Comprehensive tests | 2025-11-02 |
 | **002** | [**Clean Logging**](./002_logging/README.md) | Production-ready MCP server with harmonized, noise-free logging | ✅ **Complete** | • Clean log output<br>• Noise suppression<br>• Professional formatting<br>• Development-friendly<br>• Production-ready | 2025-11-02 |
 | **003** | [**Docker + SSL + NGINX**](./003_docker/README.md) | Production-like deployment with Docker containers, SSL/TLS, and NGINX gateway | ✅ **Complete** | • Docker containerization<br>• SSL/TLS with mkcert<br>• NGINX reverse proxy<br>• Docker Compose<br>• Makefile automation | 2025-11-03 |

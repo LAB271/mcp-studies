@@ -1,0 +1,86 @@
+# MCP Server Platform - Local Deployment Makefile
+# Copyright (c) 2025 LAB271
+# SPDX-License-Identifier: Apache-2.0
+
+LOCAL_DOMAIN = mcp.local
+GATEWAY = https://$(LOCAL_DOMAIN)
+
+
+.PHONY: help setup generate-certs start stop restart logs clean status test
+
+check: ## Validate primary development dependencies
+	@uv --version > /dev/null && echo "✅ uv available" || (echo "❌ Please install uv as package manager: https://docs.astral.sh/uv/" && exit 1)
+	@mkcert --version > /dev/null && echo "✅ mkcert available" || (echo "❌ Please install mkcert: https://github.com/FiloSottile/mkcert" && exit 1)
+	@colima --version > /dev/null && echo "✅ colima available" || (echo "❌ Please install colima: https://github.com/abiosoft/colima" && exit 1)
+	@docker-compose --version > /dev/null && echo "✅ docker-compose available" || (echo "❌ Please install docker-compose: https://docs.docker.com/compose/install/" && exit 1)	
+
+start: ## Start Colima if not already running
+	@colima start
+	@colima status
+
+.ssl-certs/nginx.crt: 
+	@if ! grep -q "$(LOCAL_DOMAIN)" /etc/hosts; then \
+		echo "127.0.0.1 $(LOCAL_DOMAIN)" | sudo tee -a /etc/hosts; \
+	fi
+	@mkdir -p .ssl-certs
+	@mkcert -key-file .ssl-certs/nginx.key -cert-file .ssl-certs/nginx.crt $(LOCAL_DOMAIN)
+
+
+up: .ssl-certs/nginx.crt
+	@echo "Starting MCP platform..."
+	@docker-compose -f docker-compose.yml up -d --build
+	@echo ""
+	@echo "✅ Services started!"
+
+down:  ## Stop MCP platform
+	@echo "🛑 Stopping MCP platform..."
+	@docker-compose -f docker-compose.yml down
+
+clean: clean-certs ## Clean up docker
+	@docker-compose -f docker-compose.yml down -v
+	@docker images | grep "localhost:" | awk '{print $$3}' | xargs docker rmi -f || true
+	@docker rm -f $$(docker ps -aq) || true
+	@docker rmi -f $$(docker images -aq) || true
+	@docker volume prune -f || true
+	@docker network prune -f || true
+	@docker system prune -a -f --volumes|| true
+
+restart: ## Restart MCP platform
+	@echo "Restarting MCP platform..."
+	@docker-compose -f docker-compose.yml restart
+
+rebuild: ## Rebuild MCP platform
+	@echo "Rebuilding and restarting services..."
+	@docker-compose -f docker-compose.yml up -d --build
+
+logs: ## Tail logs for all services
+	@docker-compose -f docker-compose.yml logs -f
+
+logs-nginx: ## Tail logs for nginx-gateway service
+	@docker-compose -f docker-compose.yml logs -f nginx-gateway
+
+logs-app: ## Tail logs for mcp-server service
+	@docker-compose -f docker-compose.yml logs -f mcp-server
+
+status:
+	@echo "Service Status:"
+	@docker-compose -f docker-compose.yml ps
+	@echo ""
+	@echo "Network Status:"
+	@docker network inspect mcp-network 2>/dev/null | grep -A 5 "Containers" || echo "Network not found"
+
+clean-certs:
+	@echo "Removing SSL certificates..."
+	@rm -rf .ssl-certs
+	@echo "✓ Certificates removed"
+
+.DEFAULT_GOAL := help
+help: ## Shows help screen
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' Makefile | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-16s\033[0m %s\n", $$1, $$2}'
+	@echo ""
+	@echo "\033[33mAccess URLs:\033[0m"
+	@echo "  Gateway:   $(GATEWAY)"
+	@echo "  Log MCP:   $(GATEWAY)/log/"
+	@echo "  Main MCP:  $(GATEWAY)/main/"
+	@echo ""
+	@echo "Run 'make logs' to view logs"
