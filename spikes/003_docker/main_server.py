@@ -147,7 +147,15 @@ def mcp_factory(
     - Basic tools available
     - Ready for development"""
 
+    @mcp.resource("server://status")
+    def get_server_status() -> str:
+        """Get server status."""
+        logger.info("Server status requested")
+        return "Server is running smoothler."
+
     return mcp
+
+
 
 
 def main(app_name: str = "clean_server"):
