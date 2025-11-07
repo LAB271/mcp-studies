@@ -75,7 +75,7 @@ def main():
     print("  Test with: uv run spikes/001_demos/test_client.py")
     print("  Or use in Context with URL: http://127.0.0.1:8000/mcp")
 
-    mcp.run(transport="streamable-http")
+    mcp.run(transport="stdio")
 
 
 # Run server with streamable-http transport (with error handling)

@@ -18,6 +18,7 @@ import logging
 import sys
 
 from mcp.server.fastmcp import FastMCP
+from pydantic import Field
 from uvicorn.config import LOGGING_CONFIG
 
 
@@ -132,6 +133,7 @@ def mcp_factory(
         }
 
         return f"{styles.get(style, styles['friendly'])} for someone named {name}."
+    
 
     @mcp.resource("server://info")
     def get_server_info() -> str:
@@ -156,7 +158,7 @@ def main(app_name: str = "clean_server"):
 
     try:
         mcp = mcp_factory(app_name=app_name, logger=logger)
-        mcp.run(transport="streamable-http")
+        mcp.run(transport="stdio")
     except KeyboardInterrupt:
         logger.info("🛑 Server stopped by user")
     except Exception as e:

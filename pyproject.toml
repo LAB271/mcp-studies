@@ -26,6 +26,10 @@ dependencies = [
     "mcp[cli]==1.20.0",
 ]
 
+[tool.uv]
+# Default to exact version bounds when adding dependencies
+add-bounds = "exact"
+
 [project.urls]
 Homepage = "https://github.com/LAB271/mcp-studies"
 Repository = "https://github.com/LAB271/mcp-studies"
