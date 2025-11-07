@@ -132,7 +132,6 @@ def mcp_factory(
         }
 
         return f"{styles.get(style, styles['friendly'])} for someone named {name}."
-    
 
     @mcp.resource("server://info")
     def get_server_info() -> str:
