@@ -173,7 +173,7 @@ def main(app_name: str = "clean_server"):
 
     try:
         mcp = mcp_factory(app_name=app_name, logger=logger)
-        mcp.run(transport="stdio")
+        mcp.run(transport="streamable-http")
     except KeyboardInterrupt:
         logger.info("🛑 Server stopped by user")
     except Exception as e:
