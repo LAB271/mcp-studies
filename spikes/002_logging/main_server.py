@@ -18,7 +18,6 @@ import logging
 import sys
 
 from mcp.server.fastmcp import FastMCP
-from pydantic import Field
 from uvicorn.config import LOGGING_CONFIG
 
 
