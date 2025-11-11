@@ -61,7 +61,7 @@ RUN useradd -m -u 1000 mcp && \
 
 COPY --from=builder /root/.local /home/mcp/.local
 
-ARG BUILD_CONTEXT=spikes/004_post_office
+ARG BUILD_CONTEXT=spikes/004_csv_data
 ARG PACKAGE_CONTEXT=.
 
 
@@ -70,6 +70,8 @@ WORKDIR /app
 
 COPY ${BUILD_CONTEXT}/main_server.py server.py
 COPY ${BUILD_CONTEXT}/packages.csv packages.csv
+
+RUN chown mcp:mcp /app/packages.csv && chmod 644 /app/packages.csv
 
 USER mcp
 

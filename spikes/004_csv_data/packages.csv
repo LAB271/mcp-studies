@@ -1,0 +1,11 @@
+delivery_guy,package_id,label,state,weight_kg,size_cm,sender_name,sender_address,receiver_name,receiver_address
+1,PKG001,FRAGILE,delivered,2.5,15x10x8,John Smith,123 Main St New York NY 10001,Alice Johnson,456 Oak Ave Los Angeles CA 90001
+1,PKG002,STANDARD,delivered,1.2,20x15x12,Sarah Wilson,789 Pine Rd Chicago IL 60601,Bob Davis,321 Elm St Houston TX 77001
+1,PKG003,FRAGILE,delivered,0.8,10x8x6,Michael Brown,555 Maple Dr Phoenix AZ 85001,Carol White,777 Cedar Ln Philadelphia PA 19101
+2,PKG004,STANDARD,delivered,3.5,25x20x15,Jennifer Lee,999 Birch Ave San Antonio TX 78201,David Miller,111 Spruce Way San Diego CA 92101
+2,PKG005,URGENT,delivered,1.5,12x10x8,Robert Garcia,222 Ash St Dallas TX 75201,Emily Taylor,333 Willow Rd Austin TX 78701
+2,PKG006,STANDARD,delivered,2.1,18x14x10,Lisa Anderson,444 Oak Blvd Jacksonville FL 32099,Frank Thomas,555 Hickory Way Fort Worth TX 76101
+3,PKG007,FRAGILE,delivered,0.9,12x10x8,James Martinez,666 Poplar St Columbus OH 43085,Grace Jackson,777 Walnut Ln Charlotte NC 28202
+3,PKG008,STANDARD,delivered,2.7,22x16x12,Patricia Rodriguez,888 Dogwood Ave San Francisco CA 94102,Henry White,999 Fir St Indianapolis IN 46204
+3,PKG009,URGENT,delivered,1.1,14x10x8,Christopher Jones,1111 Chestnut Ave Memphis TN 38103,Isabella Davis,2222 Sycamore St Boston MA 02108
+1,PKG010,STANDARD,pending,1.8,16x12x10,Amsterdam Imports,Raadhuisplein 1 Amsterdam 1012 Amsterdam,Marc van Dijk,Prinsengracht 43 Amsterdam 1015 DV

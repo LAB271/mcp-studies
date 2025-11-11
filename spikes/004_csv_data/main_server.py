@@ -8,7 +8,7 @@ This server manages package deliveries for multiple delivery drivers.
 It provides tools to query, manage, and track packages from a CSV database.
 
 Run with:
-    $ docker-compose -f spikes/004_post_office/docker-compose.yml run --rm mcp-server python /app/server.py
+    $ docker-compose -f spikes/004_csv_data/docker-compose.yml run --rm mcp-server python /app/server.py
 
 Copyright (c) 2025 LAB271
 SPDX-License-Identifier: Apache-2.0
@@ -274,8 +274,101 @@ def mcp_factory(
         except Exception as e:
             logger.error(f"Error fetching packages by state: {e}")
             return f"Error: {e}"
+        
+    @mcp.tool()
+    def update_package_state(package_id: str, new_state: str) -> str:
+        """Update the state of a specific package."""
+        logger.info(f"Updating state for package {package_id} to {new_state}")
+        try:
+            pkg = db.get_package_details(package_id)
+            if not pkg:
+                return f"Package {package_id} not found"
+
+            old_state = pkg['state']
+            pkg['state'] = new_state
+
+            # Save changes back to CSV
+            with open(db.csv_path, 'w', newline='') as f:
+                fieldnames = pkg.keys()
+                writer = csv.DictWriter(f, fieldnames=fieldnames)
+                writer.writeheader()
+                writer.writerows(db.packages)
+
+            return f"Package {package_id} state updated from {old_state} to {new_state}"
+        except Exception as e:
+            logger.error(f"Error updating package state: {e}")
+            return f"Error: {e}"
+    
+    @mcp.tool()
+    def add_new_package(package_data: Dict[str, Any]) -> str:
+        """Add a new package to the database."""
+        logger.info(f"Adding new package with ID {package_data.get('package_id')}")
+        try:
+            db.packages.append(package_data)
+
+            # Save changes back to CSV
+            with open(db.csv_path, 'w', newline='') as f:
+                fieldnames = package_data.keys()
+                writer = csv.DictWriter(f, fieldnames=fieldnames)
+                writer.writeheader()
+                writer.writerows(db.packages)
+
+            return f"Package {package_data.get('package_id')} added successfully"
+        except Exception as e:
+            logger.error(f"Error adding new package: {e}")
+            return f"Error: {e}"
+        
+    @mcp.tool()
+    def delete_package(package_id: str) -> str:
+        """Delete a package from the database."""
+        logger.info(f"Deleting package with ID {package_id}")
+        try:
+            pkg = db.get_package_details(package_id)
+            if not pkg:
+                return f"Package {package_id} not found"
+
+            db.packages.remove(pkg)
+
+            # Save changes back to CSV
+            with open(db.csv_path, 'w', newline='') as f:
+                fieldnames = pkg.keys()
+                writer = csv.DictWriter(f, fieldnames=fieldnames)
+                writer.writeheader()
+                writer.writerows(db.packages)
+
+            return f"Package {package_id} deleted successfully"
+        except Exception as e:
+            logger.error(f"Error deleting package: {e}")
+            return f"Error: {e}"
+    
+    @mcp.tool()
+    def delete_packages(package_ids: List[str]) -> str:
+        """Delete multiple packages from the database."""
+        logger.info(f"Deleting multiple packages with IDs: {package_ids}")
+        try:
+            deleted_count = 0
+            for package_id in package_ids:
+                pkg = db.get_package_details(package_id)
+                if pkg:
+                    db.packages.remove(pkg)
+                    deleted_count += 1
+
+            # Save changes back to CSV
+            if deleted_count > 0:
+                with open(db.csv_path, 'w', newline='') as f:
+                    fieldnames = db.packages[0].keys() if db.packages else []
+                    writer = csv.DictWriter(f, fieldnames=fieldnames)
+                    writer.writeheader()
+                    writer.writerows(db.packages)
+
+            return f"Deleted {deleted_count} packages successfully"
+        except Exception as e:
+            logger.error(f"Error deleting multiple packages: {e}")
+            return f"Error: {e}"
 
     return mcp
+
+  
 
 
 def main(app_name: str = "post_office_server"):
@@ -293,7 +386,9 @@ def main(app_name: str = "post_office_server"):
 
     try:
         mcp = mcp_factory(app_name=app_name, logger=logger)
-        mcp.run(transport="stdio")
+        # FastMCP with stateless_http=True runs as HTTP server
+        # Call run() without transport parameter - it will use HTTP automatically with stateless_http=True
+        mcp.run()
     except KeyboardInterrupt:
         logger.info("🛑 Server stopped by user")
     except Exception as e:

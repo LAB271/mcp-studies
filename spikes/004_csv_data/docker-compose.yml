@@ -34,9 +34,9 @@ services:
   mcp-server:
     build:
       context: ../..
-      dockerfile: spikes/004_post_office/Dockerfile
+      dockerfile: spikes/004_csv_data/Dockerfile
       args:
-        BUILD_CONTEXT: spikes/004_post_office
+        BUILD_CONTEXT: spikes/004_csv_data
         PACKAGE_CONTEXT: .      
     container_name: mcp-server-post-office
     environment:
@@ -57,7 +57,7 @@ services:
     #   start_period: 40s
     volumes:
       - ./main_server.py:/app/server.py:ro
-      - ./packages.csv:/app/packages.csv:ro
+      - ./packages.csv:/app/packages.csv
       - ./.env:/app/.env:ro
       - /tmp/log/mcp-server-post-office:/app/logs
 

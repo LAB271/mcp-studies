@@ -13,11 +13,11 @@ start: ## Start Colima if not already running
 	@colima status
 
 .ssl-certs/nginx.crt: 
-	@if ! grep -q "$(LOCAL_DOMAIN)" /etc/hosts; then \
-		echo "127.0.0.1 $(LOCAL_DOMAIN)" | sudo tee -a /etc/hosts; \
-	fi
 	@mkdir -p .ssl-certs
-	@mkcert -key-file .ssl-certs/nginx.key -cert-file .ssl-certs/nginx.crt $(LOCAL_DOMAIN)
+	@if ! grep -q "$(LOCAL_DOMAIN)" /etc/hosts 2>/dev/null; then \
+		echo "127.0.0.1 $(LOCAL_DOMAIN)" | sudo tee -a /etc/hosts > /dev/null 2>&1 || echo "⚠️  Note: Could not add $(LOCAL_DOMAIN) to /etc/hosts. You may need to add it manually or use localhost."; \
+	fi
+	@mkcert -key-file .ssl-certs/nginx.key -cert-file .ssl-certs/nginx.crt $(LOCAL_DOMAIN) 2>/dev/null || mkcert -key-file .ssl-certs/nginx.key -cert-file .ssl-certs/nginx.crt localhost 127.0.0.1
 
 
 up: .ssl-certs/nginx.crt
@@ -61,7 +61,7 @@ status:
 	@docker-compose -f docker-compose.yml ps
 	@echo ""
 	@echo "Network Status:"
-	@docker network inspect 004_post_office_mcp-network-post-office 2>/dev/null | grep -A 5 "Containers" || echo "Network not found"
+	@docker network inspect 004_csv_data_mcp-network-post-office 2>/dev/null | grep -A 5 "Containers" || echo "Network not found"
 
 clean-certs:
 	@echo "Removing SSL certificates..."
