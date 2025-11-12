@@ -21,18 +21,23 @@ classifiers = [
 requires-python = ">=3.13"
 dependencies = [
     "aiohttp==3.13.2",
-    "mcp[cli]==1.20.0",
+    "mcp[cli]==1.21.0",
 ]
 
 [project.urls]
 Homepage = "https://github.com/LAB271/mcp-studies"
 Repository = "https://github.com/LAB271/mcp-studies"
 
+[tool.uv]
+preview = true
+add-bounds = "exact"
+
 [dependency-groups]
 dev = [
-    "pytest==8.4.2",
-    "pytest-asyncio==0.24.0",
-    "ruff==0.8.0",
+    "mypy==1.18.2",
+    "pytest==9.0.1",
+    "pytest-asyncio==1.3.0",
+    "ruff==0.14.4",
 ]
 
 [tool.ruff]

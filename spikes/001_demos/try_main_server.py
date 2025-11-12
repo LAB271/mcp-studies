@@ -14,6 +14,7 @@ Run with:
 import asyncio
 
 import aiohttp
+import json
 
 
 async def test_mcp_server():
@@ -61,7 +62,11 @@ async def test_mcp_server():
                     ) as tools_response:
                         print(f"Tools Status: {tools_response.status}")
                         tools_text = await tools_response.text()
-                        print(f"Tools Response: {tools_text}")
+                        try:
+                            tools_json = json.loads(tools_text)
+                            print(f"Tools Response: {json.dumps(tools_json, indent=2)}")
+                        except json.JSONDecodeError:
+                            print(f"Tools Response (raw): {tools_text}")
 
     except Exception as e:
         print(f"Error: {e}")

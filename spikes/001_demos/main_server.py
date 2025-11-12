@@ -3,7 +3,7 @@
 MCP Server Platform - spike demonstration
 
 Run from the repository root:
-    uv run spikes/001_demos/main_server.py
+    $ uv run spikes/001_demos/main_server.py
 
 This demo shows how to configure a FastMCP server with different session
 persistence options and run it with the "streamable-http" transport.
@@ -14,7 +14,7 @@ To test the server, you can use the provided test client:
 Or use the Context app and point it to the URL:
     http://127.0.0.1:8000/mcp
 
-You will find one tool and one resource available for testing.
+You will find one tool, one prompt and one resource available for testing.
 
 Origin:
     https://github.com/modelcontextprotocol/python-sdk?tab=readme-ov-file#streamable-http-transport
