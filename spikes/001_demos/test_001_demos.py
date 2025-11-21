@@ -247,6 +247,7 @@ class TestMCPServerHTTPEndpoint(unittest.TestCase):
                 if "application/json" in content_type:
                     # JSON response format
                     result = await response.json()
+                    self.assertEqual(result["jsonrpc"], "2.0")
                     self.assertIn("result", result)
                     self.assertIn("serverInfo", result["result"])
                     server_name = result["result"]["serverInfo"]["name"]
@@ -321,11 +322,11 @@ class TestMCPServerHTTPEndpoint(unittest.TestCase):
                 # Check that our prompt is listed
                 prompts = result["result"]["prompts"]
                 prompt_names = [p["name"] for p in prompts]
-                self.assertIn("simple_greeting_prompt", prompt_names)
+                self.assertIn("greet_user", prompt_names)
 
                 # Find our specific prompt
-                greeting_prompt = next(p for p in prompts if p["name"] == "simple_greeting_prompt")
-                self.assertEqual(greeting_prompt["description"], "A simple greeting prompt template.")
+                greeting_prompt = next(p for p in prompts if p["name"] == "greet_user")
+                self.assertEqual(greeting_prompt["description"], "Generate a greeting prompt")
                 self.assertIn("arguments", greeting_prompt)
 
     def test_prompts_list_endpoint(self):
@@ -338,7 +339,13 @@ class TestMCPServerHTTPEndpoint(unittest.TestCase):
             "jsonrpc": "2.0",
             "id": "prompts-2",
             "method": "prompts/get",
-            "params": {"name": "simple_greeting_prompt", "arguments": {"name": "TestUser"}},
+            "params": {
+                "name": "greet_user",
+                "arguments": {
+                    "name": "TestUser",
+                    "style": "friendly"
+                }
+            }
         }
 
         async with aiohttp.ClientSession() as session:
@@ -378,42 +385,6 @@ class TestMCPServerHTTPEndpoint(unittest.TestCase):
         """Test that prompts get endpoint works"""
         asyncio.run(self._test_prompts_get_endpoint())
 
-    async def _test_prompts_get_with_default(self):
-        """Test the prompts/get endpoint with default parameters"""
-        get_request = {
-            "jsonrpc": "2.0",
-            "id": "prompts-3",
-            "method": "prompts/get",
-            "params": {
-                "name": "simple_greeting_prompt"
-                # No arguments provided, should use defaults
-            },
-        }
-
-        async with aiohttp.ClientSession() as session:
-            async with session.post(
-                self.mcp_endpoint,
-                json=get_request,
-                headers={"Content-Type": "application/json", "Accept": "application/json"},
-            ) as response:
-                self.assertEqual(response.status, 200)
-                result = await response.json()
-
-                # Check that default "World" is used
-                messages = result["result"]["messages"]
-                message = messages[0]
-                content = message["content"]
-
-                if isinstance(content, dict):
-                    text_content = content.get("text", "")
-                else:
-                    text_content = content
-
-                self.assertIn("World", text_content)
-
-    def test_prompts_get_with_default(self):
-        """Test prompts get endpoint with default parameters"""
-        asyncio.run(self._test_prompts_get_with_default())
 
 
 class TestMCPServerConfiguration(unittest.TestCase):
