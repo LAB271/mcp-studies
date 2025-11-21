@@ -1,0 +1,44 @@
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: mcp-pgvector
+    environment:
+      POSTGRES_USER: mcp_user
+      POSTGRES_PASSWORD: mcp_password
+      POSTGRES_DB: mcp_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - pgvector_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mcp_user -d mcp_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  mcp-server:
+    build:
+      context: ../..
+      dockerfile: spikes/008_pgvector/Dockerfile
+    container_name: mcp-pgvector-server
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: mcp_user
+      POSTGRES_PASSWORD: mcp_password
+      POSTGRES_DB: mcp_db
+    volumes:
+      - .:/app
+      # Cache huggingface models to avoid re-downloading
+      - hf_cache:/root/.cache/huggingface
+    stdin_open: true
+    tty: true
+
+volumes:
+  pgvector_data:
+  hf_cache:
