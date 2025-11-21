@@ -155,7 +155,7 @@ def get_readings(sensor_id: str, limit: int = 10) -> str:
         conn.close()
 
 @mcp.tool()
-def search_knowledge(query: str, limit: int = 3) -> str:
+def search_knowledge(query: str, limit: int = 5) -> str:
     """
     Perform semantic search over the sensor knowledge base.
     Finds relevant manuals, notes, or descriptions based on meaning.
