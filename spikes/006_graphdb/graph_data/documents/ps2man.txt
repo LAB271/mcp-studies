@@ -1,0 +1,1371 @@
+--- Page 1 ---
+Gebruikershandleiding
+SCPH-90004
+Voor u het toestel in gebruik neemt, moet u de bijgeleverde documentatie aandachtig lezen.
+04-UG1NL
+
+--- Page 2 ---
+De documentatie van de PlayStation®2-console DVD's
+De documentatie van de PlayStation®2-console bestaat uit:
+Een DVD bekijken.......................................................................19
+(cid:129) Verkorte handleiding Gebruik van de afspeelmodi.........................................................23
+Een handleiding die is bijgeleverd in de verpakking van de console. Dit document De DVD-speler instellen..............................................................25
+bevat informatie over de installatie, het uitvoeren van basishandelingen van de console,
+en informatie over veiligheid en het oplossen van problemen.
+Hoofdmenu
+(cid:129) Gebruikershandleiding (dit document)
+Dit document (in pdf-formaat) kan online worden geopend op een pc, en bevat Hoofdmenuweergave....................................................................32
+informatie over het uitvoeren van geavanceerde handelingen op de console, technische Gebruik van het Browser-scherm.................................................32
+specificaties en andere informatie. U kunt dit document downloaden van de
+Gebruik van het Systeemconfiguratiemenu..................................33
+ondersteuningspagina op de website van Sony Computer Entertainment
+(eu.playstation.com/manuals). Gebruik van het Versie-informatiescherm...................................36
+Inhoudsopgave Netwerk
+Aansluiting op een netwerk..........................................................39
+Netwerkinstellingen......................................................................40
+Voorbereiding Aanvullende informatie
+Aan de slag.....................................................................................3 Technische gegevens....................................................................41
+Onderdelen.....................................................................................4
+Aansluiting op een TV...................................................................5
+Aansluiting op digitale audio-apparatuur.......................................7
+De controller aansluiten.................................................................8
+Netsnoer aansluiten........................................................................8
+De console in- en uitschakelen......................................................9
+Spelletjes
+Een spel spelen.............................................................................11
+Gebruik van Memory Cards (geheugenkaarten)..........................14
+Audio-CD's
+Een audio-CD afspelen................................................................17
+2 Inhoudspgave
+
+--- Page 3 ---
+Aan de slag 3
+Voorbereiding
+Voorbereiding
+Opgelet
+Aan de slag Stel de console niet bloot aan het volgende:
+(cid:129) Plaatsen met overdreven veel sigarettenrook of stof. Door afzetting van
+sigarettenrook of stof op de inwendige componenten, zoals bijvoorbeeld de
+lens, kan de console defect raken.
+(cid:129) Plaatsen waar extreme temperaturen heersen zoals in de volle zon, nabij een
+Inhoud van de verpakking controleren
+warmtebron of in een auto met gesloten ruiten (vooral in de zomer). Hierdoor
+kan de behuizing van de console vervormen of kan de console defect raken.
+Controleer of u beschikt over de volgende toebehoren: Als er toebehoren
+(cid:129) Plaatsen in de buurt van magnetische velden geproduceerd door magneten of
+ontbreken, neem dan contact op met de hulplijn van de bevoegde luidsprekers.
+PlayStation®-klantenservice die vermeld staat in elke PlayStation®- en (cid:129) Plaatsen die blootstaan aan trillingen.
+PlayStation®2-softwarehandleiding.
+De console opstellen
+De console kan horizontaal of verticaal worden geplaatst.
+Horizontale opstelling
+Plaats de console horizontaal. MEMORY CARD MEMORY CARD
+Verticale opstelling
+Om de console verticaal te plaatsen, moet u de
+Verticale Standaard SCPH-90110 E (voor
+PlayStation®2) gebruiken (apart verkrijgbaar).
+Opmerking
+Sommige Verticale Standaards (voor PlayStation®2) zijn niet geschikt voor dit
+model van de PlayStation®2-console. Raadpleeg de Verkorte handleiding
+( pagina2) voor meer informatie.Kies voor de SCPH-90110 E als Verticale
+Standaard.
+
+--- Page 4 ---
+Onderdelen
+Achterkant PlayStation®2-console
+Luchtopening achterzijde
+Voorkant PlayStation®2-console
+Disc-deksel ]/1 (aan/standby)-indicator
+A (open)-toets NETWORK-aansluiting ~AC IN-aansluiting
+]/1 (aan/standby)/RESET-toets
+MEMORY CARD
+(geheugenkaart)-aansluiting 2
+DIGITAL OUT (OPTICAL)-
+MEMORY CARD Logo " " productfamilie* aansluiting AV MULTI OUT-aansluiting
+(geheugenkaart)-aansluiting 1
+Opmerking
+Voor onderdelen van de Analoge Controller (DUALSHOCK®2), zie "Gebruik van
+MEMORY CARD MEMORY CARD de Analoge Controller (DUALSHOCK®2)" ( pagina13).
+infrarood-
+Controller-aansluiting 1 ontvanger
+Controller-aansluiting 2 USB-aansluiting
+* Het logo " " productfamilie kan worden gedraaid naargelang van een
+horizontale of verticale opstelling van de console.
+Opmerking
+U kunt verschillende USB-apparaten aansluiten op de PlayStation®2-console, maar
+niet alle apparatuur is compatibel. Raadpleeg de gebruiksaanwijzing van het USB-
+apparaat voor meer informatie.
+4 Onderdelen
+
+--- Page 5 ---
+Aansluiting op een TV 5
+Voorbereiding
+Aansluiting op een TV Opgelet
+Bij langdurige weergave van een stilstaand beeld op het scherm van een plasma-
+of projectietelevisie* kan er "nabeeldvorming" optreden. Dit is typerend voor
+dergelijke TV's. Wanneer u stilstaande beelden, zoals instelmenu's, DVD
+menu's of "pauzebeelden" lange tijd laat staan, kan er een nabeeldeffect
+Voor het aansluiten
+optreden. Raadpleeg de gebruiksaanwijzing van de televisie voor meer details.
+* Behalve televisies met LCD-scherm
+(cid:129)Steek de stekker op het Netsnoer van de console pas in een stopcontact
+nadat u alle andere aansluitingen hebt verricht.
+Opmerking
+(cid:129)Controleer of de TV is uitgeschakeld.
+De console kan worden aangesloten op een videorecorder of een geïntegreerde TV/
+videorecorder. Bij het afspelen van een DVD die auteursrechtelijk is beveiligd, kan
+Aansluiting op een TV met de meegeleverde AV- de beeldkwaliteit echter minder goed zijn.
+Kabel
+Sluit de console aan op de TV zoals hieronder afgebeeld.
+Achterkant console
+Audio- en video-ingangen van de TV
+VIDEO L-AUDIO-R
+Geel Wit Rood
+Niet gebruiken bij
+aansluiting op Naar de AV
+een mono-TV. MULTI OUT-
+aansluiting
+AV-Kabel
+
+--- Page 6 ---
+Aansluiting op een TV via de Euro-AV-aansluiting Gebruik van een andere kabel dan de
+met behulp van de Euro-AV-kabelaansluiting meegeleverde AV-kabel
+Sluit uw PlayStation®2-console aan op de Euro-AV-aansluiting (SCART) De beeldkwaliteit varieert afhankelijk van het gebruikte type kabel. Bepaal
+van de TV met behulp van de Euro-AV-kabelaansluiting en AV-Kabel en de beste aansluiting aan de hand van de onderstaande informatie. Als u een
+andere kabel dan de bijgeleverde AV-kabel gebruikt, moet u ook de
+let erop dat de kleuren van aansluitingen en stekkers overeenstemmen.
+gebruiksaanwijzing van de apart verkrijgbare kabel raadplegen.
+Achterkant console
+Televisie Kabeltype
+Televisie met component Component-AV-Kabel (SCPH-10490)
+video-ingangen
+Televisie met Euro-AV Euro-AV-Kabel (SCPH-10142)
+(SCART)-aansluiting
+Euro-AV-
+kabelaansluiting Televisie met S-VIDEO- S-VIDEO-Kabel (SCPH-10480)
+ingangen
+Naar Euro-AV- Naar AV MULTI Beeldkwaliteit
+aansluiting OUT-aansluiting Hoge kwaliteit
+xAV-Kabel (meegeleverd) xS-VIDEO-Kabel xComponent- AV-Kabel
+AV-Kabel
+Deze schaal is louter als referentie bedoeld. De beeldkwaliteit kan verschillen
+Na het aansluiten
+naar gelang van het product of de staat van uw televisie.
+Stel uw TV in op de passende video-ingangsmode. Raadpleeg de Als je de Euro-AV-kabel gebruikt, dan is de beeldkwaliteit afhankelijk van de
+AV-aansluiting van je TV.
+gebruiksaanwijzing van uw TV.
+Voor de beste resultaten sluit u uw Euro-AV-kabel aan op een RGB-
+compatibele aansluiting op uw TV-toestel. Zie de handleiding van uw TV-
+toestel voor nadere informatie.
+6 Aansluiting op een TV
+
+--- Page 7 ---
+Aansluiting op digitale audio-apparatuur 7
+Voorbereiding
+Opmerkingen
+Aansluiting op digitale audio-
+(cid:129) De progressive scan mode van de DVD-speler is alleen beschikbaar bij het
+afspelen van een disc opgenomen in NTSC-indeling en weergave op een televisie
+die compatibel is met progressive scan (480p). apparatuur
+(cid:129) De console kan niet worden aangesloten op een televisie met component video-
+ingangen die uitsluitend zijn bestemd voor HDTV (Y PB PR). Raadpleeg de
+gebruiksaanwijzing van de televisie voor meer details.
+Met behulp van een in de handel verkrijgbare optische digitale kabel kunt
+u genieten van surround sound zoals in een bioscoop of concertzaal.
+Raadpleeg de gebruiksaanwijzing van het aangesloten toestel wanneer u de
+console aansluit op audio-apparatuur met digitale aansluitingen.
+Achterkant console
+Aangesloten apparaat
+DIGITAL IN
+OPTICAL
+In de handel verkrijgbare
+optische digitale kabel
+Opmerkingen
+(cid:129) Wanneer u de console met behulp van een optische digitale kabel aansluit op
+audio-apparatuur, kan dit de audio-uitgang van bepaalde PlayStation®2-software
+beïnvloeden met als resultaat dat er geen geluid hoorbaar is. Gebruik in dat geval
+een kabel zoals de meegeleverde AV-Kabel en sluit die aan op AV MULTI OUT-
+aansluiting van de console. Gebruik geen optische digitale kabel.
+(cid:129) Zet "DIGITAL OUT (OPTICAL)" in het Systeemconfiguratiemenu op "Aan" na
+het aansluiten van digitale audio-apparatuur. Voor details, zie "DIGITAL OUT
+(OPTICAL)" ( pagina34).
+
+--- Page 8 ---
+De controller aansluiten Netsnoer aansluiten
+1
+Sluit de Analoge Controller (DUALSHOCK®2) aan op een
+controller-aansluiting van de console. Waarschuwingen
+(cid:129) Het stopcontact moet zich in de buurt van het apparaat bevinden en eenvoudig
+Voorkant console toegankelijk zijn.
+MEMORY CARD (cid:129) Steek de stekker op het Netsnoer van de console pas in een stopcontact nadat u
+alle andere aansluitingen hebt verricht.
+MEMORY CARD MEMORY CARD
+1
+Sluit het netsnoer aan op de ~AC IN-aansluiting aan de
+achterkant van de console.
+Achterkant console
+~AC IN-aansluiting
+Analoge Controller
+(DUALSHOCK®2)
+Netsnoer
+Opmerking
+Sommige softwaretitels werken met een specifieke controller-aansluiting.
+Raadpleeg de gebruiksaanwijzing van de software voor meer details.
+8 De controller aansluiten
+
+--- Page 9 ---
+De console in- en uitschakelen 9
+Voorbereiding
+2
+Sluit het Netsnoer aan op een stopcontact.
+De console in- en uitschakelen
+Achterkant console
+Voor u de console aanschakelt
+Schakel de console pas aan nadat de onderstaande stappen zijn verricht.
+Netsnoer
+Raadpleeg de gebruiksaanwijzing van de televisie voor meer details.
+Naar een stopcontact
+(cid:129)Zet de televisie aan.
+(cid:129)Stel de televisie in op weergave via een lijn waarop de console is
+In sommige regio's en landen
+aangesloten.
+verschilt de stekker van de
+afbeelding.
+De =/1 (aan/standby)-indicator vooraan op de console licht rood op
+De console aanschakelen
+om aan te geven dat de console zich in de wachtstand bevindt.
+1 Controleer of de =/1 (aan/standby)-indicator vooraan op de
+]/1-indicator console rood oplicht.
+Voorkant console
+2 Druk op de =/1 (aan/standby)/RESET-toets vooraan op de
+MEMORY CARD MEMORY CARD console.
+De =/1-indicator vooraan op de console wordt groen en het
+uitgangssignaal van de console wordt weergegeven door de televisie.
+=/1/RESET-toets
+Voorkant console
+=/1-indicator
+MEMORY CARD MEMORY CARD
+
+--- Page 10 ---
+Opmerkingen
+(cid:129) Wanneer u de console voor het eerst inschakelt, verschijnen de instelschermen
+voor "Taal", "Tijdzone" en "Zomertijd". Volg de instructies op het scherm om de
+instellingen te verrichten.
+(cid:129) Wanneer u de console aansluit op een breedbeeldtelevisie, moet "Beeldformaat"
+worden ingesteld in het Systeemconfiguratiemenu ( pagina34).
+De console uitschakelen
+1 Hou de =/1/RESET -toets vooraan op de console minstens één
+seconde ingedrukt.
+De =/1-indicator wordt rood om aan te geven dat de console is
+overgeschakeld naar de wachtstand.
+=/1/RESET-toets
+Voorkant console
+=/1-indicator
+MEMORY CARD MEMORY CARD
+Waarschuwing
+In de wachtstand is de console niet volledig uitgeschakeld. Trek de stekker uit
+het stopcontact wanneer u de console gedurende lange tijd niet gebruikt.
+10 De console in- en uitschakelen
+
+--- Page 11 ---
+Een spel spelen 11
+Spelletjes
+Spelletjes
+Een spel spelen
+Plaats de disc in de console met het label
+omhoog.
+Disc-deksel
+Plaats de disc zo dat de (drie)
+lipjes zich erboven bevinden.
+MEMORY CARD MEMORY CARD
+A (open)-toets =/1/RESET-toets
+Voor u een spel speelt Een spel starten
+Controleer of de console goed is aangesloten op de TV en audio- 1 Schakel de console in ( pagina9).
+apparatuur en alle voorzorgsmaatregelen in acht zijn genomen.
+Het hoofdmenu verschijnt ( pagina32).
+(cid:129)"Voorzorgsmaatregelen" in de Verkorte handleiding ( pagina2)
+(cid:129)"Aansluiting op een TV" ( pagina5) 2 Druk op de A (open)-toets vooraan op de console.
+(cid:129)"De controller aansluiten" ( pagina8)
+Het disc-deksel gaat open.
+(cid:129)"Netsnoer aansluiten" ( pagina8)
+3
+Plaats de disc in de console.
+Opmerking
+Leg de disc in de disc-houder met het label omhoog.
+Om online te kunnen spelen, moet u eerst aangesloten zijn op een netwerk. Zie
+"Aansluiting op een netwerk" ( pagina39) voor meer details.
+
+--- Page 12 ---
+4 2
+Sluit het disc-deksel. Verwijder de disc.
+Het spel start na het sluiten van het disc-deksel. Hou een vinger op het zwarte middenstuk van de disc-houder en til de
+disc op aan de rand.
+MEMORY CARD MEMORY CARD
+MEMORY CARD MEMORY CARD
+Opmerkingen
+(cid:129) Een spel kan ook worden gestart via het Browser-scherm ( pagina32). Druk op het zwarte middenstuk
+(cid:129) Wanneer de console wordt ingeschakeld nadat een disc werd ingebracht, start het van de disc-houder.
+spel automatisch.
+3
+Sluit het disc-deksel.
+Een spel herstarten
+Druk op de \/1 (aan/standby)/RESET-toets vooraan op de console. Let op 4 Druk op de =/1/RESET-toets.
+dat u tijdens het spelen niet per ongeluk op de @/1/RESET-toets drukt, Het hoofdmenu verschijnt ( pagina32).
+want dan begint het spel opnieuw.
+Verwisselen van disc
+1
+Een spel beëindigen Open het disc-deksel en verwijder de disc.
+Hou een vinger op het zwarte middenstuk van de disc-houder en til de
+disc op aan de rand om ze te verwijderen.
+Opgelet 2
+Breng een disc in.
+Controleer of de disc volledig tot stilstand is gekomen alvorens die te
+verwijderen. Raak de disc niet aan terwijl ze nog draait om verwondingen,
+3
+beschadiging van de disc of defecten aan de console te vermijden. Sluit het disc-deksel en reset de console.
+Het nieuwe spel start.
+1 Druk op de A-toets vooraan op de console.
+Opmerking
+U hoeft de console niet uit te schakelen om van spel te wisselen.
+12 Een spel spelen
+
+--- Page 13 ---
+Een spel spelen 13
+Spelletjes
+Mode kiezen
+Gebruik van de Analoge Controller
+Met de ANALOG-modeknop kan worden omgeschakeld tussen twee
+(DUALSHOCK®2) modes. Schakel over naar de geschikte mode. Merk evenwel op dat
+sommige software deze instelling automatisch kiest.
+De Analoge Controller (DUALSHOCK®2) is uitgerust met een
+drukgevoelige toetsfunctie. Hij heeft ook een trilfunctie. Digitale mode Analoge mode
+(indicator : uit) (indicator : rood)
+Onderdelen
+SELECT-toets START-toets
+Opmerkingen
+L2-toets R2-toets
+(cid:129) Wanneer de Analoge Controller in digitale mode wordt gebruikt, werken de linker
+L1-toets R1-toets en rechter analoge joysticks niet. Ook de drukgevoelige toetsfunctie is dan
+uitgeschakeld.
+-toets
+(cid:129) Bij sommige software kan niet tussen modes worden omgeschakeld, ook al wordt
+richtings- -toets de ANALOG-modeknop ingedrukt.
+toetsen
+-toets Analoge bediening
+-toets (cid:129)Bij het afspelen van software in PlayStation®2-formaat kunt u alle
+toetsen gebruiken in de analoge mode, met uitzondering van de
+Rechter analoge joystick/ R3-
+toets* START-, SELECT-, L3- en R3-toetsen.
+Mode-indicator Linker analoge joystick/ L3- (cid:129)Bij het afspelen van software in PlayStation®2-formaat werken alleen de
+ANALOG-modeknop toets* linker en rechter joysticks in de analoge mode.
+* De linker en rechter analoge joysticks en de L3- en R3-toetsen werken alleen in Opmerking
+de analoge mode (indicator: rood).
+Bij sommige software zijn de beschikbare toetsen in de analoge mode beperkt.
+* De L3- en R3-toetsen werken wanneer de analoge joysticks worden ingedrukt. Raadpleeg de gebruiksaanwijzing van de software voor meer details.
+Opmerking Trilfunctie
+Voor u de Analoge Controller (DUALSHOCK®2) De trilfunctie kan met de software in- of uitgeschakeld worden via het
+gaat gebruiken en de console is ingeschakeld, draait u software-optiemenu.
+de linker en rechter analoge joysticks eenmaal met de
+duimen. Verwring de analoge joysticks niet maar
+Opmerking
+maak een soepele cirkelvormige beweging zoals
+hiernaast afgebeeld. Bij sommige software wordt de trilfunctie automatisch ingeschakeld.
+
+--- Page 14 ---
+Betreffende het gebruik van de Analoge
+Gebruik van Memory Cards
+Controller (DUALSHOCK®) (SCPH-110E)
+(geheugenkaarten)
+U kunt de Analoge Controller (DUALSHOCK®) (SCPH-110E)
+gebruiken met de PlayStation®2-console maar de toetsfuncties in de
+analoge mode kunnen verschillen van die van de Analoge Controller Spelgegevens kunnen worden opgeslagen en geladen met behulp van een
+(DUALSHOCK®2). Alleen de linker en rechter analoge joysticks kunnen Memory Card (geheugenkaart, afzonderlijk verkrijgbaar). Spelgegevens
+in de analoge mode worden gebruikt. kunnen ook worden gewist of van de ene Memory Card (geheugenkaart)
+naar de andere worden gekopieerd.
+Opmerking
+Niet alle software in PlayStation®2-formaat is compatibel met de Analoge Controller
+(DUALSHOCK®) (SCPH-110 E). Gebruik dan de Analoge Controller Soorten Memory Cards (geheugenkaarten)
+(DUALSHOCK®2).
+Er zijn twee types Memory Cards (geheugenkaarten). Gebruik een
+geschikte Memory Card (geheugenkaart) voor de software.
+Type Memory Card Compatibele software Geheugenruimte
+(geheugenkaart)
+Memory Card (geheugenkaart) software in PlayStation®- Ong. 8 MB
+(8MB) (voor PlayStation®2) formaat
+(SCPH-10020 E)
+Memory Card (geheugenkaart) software in PlayStation®2- 15 geheugenblokken
+(SCPH-1020 E)* formaat (ong. 120 KB)
+* Dit product wordt niet
+langer gefabriceerd.
+MagicGate™ is een term voor copyrightbeschermingstechnologie
+ontwikkeld door de Sony Corporation.
+14 Gebruik van Memory Cards (geheugenkaarten)
+
+--- Page 15 ---
+Gebruik van Memory Cards (geheugenkaarten) 15
+Spelletjes
+Een Memory Card (geheugenkaart) plaatsen Spelgegevens kopiëren of wissen
+Steek de Memory Card (geheugenkaart) in een MEMORY CARD 1 Selecteer via het Browser-scherm ( pagina32) het icoon
+(geheugenkaart)-aansluiting aan de voorzijde van de console. van de Memory Card (geheugenkaart) waarop u gegevens wilt
+Voorkant console kopiëren of wissen met behulp van de richtingstoetsen en
+druk vervolgens op de -toets.
+MEMORY CARD
+MEMORY CARD MEMORY CARD 2
+Kies het icoon van de gegevens die u wilt kopiëren of wissen
+en druk vervolgens op de -toets.
+3
+Selecteer "Kopiëren" of "Verwijderen" en druk vervolgens op
+Opmerking de -toets.
+Bij sommige software moet een specifieke MEMORY CARD (geheugenkaart)- Controleer of er twee Memory Cards (geheugenkaarten) in de console
+aansluiting worden gebruikt. Raadpleeg de gebruiksaanwijzing van de software voor zitten alvorens spelgegevens te kopiëren. Ga naar stap 5 indien u
+meer details. "Verwijderen" hebt geselecteerd.
+4
+Kies de bestemming en druk vervolgens op de -toets.
+Spelgegevens opslaan/laden
+5
+Kies "Ja" en druk vervolgens op de -toets.
+De procedure voor het opslaan of laden verschilt per software. Raadpleeg
+Verwijder de Memory Cards (geheugenkaarten) niet tijdens het
+de gebruiksaanwijzing van de software voor meer details.
+kopiëren of wissen van gegevens.
+6
+Druk op de -toets wanneer het kopiëren of wissen is
+voltooid.
+Opmerkingen
+(cid:129) Selecteer het icoon voor de gegevens en druk vervolgens op de -toets voor meer
+gedetailleerde informatie over spelgegevens.
+(cid:129) Compatibiliteit van software en Memory Cards:
+– Je kunt geen PlayStation®2-software opslaan op of kopiëren naar een Memory
+Card (geheugenkaart) (SCPH-1020 E).
+
+--- Page 16 ---
+– Je kunt PlayStation®-gamegegevens niet op een Memory Card (geheugenkaart)
+(8MB) (voor PlayStation®2) opslaan. Je kunt echter wel PlayStation®-
+gamegegevens van een Memory Card (geheugenkaart) (SCPH-1020 E) naar een
+Memory Card (geheugenkaart) (8MB) (voor PlayStation®2) verplaatsen om
+deze gegevens op te slaan. Dergelijke gamegegevens kunnen niet direct van een
+Memory Card (geheugenkaart) (8MB) (voor PlayStation®2) worden geladen.
+16 Gebruik van Memory Cards (geheugenkaarten)
+
+--- Page 17 ---
+Een audio-CD afspelen 17
+Audio-CD's
+Audio-CD's Bediening van de CD-speler tijdens de weergave
+Een audio-CD afspelen
+Kies de gewenste track met de richtingstoetsen en druk vervolgens op de
+-toets.
+Icoon (toets*) Functie
+Een CD afspelen
+. (L1-toets) Naar het begin van de huidige of vorige track
+1
+Zet de console aan en plaats de disc ( pagina11). m (L2-toets) Snel achteruit
+Verricht stap 1 t/m 4 van "Een spel starten".
+M (R2-toets) Snel vooruit
+De tracknummers verschijnen.
+> (R1-toets) Naar het begin van de volgende track
+2
+Kies het tracknummer dat u wilt beluisteren met behulp van N (START-toets) Afspelen starten
+de richtingstoetsen en druk vervolgens op de -toets.
+X (START-toets) Pauzeren
+Het afspelen begint.
+x (SELECT-toets) Afspelen stoppen
+Opmerkingen
+* Je bedient de CD-speler rechtstreeks met de toetsen van de Analoge Controller
+(cid:129) Wanneer de console wordt ingeschakeld nadat een disc werd geplaatst, verschijnen (DUALSHOCK®2) die tussen haakjes worden weergegeven.
+de tracknummers automatisch.
+(cid:129) De weergave kan ook worden gestart via het Browser-scherm ( pagina32).
+Opmerking
+U kunt ook de DVD-Afstandsbediening (voor PlayStation®2) gebruiken (apart
+verkrijgbaar).
+Opgelet
+Om een audio- CD opgenomen in DTS-indeling te kunnen afspelen, dient er een
+apparaat met DTS-decoder te zijn aangesloten op de DIGITAL OUT
+Het afspelen van een audio-CD beëindigen
+(OPTICAL)-aansluiting ( pagina7). Merk op dat er een zeer hard geluid kan
+worden geproduceerd indien het apparaat geen DTS-decoder heeft of als deze
+wordt aangesloten op de AV MULTI OUT-aansluiting. 1 Selecteer x met de richtingstoetsen en druk op de -toets.
+De weergave stopt. Druk op de A (open)-toets vooraan op de console
+om de disc te verwijderen.
+
+--- Page 18 ---
+4
+Druk op de -toets.
+Afspeelmogelijkheden
+Het Browser-scherm verschijnt.
+U kunt kiezen uit "Afspeel modus" en "Herhalen".
+5
+Kies het icoon audio-CD en druk vervolgens op de -toets.
+Afspeel modus Normaal De tracks worden afgespeeld in de volgorde De tracknummers verschijnen en de instelmogelijkheid wordt links
+waarop ze op de CD staan onderaan het scherm weergegeven.
+Programmeren De tracks worden in een bepaalde volgorde 6
+Kies de gewenste track en druk vervolgens op de -toets.
+afgespeeld
+Het afspelen begint.
+Willekeurige De tracks worden afgespeeld in willekeurige
+volgorde volgorde
+Opmerkingen
+Herhalen Uit De CD wordt niet herhaald
+(cid:129) U kunt het scherm Play Options (afspeelmogelijkheden) ook opvragen vanuit het
+Alle Alle tracks worden herhaald trackweergavescherm door het Audio-CD-pictogram in de linker bovenhoek van
+het scherm te selecteren en op de -toets te drukken.
+1 Een track wordt herhaald (cid:129) "Afspeel modus" en "Herhalen" kunnen tegelijkertijd worden ingesteld.
+1
+Selecteer het icoon audio-CD met de richtingstoetsen via het
+Browser-scherm ( pagina32) en druk vervolgens op de
+-toets.
+Het scherm afspeelmogelijkheden verschijnt.
+2
+Selecteer "Afspeel modus" of "Herhalen" en druk vervolgens
+op de -toets.
+3
+Kies de gewenste instelling en druk vervolgens op de
+-toets.
+Wanneer u "Programmeren" selecteert, verschijnt het scherm waarop
+de trackvolgorde kan worden bepaald. Kies de tracks die u wilt
+afspelen.
+18 Een audio-CD afspelen
+
+--- Page 19 ---
+Een DVD bekijken 19
+DVD's
+DVD's Met behulp van het bedieningspaneel
+Een DVD bekijken
+1
+Start de weergave van de DVD ( pagina21).
+2
+Druk op de SELECT-toets.
+U kunt de DVD-speler bedienen op de volgende manieren.
+Het bedieningspaneel verschijnt. Wanneer u nogmaals op de
+(cid:129)Met behulp van het schermbedieningspaneel
+SELECT-toets drukt, verandert de weergavepositie op het scherm.
+(cid:129)Rechtstreeks met behulp van de Analoge Controller (DUALSHOCK®2)
+(cid:129)Met behulp van de DVD-Afstandsbediening (voor PlayStation®2) (apart
+verkrijgbaar)
+Bij de volgende instructies wordt verondersteld dat de DVD-speler wordt
+bediend via het schermbedieningspaneel. Sommige handelingen
+verschillen naargelang van de gebruikte methode.
+Opmerkingen
+(cid:129) Raadpleeg de instructies die bij de DVD zijn geleverd voor meer details over het 3
+Kies een icoon met de richtingstoetsen en druk vervolgens op
+afspelen van een DVD.
+de -toets.
+(cid:129) De PlayStation®2-console geeft de disc weer zoals die is opgenomen met DVD-
+software. Merk op dat niet alle functies beschikbaar zijn op alle DVD's.
+Opmerking
+Om het bedieningspaneel uit te schakelen, drukt u (eenmaal of tweemaal) op de
+SELECT-toets of drukt u op de -toets.
+Bedieningspaneellijst
+Via het bedieningspaneel kunnen de volgende opties worden gekozen.
+Icoon Functie
+Menu Toont het DVD-Videomenu
+Topmenu Toont het DVD-Videomenu
+
+--- Page 20 ---
+Icoon Functie Icoon Functie
+O Terugkeren Om terug te keren naar het vorige scherm / Langzaam Vertraagde weergave vooruit/achteruit
+in het DVD-menu
+N
+Om de audio opties van DVD's met Afspelen Weergave starten
+Audio opties meertalige geluidssporen te tonen en te X
+wijzigen Pauzeren Weergave onderbreken
+Hoekopties Om de beeldhoekopties te tonen en te x Stop Weergave stoppen ( pagina21)
+wijzigen
+Om een bepaalde scène te selecteren en die
+Om de DVD-ondertitelingsopties weer te A-B Herhalen
+Ondertitelingsopties af te spelen ( pagina25)
+geven en te wijzigen
+Om titels of hoofdstukken in een
+Om naar een gekozen titel, hoofdstuk of Willekeurige
+willekeurige volgorde af te spelen
+Ga naar tijd te gaan en de weergave te starten weergave
+( pagina24)
+( pagina21)
+Om titels of hoofdstukken in een
+Om de opties voor taal, beeldkwaliteit, Programma-
+geprogrammeerde volgorde af te spelen
+Instellingen kinderbeveiliging, audio, enz. te tonen en weergave
+( pagina23)
+te wijzigen ( pagina25)
+Om alle titels op de disc of één titel of één
+Om het huidige titel- en
+Herhaalde weergave hoofdstuk herhaaldelijk af te spelen
+Speelduurweergave hoofdstuknummer, de verstreken tijd, enz.
+( pagina24)
+te tonen ( pagina22)
+Om bij DVD-RW-discs (VR mode) te
+Om de directe toetsfuncties van de
+Original/Play List kiezen tussen de weergave van originele of
+Help Analoge Controller (DUALSHOCK®2) te
+zelf gemonteerde inhoud ( pagina23)
+tonen
+Om geselecteerde nummers of
+Om het nummer te kiezen van een Wissen
+0~9 afspeelmodi te wissen ( pagina25)
+Ga naar hoofdstuk hoofdstuk dat u wilt afspelen
+( pagina21)
+Opmerkingen
+.> Om naar het begin van het huidige, vorige
+/ Vorige/Volgende (cid:129) Met " " kunt u controleren welke opties rechtstreeks kunnen worden bediend met
+of volgende hoofdstuk te gaan
+behulp van de toetsen op de Analoge Controller. Hiervoor moet u eerst het
+bedieningspaneel van het scherm halen.
+/ Zoeken Snel terug-/vooruitgaan ( pagina22)
+(cid:129) In sommige weergavestanden zijn bepaalde opties niet beschikbaar of instelbaar.
+20 Een DVD bekijken
+
+--- Page 21 ---
+Een DVD bekijken 21
+DVD's
+Een DVD afspelen Een specifieke scène selecteren voor weergave
+1
+Zet de console aan en plaats een disc ( pagina11).
+Een scène selecteren op hoofdstuknummer
+Verricht stap 1 t/m 4 van "Een spel starten". De weergave start.
+1
+Selecteer tijdens de weergave het gewenste
+Opmerkingen hoofdstuknummer in het bedieningspaneel ( pagina19) en
+(cid:129) Wanneer de console wordt geplaatst nadat een disc werd ingeschakeld, start de druk vervolgens op de -toets.
+weergave automatisch. De weergave van het geselecteerde hoofdstuk begint. Om een
+(cid:129) De weergave kan ook worden gestart via het Browser-scherm ( pagina32). hoofdstuk af te spelen met één enkel cijfer (d.w.z. van 1 tot 9), voert u
+eerst een nul in. Bijvoorbeeld "01".
+De weergave van een DVD beëindigen x Een scène selecteren op titelnummer, hoofdstuknummer of
+tijd
+1 Selecteer tijdens de weergave x in het bedieningspaneel
+1
+( pagina19) en druk vervolgens op de -toets. Selecteer tijdens de weergave in het bedieningspaneel
+De weergave stopt. Druk op de A (open)-toets vooraan op de console ( pagina19) en druk vervolgens op de -toets.
+en verwijder de disc.
+2
+Kies een item en druk vervolgens op de -toets.
+De weergave hervatten vanaf het laatste
+Titel Het titelnummer
+stoppunt (Weergave hervatten)
+Hoofdstuk Het hoofdstuknummer
+1 Selecteer tijdens de weergave x in het bedieningspaneel C XX:XX:XX De verstreken tijd voor het hoofdstuk (of de titel)
+(of T XX:XX:XX)
+( pagina19) en druk vervolgens op de -toets.
+2 Selecteer N en druk vervolgens op de -toets. 3 Selecteer de nummers voor de gewenste scène en druk
+De weergave begint vanaf het punt waar u de disc hebt gestopt in stap vervolgens op de -toets.
+1.
+De weergave van het geselecteerde hoofdstuk begint.
+"Weergave hervatten" wissen
+Selecteer na stap 1 x en druk vervolgens op de -toets.
+
+--- Page 22 ---
+Een bepaald punt op een DVD vinden (Zoeken) Afspeelinformatie weergeven
+U kunt informatie weergeven zoals het huidige titelnummer of de
+verstreken speelduur.
+U kunt snel voor- of achteruit om een bepaald punt op een DVD te vinden.
+1
+1 Kies in het bedieningspaneel tijdens de weergave
+Selecteer tijdens de weergave of in het
+( pagina19) en druk vervolgens op de -toets.
+bedieningspaneel ( pagina19) en druk vervolgens op de
+Bij elke druk op de -toets verandert de weergave zoals hieronder
+-toets.
+vermeld.
+De zoeksnelheid verandert zoals hieronder vermeld wanneer u de
+richtingstoets omhoog of omlaag indrukt terwijl u de -toets
+Titel X Hoofdstuk X Titelnummer en hoofdstuknummer
+ingedrukt houdt.
+(cid:129) Zoeken 3 Titel X Hoofdstuk X C XX:XX:XX Verstreken speelduur huidig hoofdstuk
+(cid:129) Zoeken 2
+Titel X Hoofdstuk X C -XX:XX:XX Resterende speelduur van het huidige
+(cid:129) Zoeken 1
+hoofdstuk
+(cid:129) Langzaam
+Titel X Hoofdstuk X T XX:XX:XX Verstreken speelduur van de huidige
+2 Laat de -toets los wanneer u het gewenste punt hebt titel
+gevonden. Titel X Hoofdstuk X T -XX:XX:XX Resterende speelduur van de huidige
+De weergave gebeurt weer met de normale snelheid. titel
+(Uit)
+Opmerking
+Om tijdens de weergave te zoeken met behulp van de Analoge Controller, houdt u de
+L2- of R2-toets ingedrukt om het zoeken te starten. Wijzig de snelheid met behulp
+van de richtingstoetsen. Laat de L2- of R2-toets los wanneer u het gewenste punt hebt
+gevonden.
+22 Een DVD bekijken
+
+--- Page 23 ---
+Gebruik van de afspeelmodi 23
+DVD's
+Original of Play List kiezen voor het afspelen van
+Gebruik van de afspeelmodi
+een DVD-RW
+Bij een DVD-RW-disc (VR mode) kunt u bepalen welk soort titels u wilt Met de afspeelmodi kunt u titels of hoofdstukken afspelen in een bepaalde
+afspelen. volgorde of een bepaalde scène herhalen. Er zijn vier afspeelmodi:
+1 Selecteer tijdens de weergave in het (cid:129)Programma-weergave ( pagina23)
+bedieningspaneel ( pagina19) en druk vervolgens op de (cid:129)Willekeurige weergave ( pagina24)
+-toets. (cid:129)Herhaalde weergave ( pagina24)
+(cid:129)A-B Herhalen ( pagina25)
+Original en Play List worden afwisselend geselecteerd bij elke druk op
+de -toets.
+Bij de volgende instructies wordt verondersteld dat de DVD-speler wordt
+Original Weergave in originele volgorde bediend via het schermbedieningspaneel ( pagina19).
+Play List Geprogrammeerde weergave. Play List is standaard
+Opmerkingen
+ingesteld.
+(cid:129) U kunt programma-weergave, willekeurige weergave en herhaalde weergave
+combineren. Willekeurige of herhaalde weergave is mogelijk niet beschikbaar
+Opmerkingen
+afhankelijk van de combinatie.
+(cid:129) Vertraagde weergave achteruit kan niet met DVD-RW-discs (VR mode). (cid:129) De PlayStation®2-console speelt discs af opgenomen met DVD-software.
+(cid:129) Deze functie werkt niet met Weergave hervatten. Wis Weergave hervatten
+( pagina21) voor u deze functie gebruikt.
+Programma-weergave
+U kunt de weergave van titels en hoofdstukken zelf programmeren in een
+bepaalde volgorde.
+1
+Selecteer tijdens de weergave in het
+bedieningspaneel ( pagina19) en druk vervolgens op de
+-toets.
+
+--- Page 24 ---
+2
+Kies een programmanummer en druk vervolgens op de Titels in willekeurige volgorde Titels afspelen in willekeurige volgorde
+-toets. afspelen
+Wanneer er geen programma's zijn ingesteld, is "1. Titel" de enige Hoofdstukken in willekeurige Hoofdstukken afspelen in willekeurige
+keuzemogelijkheid. volgorde afspelen volgorde
+3 In gewone volgorde afspelen Wist afspelen in willekeurige volgorde
+Kies een titelnummer en druk vervolgens op de -toets.
+4 Kies een hoofdstuknummer en druk vervolgens op de 2 Selecteer N en druk vervolgens op de -toets.
+-toets.
+Kies "Alles" om alle hoofdstukken af te spelen. Herhaal stap 2 t/m 4
+om andere titels of hoofdstukken te kiezen. Herhaalde weergave
+5 Druk op de START-toets. U kunt deze optie kiezen om titels of hoofdstukken herhaaldelijk af te
+spelen.
+Programma-weergave start.
+1
+Selecteer in het bedieningspaneel ( pagina19) en
+Opmerking
+druk vervolgens op de -toets.
+Na afloop van de programma-weergave wordt de instelling niet gewist.
+Bij elke druk op de -toets verandert de weergave zoals hieronder
+vermeld.
+Willekeurige weergave
+Disc herhalen Alle titels herhaaldelijk afspelen
+U kunt deze optie gebruiken voor de willekeurige weergave van alle titels Titel herhalen Eén titel herhaaldelijk afspelen
+of hoofdstukken op een disc. De afspeelvolgorde verandert telkens
+Hoofdstuk herhalen Eén hoofdstuk herhaaldelijk afspelen
+wanneer Willekeurige weergave wordt gebruikt.
+1 Niet herhalen Herhaaldelijk afspelen gewist
+Selecteer in het bedieningspaneel ( pagina19) en
+druk vervolgens op de -toets.
+Bij elke druk op de -toets verandert de weergave zoals hieronder 2 Selecteer N en druk vervolgens op de -toets.
+vermeld.
+24 Gebruik van de afspeelmodi
+
+--- Page 25 ---
+De DVD-speler instellen 25
+DVD's
+A-B Herhalen
+De DVD-speler instellen
+U kunt een bepaalde scène herhaaldelijk afspelen.
+1
+Selecteer tijdens het afspelen in het bedieningspaneel
+De DVD-speler kan worden ingesteld via het bedieningspaneel (b.v.
+( pagina19) en druk op de -toets op het punt waar u de ondertiteltaal, audiotaal en kinderbeveiliging).
+herhaalde weergave wilt starten.
+Het beginpunt (punt A) is ingesteld. Opmerkingen
+(cid:129) Sommige DVD's werken niet met alle instellingen. De PlayStation®2-console
+2
+Druk op de -toets op het punt waar u de herhaalde geeft de disc weer zoals die is opgenomen met DVD-software. Wanneer de DVD
+weergave wilt laten stoppen. niet compatibel is met de vermelde functies, kunnen de instellingen niet worden
+gewijzigd.
+Het eindpunt (punt B) is ingesteld en de herhaalde weergave van A tot
+(cid:129) De volgende mogelijkheden zijn niet beschikbaar tijdens het afspelen of Weergave
+B start.
+hervatten. Wis Weergave hervatten ( pagina21) alvorens deze instellingen te
+wijzigen.
+– "Menu", "Audio" en "Ondertiteling" bij Taalinstelllingen
+Afspeelmodi wissen
+– "TV Type" en "Progressief" bij Scherminstellingen
+– "Kinderbeveiliging" bij Individuele instellingen
+Om terug te keren naar normale weergave.
+– "DTS" en "Auto-selectie audiotrack" bij Audio
+1
+Kies in het bedieningspaneel ( pagina19) en druk
+vervolgens op de -toets. De instellingen van de DVD-speler kunnen als volgt worden gewijzigd:
+De melding "Inhoud afspeelstand gewist" verschijnt en de normale 1 Selecteer in het bedieningspaneel ( pagina19) en
+weergave is hersteld.
+druk vervolgens op de -toets.
+Het instellingsicoonbalkje verschijnt.
+Opmerking
+Bij een combinatie van afspeelmodi worden alle modi gewist. 2 Selecteer het icoon voor de instelling die u wilt wijzigen en
+druk vervolgens op de -toets.
+De huidige instelling voor elk item verschijnt.
+3
+Kies het gewenste item en druk vervolgens op de -toets.
+De menu-optie wordt actief en kan worden geselecteerd.
+
+--- Page 26 ---
+4
+Kies de gewenste instelling en druk vervolgens op de
+TV-weergavemogelijkheden instellen
+-toets.
+Het item is ingesteld. Voor details, zie de instructies voor elk item Via het menu Scherminstellingen kunt u de breedte/hoogte-verhouding en
+( pagina's26 tot 31). andere opties instellen die de beeldkwaliteit beïnvloeden.
+Opmerkingen TV Type
+(cid:129) De standaardinstellingen voor elk menu zijn in de aanwijzingen hieronder U kunt de breedte/hoogte-verhouding instellen volgens het beeldformaat
+onderstreept. van de aangesloten TV.
+(cid:129) Druk op de SELECT-toets om na het verrichten van de instellingen terug te keren
+naar het bedieningspaneel. 16:9 Kies deze optie voor een breedbeeldtelevisie of een
+(cid:129) De instellingen worden opgeslagen wanneer u het volgende doet: standaardtelevisie met 16:9/breedbeeldfunctie.
+– Weergave stoppen (met inbegrip van Weergave hervatten)
+– Disc-deksel openen
+4:3 LETTER BOX Kies deze optie voor een standaardtelevisie. Deze instelling
+Taal instellingsmogelijkheden toont een breedbeeld met zwarte stroken aan de boven- en
+onderkant van het scherm.
+Bij "Taalinstellingen" kunt u de taal kiezen voor het DVD-menu, de audio
+en de ondertitels. Merk op dat indien u een taal kiest die niet is opgenomen
+4:3 PAN&SCAN Kies deze optie voor een standaardtelevisie. Deze instelling
+op de DVD, één van de opgenomen talen automatisch wordt geselecteerd.
+toont een beeld dat de volledige hoogte van het scherm
+beslaat en links en rechts is afgesneden.
+Menu De taal van het DVD-menu selecteren
+Audio De taal van het DVD-geluidsspoor selecteren
+Opmerking
+Ondertiteling De taal van de DVD-ondertitels selecteren
+Wanneer u "Progressief" op "Aan" zet, wordt "TV Type" automatisch ingesteld op
+"16:9".
+Opmerking
+Wanneer u "Als Audio" kiest voor de ondertitels, wordt de taal van de ondertitels
+automatisch afgestemd op de taal die is gekozen voor het DVD-geluidsspoor.
+26 De DVD-speler instellen
+
+--- Page 27 ---
+De DVD-speler instellen 27
+DVD's
+DNR (Digital Noise Reduction) Progressief
+Deze instelling kan de ruwheid van het beeld verminderen en de kwaliteit Met deze beeldweergave worden alle beeldlijnen ineens bijgewerkt. Dit
+van het beeld verbeteren. geeft meestal een helderder, knippervrij beeld. Deze functie is alleen
+beschikbaar wanneer uw TV en AV-Kabel* compatibel zijn met
+Uit DNR wordt niet gebruikt. progressive scan (480p).
+* De Component-AV-Kabel (apart verkrijgbaar) is compatibel met progressive
+DNR1 hogere beeldkwaliteit
+scan.
+DNR2 nog hogere beeldkwaliteit (maximum)
+Aan Kies deze optie wanneer de console is aangesloten op een TV die
+compatibel is met progressive scan (480p).*
+Opmerkingen
+(cid:129) "DNR2" is efficiënter om de ruwheid van het beeld te verminderen dan "DNR1" Uit Kies deze optie wanneer de console is aangesloten op een gewone TV.
+maar soms kan er een nabeeld verschijnen. Kies in dat geval "Uit".
+* De progressive scan mode van de DVD-speler is alleen beschikbaar bij het
+(cid:129) De DNR-functie werkt minder goed bij sommige DVD's.
+afspelen van een disc opgenomen in NTSC-indeling en weergave op een televisie
+(cid:129) Wanneer u "Progressief" op "Aan" zet, wordt "DNR" automatisch uitgeschakeld
+die compatibel is met progressive scan (480p).
+en kan het niet meer worden aangeschakeld.
+Opmerkingen
+Scherpte uitlijnen
+(cid:129) Wanneer de beeldkwaliteit afneemt of er helemaal geen beeld wordt weergegeven,
+U kunt de beeldomtrek verscherpen of verzachten met deze instelling. Hoe
+moet u "Progressief" op "Uit" zetten wanneer de console is aangesloten op een TV
+hoger de waarde, hoe scherper de omtrek. Kies normaal "0".
+die hiertoe niet is uitgerust. Wanneer u deze optie bij een dergelijke televisie op
+"Aan" zet, kan de beeldkwaliteit afnemen of wordt er mogelijk helemaal geen
+(cid:129)-2 (cid:129)-1 (cid:129)0 (cid:129)+1 (cid:129)+2 beeld weergegeven. Om de instelling te wissen, gaat u als volgt te werk:
+1 Controleer of er een DVD in de console zit.
+Opmerking 2 Druk op de \/1 (aan/standby)/RESET-toets vooraan op de console.
+Hou vervolgens de START-toets van de Analoge Controller
+Met sommige DVD's werkt Scherpte uitlijnen niet goed.
+(DUALSHOCK®2) in controller-aansluiting 1 ingedrukt tot het DVD-beeld
+verschijnt. "Progressief" wordt op "Uit" gezet zodat de DVD-video
+Display
+normaal wordt weergegeven. Deze instelling kan ook worden
+Tijdens de weergave kunt u weergavestatusinformatie gedurende enkele geannuleerd met de optie "Progressieve mode uitschakelen"
+seconden laten verschijnen in de rechterbovenhoek van het scherm. ( pagina37) in het versie-informatiescherm.
+(cid:129) DVD's kunnen video- en filmmateriaal met een verschillend aantal beelden per
+Aan De weergavestatusinformatie verschijnt gedurende enkele seconden. seconde bevatten. Bij weergave van videomateriaal met progressive scan kunnen
+sommige beelden onnatuurlijk ogen. Zet "Progressief" dan op "Uit" en kijk in de
+Uit De weergavestatusinformatie verschijnt niet. standaard interlace mode.
+
+--- Page 28 ---
+(cid:129) Wanneer u "Progressief" op "Aan" zet, wordt "TV Type" ( pagina26) 2
+Kies een nummer en druk vervolgens op de -toets.
+automatisch ingesteld op "16:9".
+Herhaal stap 2 om een viercijferig wachtwoord in te voeren. Druk op
+(cid:129) DVD-RW-discs (VR mode) kunnen alleen worden bekeken in de standaard
+interlace mode. De optie "Progressief" is dan niet beschikbaar. de -toets om een nummer te wissen. Om een wachtwoord te
+registreren, moet u het nogmaals invoeren ter bevestiging.
+3
+Eigen opties instellen Kies "Regio" en druk vervolgens op de -toets.
+De lijst met regio-opties verschijnt.
+Pauze stand
+4
+Kies de regio voor het Kinderbeveiligingsniveau en druk
+Hiermee kan een beeldstatus worden ingesteld in de pauzestand.
+vervolgens op de -toets.
+Auto Een beeld met bewegende elementen wordt trillingsvrij weergegeven. Indien u "Andere" kiest, zie "Regiocodelijst" ( pagina29).
+Kies normaal deze instelling.
+5
+Kies "Niveau" en druk vervolgens op de -toets.
+Beeld Een beeld zonder bewegende elementen wordt met hoge resolutie
+De lijst met niveau-opties verschijnt.
+weergegeven.
+6
+Kinderbeveiliging Kies een beperkingsniveau en druk vervolgens op de
+-toets.
+In sommige streken kan het bekijken van sommige DVD's beperkt zijn,
+afhankelijk van de leeftijd van de kijker of andere factoren.
+Kinderbeveiliging wissen
+Kinderbeveiligingsfunctie kunt u beperkingen instellen met betrekking tot
+de inhoud die met uw console kan worden bekeken. Stop de DVD-weergave, ga naar stap 6 van "Kinderbeveiliging instellen"
+Hoe lager de waarde, hoe strenger de beperking. en zet "Niveau" op "Uit".
+Kinderbeveiliging instellen
+1
+Kies "Kinderbeveiliging" en druk vervolgens op de -toets.
+Het wachtwoordregistratiescherm verschijnt. Indien er al een
+wachtwoord is geregistreerd, verschijnt het
+wachtwoordbevestigingsscherm.
+28 De DVD-speler instellen
+
+--- Page 29 ---
+De DVD-speler instellen 29
+DVD's
+Regiocodelijst 2
+Kies een nummer en druk vervolgens op de -toets.
+Om een regiocode voor Kinderbeveiliging in te stellen, kiest u "Andere" in
+Herhaal stap 2 om een viercijferig wachtwoord in te voeren. Voer het
+stap 4 van "Kinderbeveiliging instellen" ( pagina28). Kies de eerste
+nogmaals in ter bevestiging.
+letter met de richtingstoetsen en druk vervolgens op de richtingstoets
+rechts. Kies de volgende letter en druk op de -toets.
+Tijdelijk opheffen van kinderbeveiligingsbeperkingen
+1
+Regio Code Regio Code Start de weergave van de DVD ( pagina21).
+U wordt gevraagd het Kinderbeveiligingsniveau tijdelijk te wijzigen
+België BE Nederland NL
+om weergave mogelijk te maken. Dit gebeurt meestal bij het starten
+Denemarken DK Noorwegen NO van de disc maar bij sommige DVD's mogelijk ook op andere
+Duitsland DE Oostenrijk AT momenten.
+Finland FI Polen PL 2 Kies "Ja" met behulp van de richtingstoetsen en druk op de
+Frankrijk FR Portugal PT -toets.
+Het wachtwoordinvoerscherm verschijnt.
+Griekenland GR Rusland RU
+Groot-Brittannië GB Slowakije SK 3 Kies een nummer en druk vervolgens op de -toets.
+Ierland IE Spanje ES Herhaal stap 3 om het viercijferige wachtwoord in te voeren. De
+weergave begint opnieuw nadat het wachtwoord is ingevoerd.
+Israël IL Tsjechië CZ
+Wanneer de DVD-weergave wordt gestopt, keert het
+Italië IT Turkije TR Kinderbeveiligingsniveau terug naar de oorspronkelijke instelling.
+Luxemburg LU Zweden SE
+Opmerkingen
+Malta MT Zwitserland CH
+(cid:129) Raadpleeg de Verkorte handleiding ( pagina2) wanneer u het wachtwoord bent
+vergeten.
+(cid:129) Als u geen wachtwoord instelt, kunt u de Kinderbeveiligingsinstellingen niet
+Uw wachtwoord wijzigen
+wijzigen.
+Doe het volgende in stap 2 van "Kinderbeveiliging instellen"
+(cid:129) Bij sommige DVD's met Kinderbeveiligingsfunctie zijn de afspeelmodi niet
+( pagina28): beschikbaar ( pagina's23 tot 25).
+1
+Kies "Code wijzigen" met de richtingstoetsen en druk
+vervolgens op de -toets.
+Het wachtwoordwijzigingsscherm verschijnt.
+
+--- Page 30 ---
+Dolby Digital
+Audio-opties instellen
+Deze optie stelt Dolby Digital in als uitvoersignaal voor DIGITAL OUT
+(OPTICAL)-aansluiting.
+Digitale uitgang
+U kunt de methodes kiezen voor het uitvoeren van audiosignalen als u de Aan Kies deze optie wanneer de console is aangesloten op audio-apparatuur
+volgende audio-apparatuur aansluit op DIGITAL OUT (OPTICAL). met ingebouwde Dolby Digital-decoder.
+Uit Kies deze optie wanneer de console is aangesloten op audio-apparatuur
+zonder ingebouwde Dolby Digital-decoder.
+Opgelet
+Wanneer de console is aangesloten op audio-apparatuur zonder Dolby Digital,
+DTS- of MPEG-decoder, zet u "Dolby Digital", "DTS" en "MPEG" op "Uit". DTS
+Wanneer u deze opties instelt op "Aan" zonder de vereiste decoder, kan er ofwel Deze optie stelt DTS in als uitvoersignaal voor DIGITAL OUT
+geen geluid ofwel een zeer hard geluid worden geproduceerd.
+(OPTICAL)-aansluiting.
+DIGITAL OUT (OPTICAL) Aan Kies deze optie wanneer de console is aangesloten op audio-apparatuur
+Deze optie stelt de uitvoersignalen voor DIGITAL OUT (OPTICAL) in. met ingebouwde DTS-decoder.
+Uit Kies deze optie wanneer de console is aangesloten op audio-apparatuur
+Aan Kies deze optie wanneer u geluid (audiosignalen) wilt uitvoeren via een zonder ingebouwde DTS-decoder.
+DIGITAL OUT (OPTICAL)-aansluiting.
+De instellingen voor "Dolby Digital", "DTS" en "MPEG" verschijnen
+op het scherm. MPEG
+Deze optie stelt MPEG AUDIO in als uitvoersignaal voor een DIGITAL
+Uit Kies deze optie wanneer u geen geluid wilt uitvoeren via een DIGITAL
+OUT (OPTICAL)-aansluiting. OUT (OPTICAL)-aansluiting.
+De instellingen voor "Dolby Digital", "DTS" en "MPEG" verschijnen
+niet op het scherm. Aan Kies deze optie wanneer de console is aangesloten op audio-apparatuur
+met ingebouwde MPEG-decoder.
+Uit Kies deze optie wanneer de console is aangesloten op audio-apparatuur
+zonder ingebouwde MPEG-decoder.
+30 De DVD-speler instellen
+
+--- Page 31 ---
+De DVD-speler instellen 31
+DVD's
+Auto-selectie audiotrack
+Deze instelling geeft het geluidsspoor met het grootste aantal kanalen
+voorrang bij het afspelen van een DVD met verschillende geluidsformaten
+(PCM, Dolby Digital, DTS of MPEG). Als PCM, Dolby Digital, DTS en
+MPEG evenveel hoogste kanalen hebben, kiest het systeem PCM-, Dolby
+Digital-, DTS- en MPEG-geluidssporen in deze volgorde.
+Aan Voorrang toegekend
+Uit Geen voorrang toegekend
+Opmerkingen
+(cid:129) Wanneer u "DTS" bij "Digitale uitgang" ( pagina30) op "Uit" zet, wordt het
+DTS-geluidsspoor niet weergegeven.
+(cid:129) Bij sommige DVD's kan de voorrang vooraf zijn bepaald. In dat geval wordt het
+geluidsspoor gekozen op basis van de prioriteitsvolgorde van de DVD.
+Volume DVD
+Gebruik deze optie wanneer het volume van een DVD te laag is. Dit kan
+alleen worden ingesteld wanneer "DIGITAL OUT (OPTICAL)" bij
+"Digitale uitgang" ( pagina30) op "Uit" staat.
++2 Het volume verhogen (maximum)
++1 Het volume verhogen
+Normaal Kies normaal deze instelling.
+Opgelet
+Wanneer dit op "+1" of "+2" staat, kan het geluid zijn vervormd. Kies in dat
+geval "Normaal". Indien u het volume te hoog zet, kan dit uw gehoor of de
+luidsprekers beschadigen.
+
+--- Page 32 ---
+Hoofdmenu
+Gebruik van het Browser-scherm
+Hoofdmenuweergave
+Via het Browser-scherm kunt u de volgende handelingen verrichten:
+Vanuit het hoofdmenu kunt u informatie opvragen en diverse instellingen (cid:129)Spelgegevens op een Memory Card (geheugenkaart) kopiëren of wissen
+wijzigen. U kunt vanuit het hoofdmenu ook naar de volgende schermen (cid:129)Een spel starten
+gaan. Het hoofdmenu verschijnt wanneer u de console inschakelt zonder (cid:129)Een audio-CD afspelen
+dat er een disc in zit. (cid:129)Een DVD afspelen
+(cid:129)Browser-scherm ( pagina32)
+1
+Laat het hoofdmenu verschijnen ( pagina32).
+(cid:129)Systeemconfiguratiemenu ( pagina33)
+(cid:129)Versie-informatiescherm ( pagina36)
+2
+Kies "Browser" met de richtingstoetsen en druk vervolgens op
+1
+Schakel de console in ( pagina9). de -toets.
+Het hoofdmenu verschijnt. Merk op dat het enige tijd kan duren Het Browser-scherm verschijnt.
+vooraleer het hoofdmenu verschijnt.
+3
+Breng een disc of Memory Card (geheugenkaart) in.
+Het icoon voor de geplaatste component verschijnt op het Browser-
+scherm.
+\
+Opmerking
+Wanneer de console wordt ingeschakeld terwijl er een disc in zit, verschijnt het
+hoofdmenu niet. Om het hoofdmenu te laten verschijnen, drukt u op de A (open)-
+toets vooraan op de console en verwijdert u de disc. Druk vervolgens op de \/1 (aan/
+standby)/RESET-toets om de console te resetten.
+32 Hoofdmenuweergave
+
+--- Page 33 ---
+Gebruik van het Systeemconfiguratiemenu 33
+Hoofdmenu
+4
+Kies een icoon en druk vervolgens op de -toets.
+Gebruik van het
+(cid:129)Wanneer u het Memory Card (geheugenkaart)-icoon kiest,
+verschijnen de iconen voor gegevens op de Memory Card
+Systeemconfiguratiemenu
+(geheugenkaart). Zie "Spelgegevens kopiëren of wissen"
+( pagina15) om spelgegevens te kopiëren of te verwijderen.
+(cid:129)Wanneer u het icoon voor een PlayStation®2- of PlayStation®-
+Vanuit het Systeemconfiguratiemenu kunt u diverse instellingen wijzigen
+software disc kiest, start het spel.
+zoals taal of tijdweergave en audio- of video-uitvoermethode.
+(cid:129)Wanneer u het pictogram voor een audio-CD kiest, verschijnen de
+tracks op de CD. Zie "Een audio-CD afspelen" ( pagina17). 1 Laat het hoofdmenu verschijnen ( pagina32).
+(cid:129)Wanneer u het icoon voor een DVD kiest, start de weergave van de
+DVD. 2
+Kies "Systeemconfiguratie" met de richtingstoetsen en druk
+op de -toets.
+Opmerking
+Het Systeemconfiguratiemenu verschijnt.
+De melding "Er zijn geen data" verschijnt op het Browser-scherm wanneer er geen
+Memory Card (geheugenkaart) of disc in de console zit.
+3
+Kies een item en druk vervolgens op de -toets.
+De menu-optie wordt actief en kan worden geselecteerd.
+4
+Kies de gewenste instelling en druk vervolgens op de
+-toets.
+Voor details, zie de instructies voor elk menu-item ( pagina's34 tot
+35).
+
+--- Page 34 ---
+Opmerkingen
+Beeldformaat
+(cid:129) De standaardinstellingen voor elk menu zijn in de aanwijzingen hieronder
+onderstreept. U kunt het beeldformaat van de TV instellen.
+(cid:129) Gewijzigde instellingen blijven geldig, ook na het uitschakelen of resetten van de
+console.
+4:3 Kies deze optie voor een standaardtelevisie.
+Volledig* Kies deze optie voor een standaardtelevisie. De
+Klok instellen zwarte stroken bovenaan en onderaan het beeld zijn
+niet zichtbaar.
+U kunt datum en tijd instellen. Gebruik de richtingstoetsen om "Jaar",
+16:9 Kies deze optie voor een breedbeeldtelevisie of een
+"Maand", "Dag", "Uren", "Minuten" en "Seconden" in te stellen. Deze
+standaardtelevisie met 16:9/breedbeeldfunctie.
+instelling wordt geldig wanneer u op de -toets drukt.
+* "Volledig" is compatibel met het Systeemconfiguratiemenu, Browser-scherm en
+Optionele instellingen audio-CD-scherm.
+Door op de -toets te drukken vanuit het scherm "Klok instellen",
+kunnen opties zoals "Datumweergave" of "Tijdweergave" worden
+DIGITAL OUT (OPTICAL)
+ingesteld. Gebruik de richtingstoetsen en de -toets om instellingen te
+verrichten.
+U kunt bepalen of het signaal wordt uitgevoerd via de DIGITAL OUT
+(OPTICAL)-aansluiting.
+Tijdweergave Stelt de systeemklok in voor 12- of 24-uursweergave
+Datumweergave Stelt de weergavevolgorde van jaar, maand en dag in Aan Kies deze optie wanneer u een signaal wilt uitvoeren
+via de DIGITAL OUT (OPTICAL)-aansluiting.
+Tijdzone Stelt de tijdzone in
+Uit Kies deze optie wanneer u geen signaal wilt uitvoeren
+Zomertijd Stelt Wintertijd of Zomertijd in. Kies normaal
+via de DIGITAL OUT (OPTICAL)-aansluiting.
+"Wintertijd".
+34 Gebruik van het Systeemconfiguratiemenu
+
+--- Page 35 ---
+Gebruik van het Systeemconfiguratiemenu 35
+Hoofdmenu
+Opmerking
+Video uitgang
+De volgende beperkingen gelden wanneer de DVD-Afstandsbediening wordt
+Bij gebruik van een Component-AV-Kabel (apart verkrijgbaar) moet deze gebruikt met de optie "Spelfunctie Aan".
+instelling zijn afgestemd op de ingangen van uw TV. – Sommige afstandsbedieningstoetsen werken niet goed met bepaalde software.
+– De toetsen van de DVD-Afstandsbediening werken niet wanneer er twee of meer
+tegelijk worden ingedrukt.
+Y Cb/Pb Cr/Pr Kies deze optie wanneer u de console aansluit op de
+– Sommige software werkt niet meer naar behoren wanneer een controller wordt
+component video-ingangen.
+losgekoppeld van controller-aansluiting 1. Kies in dat geval "Spelfunctie Uit".
+RGB Kies deze optie wanneer u de console aansluit op de
+RGB-ingangen.
+Taal
+Opmerking
+Hiermee kan de taal van het hoofdmenu, Browser-scherm,
+De instelling "RGB" is alleen bedoeld voor PlayStation®2- en PlayStation®-
+Systeemconfiguratiemenu en Versie-informatiescherm worden gekozen.
+software. Bij het bekijken van een DVD schakelt deze instelling automatisch over
+naar "Y Cb/Pb Cr/Pr".
+Engels Meldingen verschijnen in het Engels
+Frans Meldingen verschijnen in het Frans
+Afstandsbediening
+Spaans Meldingen verschijnen in het Spaans
+U kunt deze optie ook instellen bij gebruik van de DVD-
+Duits Meldingen verschijnen in het Duits
+Afstandsbediening (voor PlayStation®2) (apart verkrijgbaar).
+Italiaans Meldingen verschijnen in het Italiaans
+Spelfunctie Aan Kies deze optie bij gebruik van PlayStation®2- of Nederlands Meldingen verschijnen in het Nederlands
+PlayStation®-software met de DVD-
+Afstandsbediening. Portugees Meldingen verschijnen in het Portugees
+Spelfunctie Uit Kies deze optie zonder gebruik van PlayStation®2- of
+PlayStation®-software met de DVD-
+Afstandsbediening.
+
+--- Page 36 ---
+2
+Kies een item en druk vervolgens op de -toets.
+Gebruik van het Versie-
+De beschikbare opties verschijnen.
+informatiescherm
+3
+Kies de gewenste instelling en druk vervolgens op de
+-toets.
+Voor details, zie de instructies voor elk item ( pagina's36 tot 38).
+Met deze optie kunt u de versie van diverse consolecomponenten
+controleren. Voor sommige items kunnen ook optionele instellingen
+Opmerking
+worden gewijzigd.
+De standaardinstellingen voor elk menu zijn in de aanwijzingen hieronder
+1
+Druk vanuit het hoofdmenu ( pagina32) op de -toets. onderstreept.
+Het Versie-informatiescherm verschijnt.
+Unit
+De PlayStation®2-console kiest automatisch de interne instellingen voor
+optimale weergave. Wanneer "Diagnose" is ingesteld op "Aan", verricht
+de console extra instellingen.
+Diagnose
+Uit Diagnose is uitgeschakeld.
+Aan Diagnose is aangeschakeld.
+Optionele instellingen
+Optionele instellingen zijn beschikbaar voor "Console", "PlayStation® Opmerking
+Driver" en "DVD-speler". "DVD-speler" kan alleen worden ingesteld als
+"Diagnose" keert automatisch terug naar de standaardinstelling in de volgende
+de optie "Progressief" van de DVD-speler op "Aan" staat. gevallen:
+1 – Wanneer de weergave van PlayStation®2- of PlayStation®-software of een
+Kies een item met de richtingstoetsen en druk vervolgens op
+DVD start
+de -toets.
+– Wanneer de console wordt gereset
+De huidige instelling voor het item verschijnt. – Wanneer de console wordt uitgeschakeld
+36 Gebruik van het Versie-informatiescherm
+
+--- Page 37 ---
+Gebruik van het Versie-informatiescherm 37
+Hoofdmenu
+PlayStation® Driver DVD-speler
+U kunt het PlayStation® Driver-programma instellen om software in Wanneer u "Progressief" op "Aan" zet terwijl de console is aangesloten op
+PlayStation®-formaat optimaal te laten presteren. een TV zonder de nodige uitrusting, kan de beeldkwaliteit lager zijn of kan
+er mogelijk geen beeld verschijnen. U kunt de instelling "Progressief" als
+Opmerking volgt wissen.
+De instellingen keren automatisch terug naar de standaardinstelling in het volgende Verwijder de DVD alvorens de instelling te wissen.
+geval:
+– Wanneer de console wordt uitgeschakeld Progressieve mode uitschakelen
+Disc snelheid Nee "Progressief" blijft ingeschakeld
+Ja "Progressief" wordt gewist
+Normaal Discs worden met normale snelheid geladen
+Snel Discs worden met hoge snelheid geladen 1
+Weergave van het Versie-informatiescherm.
+Opmerking 2
+Kies "DVD-speler" met de richtingstoetsen en druk vervolgens
+Kies "Normaal" in de volgende gevallen:
+op de -toets.
+– Wanneer snel laden geen betere resultaten geeft
+De optie "Progressieve mode uitschakelen" verschijnt.
+– Wanneer de software niet compatibel is met snel laden
+3
+Texture mapping Druk op de -toets.
+4
+Kies "Ja" en druk vervolgens op de -toets.
+Normaal Normale weergave
+Vloeiend Minder ruwe weergave 5
+Druk tweemaal op de -toets.
+Het hoofdmenu verschijnt weer.
+Opmerking
+Kies "Normaal" in de volgende gevallen: 6 Druk op de A (open)-toets vooraan op de console en plaats
+– Wanneer "Vloeiend" geen betere resultaten geeft
+een DVD in de console.
+– Wanneer het beeld niet goed wordt weergegeven met de instelling "Vloeiend"
+
+--- Page 38 ---
+7
+Sluit het disc-deksel.
+De weergave start.
+Opmerking
+De instelling wordt niet gewist wanneer 1) u geen DVD start na stap 4 of 2) u de
+console voor stap 6 reset of uitschakelt.
+38 Gebruik van het Versie-informatiescherm
+
+--- Page 39 ---
+Aansluiting op een netwerk 39
+Netwerk
+Netwerk Aansluiting met een Ethernet-kabel
+Aansluiting op een netwerk
+U kunt de console aansluiten op een netwerk met behulp van een Ethernet-
+kabel die wordt aangesloten op de NETWORK-aansluiting aan de
+achterkant van de console. U kunt de console aansluiten op een 100 Base-
+U kunt online games spelen door de PlayStation®2-console aan te sluiten TX of 10 Base-T netwerk. Raadpleeg de gebruiksaanwijzing van het
+op een breedbandnetwerk. Om alle online games te spelen, hebt u het netwerkapparaat voor meer details.
+volgende nodig:
+Basisnetwerkopstelling
+(cid:129)Een PlayStation®2-spel dat geschikt is voor netwerkgebruik.
+(cid:129)Breedbandinternet Netwerklijn Netwerkapparatuur
+(cid:129)Een in de handel verkrijgbare Ethernet-kabel Hangt af van het soort Het type apparatuur hangt
+breedbandservice bij u thuis. eveneens af van het type service.
+(cid:129)Een Memory Card (geheugenkaart) (8MB) voor PlayStation®2
+(afzonderlijk verkrijgbaar)
+Opmerkingen Breedbandmodem, router, enz.
+(cid:129) Met deze console kunnen geen online games worden gespeeld via een inbel- of
+ISDN-verbinding.
+(cid:129) Het aansluiten van een extern netwerkapparaat op de USB-aansluiting wordt niet
+ondersteund.
+In de handel
+(cid:129) Er zijn twee typen Ethernet-kabel: recht en gekruist. Gebruik het juiste type kabel
+verkrijgbare Ethernet-kabel
+om uw PlayStation®2-console aan te sluiten op uw breedbandverbinding.
+Raadpleeg de gebruiksaanwijzing van het netwerkapparaat of uw breedband
+internet service provider voor meer details.
+PC
+MEMORY CARD MEMORY CARD
+Opmerking
+Om de console en een PC aan te sluiten op een netwerk, kan een netwerkapparaat
+zoals een router of hub zijn vereist. Raadpleeg de gebruiksaanwijzing van het
+netwerkapparaat voor meer details.
+Meer informatie over netwerkinstellingen vindt u op
+www.playstation.com
+
+--- Page 40 ---
+De console aansluiten
+Netwerkinstellingen
+Waarschuwing
+Steek de stekker op het netsnoer van de console pas in een stopcontact nadat u
+verder alles heeft aangesloten. Nadat u een Ethernet-kabel hebt aangesloten op de console, moeten
+1 netwerkinstellingen worden verricht en opgeslagen. Hiervoor hebt u een
+Sluit de Ethernet-kabel aan op de NETWORK-aansluiting aan
+Network Access Disc nodig die wordt geleverd door uw PlayStation®2-
+de achterkant van de console.
+console te registreren. U kunt uw PlayStation®2-console registreren door
+Achterkant console te surfen naar www.ps2registration.com
+Benodigdheden
+Voor een netwerkinstelling dient u over het volgende te beschikken:
+(cid:129)Een Memory Card (geheugenkaart) (8MB) (voor PlayStation®2) (apart
+verkrijgbaar)
+In de handel
+(cid:129)Login en netwerksetupinformatie van uw breedband internet service
+verkrijgbare Ethernet-kabel
+provider
+2
+Sluit de Ethernet-kabel aan op het netwerkapparaat.
+Opmerking
+De aansluitmethode hangt af van het netwerkapparaat. Raadpleeg de
+Afhankelijk van uw internetservice moet u uw breedband internet service provider
+gebruiksaanwijzing van het netwerkapparaat voor meer details.
+ook uw MAC-adres geven. Het MAC-adres voor uw console staat vermeld in het
+Versie-informatiescherm ( pagina36).
+Waarschuwing
+Sluit geen Ethernet-kabels of telefoonsnoeren van de volgende typen aan op de
+NETWORK-aansluiting. Er kan dan teveel stroom door de aansluiting gaan
+waardoor er een defect, overdreven warmte of brand kan ontstaan:
+–Gewone telefoonkabels
+–Ethernet-kabels die niet compatibel zijn met een 10Base-T/100Base-TX
+netwerk
+–ISDN (digitaal) compatibele telefoon- of datalijn
+–PBX-telefoonlijnen
+–Andere "onbekende" typen telefoonlijnen
+40 Netwerkinstellingen
+
+--- Page 41 ---
+Technische gegevens 41
+Aanvullende
+informatie
+Nationale exportcontrole
+Aanvullende informatie
+Dit product is mogelijk onderworpen aan de nationale
+Technische gegevens exportcontrolewetgeving. U dient volledig te voldoen aan de voorschriften
+van dergelijke wetgeving en alle andere wetten of reglementering met
+betrekking tot dit product.
+Ontwerp en specificaties kunnen zonder voorafgaande kennisgeving
+Toegangscontrole
+worden gewijzigd.
+Dit product is voorzien van toegangscontroletechnologie. Het gebruik van
+Algemeen software die niet specifiek is ontwikkeld voor dit product (behalve DVD-
+Video's of audio-CD's) en kopieën van software die voor dit product is
+ontwikkeld, wordt verhinderd door toegangscontrole. Ongeoorloofde
+Voeding 220-240 V AC, 50/60 Hz
+overdracht, aflevering, weergave, export, import of uitzending van
+Stroomverbruik (ong.) 35 W programma's, apparatuur of het product gemodificeerd met programma's
+of apparatuur ter omzeiling van deze toegangscontrole is (mogelijk) bij
+Afmetingen console (ong.) 230 × 28 × 152 mm (b/h/d) wet verboden.
+Gewicht console (ong.) 720 g
+Signaalformaat PAL
+Werkingstemperatuur 5°C tot 35°C
+Ingangen/uitgangen aan de Controller-aansluiting (2)
+voorkant van de console MEMORY CARD (geheugenkaart)-aansluiting
+(2)
+USB-aansluiting (2)
+Ingangen/uitgangen aan de NETWORK-aansluiting
+achterkant van op de console ~AC IN-aansluiting
+AV MULTI OUT-aansluiting
+DIGITAL OUT (OPTICAL)-aansluiting
+Bijgeleverde accessoires
+Raadpleeg de Verkorte handleiding ( pagina2)
+
+--- Page 42 ---
+eu.playstation.com/ps2
+“ ”, “PlayStation”, “ ”, “DUALSHOCK” en “ ” zijn geregistreerde handelsmerken van Sony Computer Entertainment Inc.
+"SONY" en “ ” zijn geregistreerde handelsmerken en “MagicGate” is een handelsmerk van Sony Corporation.
+© 2008 Sony Computer Entertainment Inc. All rights reserved.
+

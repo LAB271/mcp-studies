@@ -4,7 +4,10 @@
 
 check: ## Validate primary development dependencies
 	@uv --version > /dev/null && echo "✅ uv available" || (echo "❌ Please install uv as package manager: https://docs.astral.sh/uv/" && exit 1)
-
+	@uv run pytest --version > /dev/null && echo "✅ pytest available" || (echo "❌ Please install pytest in your uv environment: uv add pytest" && exit 1)
+	@uv run ruff --version > /dev/null && echo "✅ ruff available" || (echo "❌ Please install ruff in your uv environment: uv add ruff" && exit 1)
+	@echo "✅ All primary development dependencies are installed."
+	
 test: ## Run tests
 	@uv run -m pytest
 
@@ -30,7 +33,7 @@ env: ## setup the development environment
 	@uv venv --clear
 	@uv sync
 # 	@uv sync --group dev
-	@.env.sh || (echo "❌ Failed to create .env file. Please ensure 1Password CLI is installed and configured." && exit 1)
+# 	@.env.sh || (echo "❌ Failed to create .env file. Please ensure 1Password CLI is installed and configured." && exit 1)
 	@echo "✅ Development environment is set up. Activate it with: source .venv/bin/activate"
 
 clean: ## Clean up environment

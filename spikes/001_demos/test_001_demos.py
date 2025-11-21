@@ -140,7 +140,7 @@ class TestPromptFunction(unittest.TestCase):
         styles_expected = {
             "friendly": "Please write a warm, friendly greeting for someone named TestUser.",
             "formal": "Please write a formal, professional greeting for someone named TestUser.",
-            "casual": "Please write a casual, relaxed greeting for someone named TestUser."
+            "casual": "Please write a casual, relaxed greeting for someone named TestUser.",
         }
 
         for style, expected in styles_expected.items():
@@ -242,9 +242,9 @@ class TestMCPServerHTTPEndpoint(unittest.TestCase):
                 self.assertEqual(response.status, 200)
 
                 # Check if it's JSON response (our server config) or SSE
-                content_type = response.headers.get('content-type', '')
+                content_type = response.headers.get("content-type", "")
 
-                if 'application/json' in content_type:
+                if "application/json" in content_type:
                     # JSON response format
                     result = await response.json()
                     self.assertEqual(result["jsonrpc"], "2.0")
@@ -304,18 +304,13 @@ class TestMCPServerHTTPEndpoint(unittest.TestCase):
 
     async def _test_prompts_list_endpoint(self):
         """Test the prompts/list endpoint"""
-        list_request = {
-            "jsonrpc": "2.0",
-            "id": "prompts-1",
-            "method": "prompts/list",
-            "params": {}
-        }
+        list_request = {"jsonrpc": "2.0", "id": "prompts-1", "method": "prompts/list", "params": {}}
 
         async with aiohttp.ClientSession() as session:
             async with session.post(
                 self.mcp_endpoint,
                 json=list_request,
-                headers={"Content-Type": "application/json", "Accept": "application/json"}
+                headers={"Content-Type": "application/json", "Accept": "application/json"},
             ) as response:
                 self.assertEqual(response.status, 200)
                 result = await response.json()
@@ -357,7 +352,7 @@ class TestMCPServerHTTPEndpoint(unittest.TestCase):
             async with session.post(
                 self.mcp_endpoint,
                 json=get_request,
-                headers={"Content-Type": "application/json", "Accept": "application/json"}
+                headers={"Content-Type": "application/json", "Accept": "application/json"},
             ) as response:
                 self.assertEqual(response.status, 200)
                 result = await response.json()
@@ -384,10 +379,12 @@ class TestMCPServerHTTPEndpoint(unittest.TestCase):
                 expected_text = "Please write a friendly greeting for TestUser. Make it warm and welcoming."
                 self.assertIn("TestUser", text_content)
                 self.assertIn("friendly greeting", text_content)
+                self.assertEqual(text_content, expected_text)
 
     def test_prompts_get_endpoint(self):
         """Test that prompts get endpoint works"""
         asyncio.run(self._test_prompts_get_endpoint())
+
 
 
 class TestMCPServerConfiguration(unittest.TestCase):

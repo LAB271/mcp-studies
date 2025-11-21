@@ -46,7 +46,7 @@
 - Created clean startup messages with emoji indicators
 
 ### 2025-02-11 - Testing and Refinement
-- Created test suite in `test_main_server.py`
+- Created test suite in `test_002_logging.py`
 - Tested with curl commands and verified JSON responses
 - Validated that tool calls generate appropriate logs
 - Confirmed clean output format suitable for production
@@ -90,7 +90,7 @@
 
 ## Reference Materials
 - **Code Location:** `spikes/002_logging/`
-  - `main_server.py` - Clean MCP server with harmonized logging and HTTP transport
+  - `main_mcp_server.py` - Clean MCP server with harmonized logging and HTTP transport
   - `test_002_logging.py` - Test suite with curl command examples
 - **Related Spikes:**
   - Spike 001: MCP SDK Demo Implementations (foundational patterns)

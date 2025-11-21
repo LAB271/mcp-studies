@@ -1,0 +1,73 @@
+# MCP Server Platform - Post Office Local Docker Deployment
+# Copyright (c) 2025 LAB271
+# SPDX-License-Identifier: Apache-2.0
+
+x-common-environment: &common-environment
+  LOG_LEVEL: ${LOG_LEVEL:-info}
+  PYTHONUNBUFFERED: "1"
+
+services:
+  # NGINX Gateway - Routes all MCP server traffic
+  nginx-gateway:
+    image: nginx:alpine
+    container_name: mcp-nginx-gateway-post-office
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx-gateway.conf:/etc/nginx/nginx.conf:ro
+      - ./.ssl-certs/nginx.crt:/etc/nginx/ssl/mcp.crt:ro
+      - ./.ssl-certs/nginx.key:/etc/nginx/ssl/mcp.key:ro
+      - /tmp/log/nginx-post-office:/var/log/nginx
+    depends_on:
+      - mcp-server
+    networks:
+      - mcp-network-post-office
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "nginx", "-t"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Post Office MCP Server
+  mcp-server:
+    build:
+      context: ../..
+      dockerfile: spikes/004_post_office/Dockerfile
+      args:
+        BUILD_CONTEXT: spikes/004_post_office
+        PACKAGE_CONTEXT: .      
+    container_name: mcp-server-post-office
+    environment:
+      <<: *common-environment
+      SERVER_NAME: mcp-server-post-office
+      FASTMCP_HOST: "0.0.0.0"
+      FASTMCP_PORT: "8000"
+    expose:
+      - "8000"
+    networks:
+      - mcp-network-post-office
+    restart: unless-stopped
+    # healthcheck:
+    #   test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health').read()"]
+    #   interval: 30s
+    #   timeout: 10s
+    #   retries: 3
+    #   start_period: 40s
+    volumes:
+      - ./main_server.py:/app/server.py:ro
+      - ./packages.csv:/app/packages.csv:ro
+      - ./.env:/app/.env:ro
+      - /tmp/log/mcp-server-post-office:/app/logs
+
+networks:
+  mcp-network-post-office:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.30.0.0/16
+
+volumes:
+  mcp-logs-post-office:
+    driver: local

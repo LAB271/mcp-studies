@@ -15,6 +15,7 @@ SPDX-License-Identifier: Apache-2.0
 """
 
 import logging
+import os
 import sys
 
 from mcp.server.fastmcp import FastMCP
@@ -96,8 +97,12 @@ def mcp_factory(
     if logger is None:
         logger = logging.getLogger(app_name)
 
+    # Get host and port from environment variables
+    host = os.environ.get("FASTMCP_HOST", "127.0.0.1")
+    port = int(os.environ.get("FASTMCP_PORT", "8000"))
+
     # Create server
-    mcp = FastMCP(app_name, stateless_http=True, json_response=True)
+    mcp = FastMCP(app_name, host=host, port=port, stateless_http=True, json_response=True)
 
 
     @mcp.tool()
@@ -132,7 +137,6 @@ def mcp_factory(
         }
 
         return f"{styles.get(style, styles['friendly'])} for someone named {name}."
-    
 
     @mcp.resource("server://info")
     def get_server_info() -> str:
@@ -143,15 +147,27 @@ def mcp_factory(
     - Basic tools available
     - Ready for development"""
 
+    @mcp.resource("server://status")
+    def get_server_status() -> str:
+        """Get server status."""
+        logger.info("Server status requested")
+        return "Server is running smoothler."
+
     return mcp
+
+
 
 
 def main(app_name: str = "clean_server"):
     """Run the server with clean logging."""
     logger = setup_clean_logging(level="DEBUG", app_name=app_name)
 
+    # Get configured host and port
+    host = os.environ.get("FASTMCP_HOST", "127.0.0.1")
+    port = int(os.environ.get("FASTMCP_PORT", "8000"))
+
     logger.info("🚀 Starting Clean MCP Server")
-    logger.info("📍 Endpoint: http://127.0.0.1:8000/mcp")
+    logger.info(f"📍 Endpoint: http://{host}:{port}/mcp")
     logger.info("🔧 Tools: greet, calculate")
     logger.info("📄 Resources: server://info")
 

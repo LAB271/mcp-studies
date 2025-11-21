@@ -23,10 +23,13 @@ Each spike focuses on a specific aspect of MCP development, providing working ex
 
 | Spike | Name | Description | Status | Key Features | Last Updated |
 |-------|------|-------------|--------|--------------|--------------|
-| **001** | [**MCP Demos**](./001_demos/) | Basic MCP server implementations with tools, prompts, and resources | ✅ **Complete** | • FastMCP server<br>• Tools & Resources<br>• Prompt templates<br>• HTTP endpoints<br>• Comprehensive tests | 2025-11-02 |
-| **002** | [**Clean Logging**](./002_logging/) | Production-ready MCP server with harmonized, noise-free logging | ✅ **Complete** | • Clean log output<br>• Noise suppression<br>• Professional formatting<br>• Development-friendly<br>• Production-ready | 2025-11-02 |
+| **000** | [**Stdio Foundation**](./000_stdio/README.md) | Minimal MCP server using stdio transport - foundation for all other spikes | ✅ **Complete** | • Stdio transport<br>• Core MCP primitives<br>• IDE integration<br>• Simple & clean<br>• Reference implementation | 2025-11-07 |
+| **001** | [**MCP Demos**](./001_demos/README.md) | Basic MCP server implementations with tools, prompts, and resources | ✅ **Complete** | • FastMCP server<br>• Tools & Resources<br>• Prompt templates<br>• HTTP endpoints<br>• Comprehensive tests | 2025-11-02 |
+| **002** | [**Clean Logging**](./002_logging/README.md) | Production-ready MCP server with harmonized, noise-free logging | ✅ **Complete** | • Clean log output<br>• Noise suppression<br>• Professional formatting<br>• Development-friendly<br>• Production-ready | 2025-11-02 |
+| **003** | [**Docker + SSL + NGINX**](./003_docker/README.md) | Production-like deployment with Docker containers, SSL/TLS, and NGINX gateway | ✅ **Complete** | • Docker containerization<br>• SSL/TLS with mkcert<br>• NGINX reverse proxy<br>• Docker Compose<br>• Makefile automation | 2025-11-03 |
+| **004** | [**Post Office**](./004_post_office/README.md) | Package management system demonstrating structured CSV data handling with multiple query tools | ✅ **Complete** | • CSV data management<br>• 6 specialized tools<br>• Docker deployment<br>• Business logic demo<br>• Query patterns | 2025-11-07 |
 
-## Spike Status Legend
+## Spike status legend
 
 | Status | Meaning |
 |--------|---------|
@@ -38,24 +41,24 @@ Each spike focuses on a specific aspect of MCP development, providing working ex
 | 🔄 **Updated** | Recently updated or improved |
 
 
-## Adding New Spikes
+## Adding new spikes
 
 When creating a new spike, follow this structure:
 
 ```
 spikes/XXX_spike_name/
 ├── README.md          # Spike-specific documentation with they hypothesis
-├── main_server.py     # Main spike solution
+├── main_mcp_server.py     # Main spike solution
 ├── test_*.py          # (Unit) Tests for the spike
 └── try_*.py           # (Exploratory) local tests for the spike
 ```
 
-### Spike Naming Convention
+### Spike naming convention
 - Use 3-digit zero-padded numbers: `001`, `002`, `003`, etc.
 - Use descriptive names separated by underscores
 - Examples: `003_authentication`, `004_streaming_data`, `005_complex_workflows`
 
-### Required Documentation
+### Required documentation
 Each spike should include:
 - **Purpose** - What problem does this spike solve?
 - **How to run** - Clear startup instructions
@@ -63,14 +66,14 @@ Each spike should include:
 - **Key learnings** - What insights were gained
 - **Integration notes** - How to use in other projects
 
-### Updating This Index
+### Updating this index
 When adding a new spike:
 1. Add a new row to the table above
 2. Include appropriate status and key features
 3. Update the "Last Updated" date
 4. Add quick start instructions if needed
 
-## Integration with Main Project
+## Integration with main project
 
 These spikes serve as:
 - **Learning resources** for MCP development
@@ -87,7 +90,7 @@ When contributing to spikes:
 4. Update this index with your changes
 5. Ensure examples work out of the box
 
-## Related Resources
+## Related resources
 
 - [MCP Official Documentation](https://modelcontextprotocol.io/)
 - [Python SDK Repository](https://github.com/modelcontextprotocol/python-sdk)

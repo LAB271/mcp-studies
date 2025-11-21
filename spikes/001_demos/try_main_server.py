@@ -7,7 +7,7 @@ Simple MCP client to test the server
 Copyright (c) 2025 LAB271
 SPDX-License-Identifier: Apache-2.0
 
-Run with: 
+Run with:
     $ uv run spikes/001_demos/try_main_server.py
 """
 
