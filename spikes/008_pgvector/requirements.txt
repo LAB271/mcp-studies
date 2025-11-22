@@ -1,0 +1,7 @@
+mcp
+psycopg2-binary
+pgvector
+sentence-transformers
+uvicorn
+pytest
+Faker
