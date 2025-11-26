@@ -1,7 +1,22 @@
+import os
+import sys
 import time
+from unittest.mock import MagicMock, patch
 
 import pytest
-from main_server import add_knowledge, add_reading, add_sensor, get_connection, get_readings, search_knowledge
+
+# Add tests directory to path to import test_utils
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
+from tests.test_utils import load_spike_module
+
+main_server = load_spike_module("008_pgvector", "main_server")
+add_knowledge = main_server.add_knowledge
+add_reading = main_server.add_reading
+add_sensor = main_server.add_sensor
+get_connection = main_server.get_connection
+get_readings = main_server.get_readings
+search_knowledge = main_server.search_knowledge
+
 
 # Wait for DB to be ready (simple retry logic)
 def wait_for_db():
@@ -15,6 +30,15 @@ def wait_for_db():
             time.sleep(2)
             retries -= 1
     raise Exception("Database not ready")
+
+@pytest.fixture(autouse=True)
+def mock_sentence_transformer():
+    with patch.object(main_server, 'SentenceTransformer') as mock_cls:
+        mock_model = MagicMock()
+        # Return a list of floats, not a Mock
+        mock_model.encode.return_value.tolist.return_value = [0.1] * 384
+        mock_cls.return_value = mock_model
+        yield
 
 @pytest.fixture(scope="module", autouse=True)
 def setup_database():

@@ -58,7 +58,7 @@ def setup_clean_logging(
         console_handler.setFormatter(uvicorn_formatter)
     except (ImportError, KeyError):
         # Fallback to custom formatter if uvicorn config unavailable
-        console_handler.setFormatter(formatter)
+        console_handler.setFormatter(formatter)  # pragma: no cover
 
     # root_logger.addHandler(console_handler)
 
@@ -132,7 +132,7 @@ def mcp_factory(
         }
 
         return f"{styles.get(style, styles['friendly'])} for someone named {name}."
-    
+
 
     @mcp.resource("server://info")
     def get_server_info() -> str:
@@ -165,8 +165,8 @@ def main(app_name: str = "clean_server"):
             logger.warning("⚠️  Client disconnected unexpectedly - continuing")
         else:
             logger.error(f"❌ Server error: {e}")
-            raise
+            raise  # pragma: no cover
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     main()

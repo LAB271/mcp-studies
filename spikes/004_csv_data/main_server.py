@@ -14,12 +14,11 @@ Copyright (c) 2025 LAB271
 SPDX-License-Identifier: Apache-2.0
 """
 
+import csv
 import logging
 import os
 import sys
-import csv
-from pathlib import Path
-from typing import List, Dict, Any
+from typing import Any
 
 from mcp.server.fastmcp import FastMCP
 from uvicorn.config import LOGGING_CONFIG
@@ -97,7 +96,7 @@ class PostOfficeDatabase:
     def __init__(self, csv_path: str = "/app/packages.csv"):
         """Initialize the database with CSV file."""
         self.csv_path = csv_path
-        self.packages: List[Dict[str, Any]] = []
+        self.packages: list[dict[str, Any]] = []
         self.load_packages()
 
     def load_packages(self):
@@ -105,22 +104,22 @@ class PostOfficeDatabase:
         if not os.path.exists(self.csv_path):
             raise FileNotFoundError(f"CSV file not found: {self.csv_path}")
 
-        with open(self.csv_path, 'r') as f:
+        with open(self.csv_path) as f:
             reader = csv.DictReader(f)
             self.packages = list(reader)
 
-    def get_packages_for_delivery_guy(self, delivery_guy: int) -> List[Dict[str, Any]]:
+    def get_packages_for_delivery_guy(self, delivery_guy: int) -> list[dict[str, Any]]:
         """Get all packages assigned to a specific delivery guy."""
         return [p for p in self.packages if int(p['delivery_guy']) == delivery_guy]
 
-    def get_package_details(self, package_id: str) -> Dict[str, Any] | None:
+    def get_package_details(self, package_id: str) -> dict[str, Any] | None:
         """Get details for a specific package."""
         for p in self.packages:
             if p['package_id'] == package_id:
                 return p
         return None
 
-    def get_delivery_guy_stats(self, delivery_guy: int) -> Dict[str, Any]:
+    def get_delivery_guy_stats(self, delivery_guy: int) -> dict[str, Any]:
         """Get statistics for a delivery guy."""
         packages = self.get_packages_for_delivery_guy(delivery_guy)
         total_weight = sum(float(p['weight_kg']) for p in packages)
@@ -136,7 +135,7 @@ class PostOfficeDatabase:
             'urgent_packages': urgent_count
         }
 
-    def get_all_delivery_guys(self) -> List[int]:
+    def get_all_delivery_guys(self) -> list[int]:
         """Get all unique delivery guys."""
         guys = set(int(p['delivery_guy']) for p in self.packages)
         return sorted(list(guys))
@@ -196,10 +195,10 @@ def mcp_factory(
             result += f"Label: {pkg['label']}\n"
             result += f"Weight: {pkg['weight_kg']} kg\n"
             result += f"Size: {pkg['size_cm']}\n"
-            result += f"\nSender:\n"
+            result += "\nSender:\n"
             result += f"  Name: {pkg['sender_name']}\n"
             result += f"  Address: {pkg['sender_address']}\n"
-            result += f"\nReceiver:\n"
+            result += "\nReceiver:\n"
             result += f"  Name: {pkg['receiver_name']}\n"
             result += f"  Address: {pkg['receiver_address']}\n"
             return result
@@ -274,7 +273,7 @@ def mcp_factory(
         except Exception as e:
             logger.error(f"Error fetching packages by state: {e}")
             return f"Error: {e}"
-        
+
     @mcp.tool()
     def update_package_state(package_id: str, new_state: str) -> str:
         """Update the state of a specific package."""
@@ -298,9 +297,9 @@ def mcp_factory(
         except Exception as e:
             logger.error(f"Error updating package state: {e}")
             return f"Error: {e}"
-    
+
     @mcp.tool()
-    def add_new_package(package_data: Dict[str, Any]) -> str:
+    def add_new_package(package_data: dict[str, Any]) -> str:
         """Add a new package to the database."""
         logger.info(f"Adding new package with ID {package_data.get('package_id')}")
         try:
@@ -317,7 +316,7 @@ def mcp_factory(
         except Exception as e:
             logger.error(f"Error adding new package: {e}")
             return f"Error: {e}"
-        
+
     @mcp.tool()
     def delete_package(package_id: str) -> str:
         """Delete a package from the database."""
@@ -340,9 +339,9 @@ def mcp_factory(
         except Exception as e:
             logger.error(f"Error deleting package: {e}")
             return f"Error: {e}"
-    
+
     @mcp.tool()
-    def delete_packages(package_ids: List[str]) -> str:
+    def delete_packages(package_ids: list[str]) -> str:
         """Delete multiple packages from the database."""
         logger.info(f"Deleting multiple packages with IDs: {package_ids}")
         try:
@@ -368,7 +367,7 @@ def mcp_factory(
 
     return mcp
 
-  
+
 
 
 def main(app_name: str = "post_office_server"):
@@ -399,5 +398,5 @@ def main(app_name: str = "post_office_server"):
             raise
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     main()

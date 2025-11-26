@@ -103,7 +103,7 @@ class GraphDatabase:
         """Establish connection to Neo4j (lazy initialization)."""
         if self.driver is not None:
             return
-        
+
         try:
             from neo4j import GraphDatabase as Neo4jDriver
             self.Neo4jDriver = Neo4jDriver
@@ -160,7 +160,7 @@ class GraphDatabase:
             docs = self.query("MATCH (d:Document) RETURN COUNT(d) as count")
             chunks = self.query("MATCH (c:Chunk) RETURN COUNT(c) as count")
             rels = self.query("MATCH ()-[r:CONTAINS]->() RETURN COUNT(r) as count")
-            
+
             return {
                 "documents": docs[0]["count"] if docs else 0,
                 "chunks": chunks[0]["count"] if chunks else 0,
@@ -265,7 +265,7 @@ def mcp_factory(
             chunks = db.get_document_chunks(document_title, limit)
             if not chunks:
                 return f"No chunks found for document '{document_title}'"
-            
+
             result = f"Chunks from '{document_title}' (showing {len(chunks)} of available):\n"
             for i, chunk in enumerate(chunks, 1):
                 text = chunk['text'][:100] + "..." if len(chunk['text']) > 100 else chunk['text']
@@ -299,7 +299,7 @@ def mcp_factory(
             chunks = db.search_by_keywords(keyword_list, limit)
             if not chunks:
                 return f"No chunks found containing any of: {keywords}"
-            
+
             result = f"Found {len(chunks)} chunks containing keywords:\n"
             for i, chunk in enumerate(chunks, 1):
                 text = chunk['text'][:150] + "..." if len(chunk['text']) > 150 else chunk['text']

@@ -12,9 +12,9 @@ Run with:
 """
 
 import asyncio
+import json
 
 import aiohttp
-import json
 
 
 async def test_mcp_server():

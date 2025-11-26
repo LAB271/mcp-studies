@@ -184,5 +184,5 @@ def main(app_name: str = "clean_server"):
             raise
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     main()

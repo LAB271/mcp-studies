@@ -9,7 +9,14 @@ check: ## Validate primary development dependencies
 	@echo "✅ All primary development dependencies are installed."
 	
 test: ## Run tests
-	@uv run -m pytest
+	@echo "🚀 Running tests..."
+	@uv run pytest
+	@echo "✅ All tests passed!"
+
+test-coverage: ## Run tests with coverage
+	@echo "🚀 Running tests with coverage..."
+	@uv run pytest --cov=spikes --cov-report=term-missing
+	@echo "✅ All tests passed with coverage!"
 
 lint: ## Run linting and formatting checks
 	@echo "🔍 Running ruff linting..."
