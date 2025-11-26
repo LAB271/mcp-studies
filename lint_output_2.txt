@@ -1,0 +1,39 @@
+🔍 Running ruff linting...
+E402 Module level import not at top of file
+  --> tests/006_graphdb/test_pipeline.py:21:1
+   |
+19 | # Add tests directory to path to import test_utils
+20 | sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
+21 | from tests.test_utils import load_spike_module
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+22 |
+23 | try:
+   |
+
+W293 Blank line contains whitespace
+  --> tests/test_utils.py:9:1
+   |
+ 7 |     """
+ 8 |     Load a module from a spike directory with a unique name to avoid collisions.
+ 9 |     
+   | ^^^^
+10 |     Args:
+11 |         spike_name: Name of the spike directory (e.g., "001_demos")
+   |
+help: Remove whitespace from blank line
+
+W293 Blank line contains whitespace
+  --> tests/test_utils.py:13:1
+   |
+11 |         spike_name: Name of the spike directory (e.g., "001_demos")
+12 |         module_name: Name of the module file without .py (e.g., "main_server")
+13 |         
+   | ^^^^^^^^
+14 |     Returns:
+15 |         The loaded module.
+   |
+help: Remove whitespace from blank line
+
+Found 3 errors.
+No fixes available (2 hidden fixes can be enabled with the `--unsafe-fixes` option).
+make: *** [lint] Error 1

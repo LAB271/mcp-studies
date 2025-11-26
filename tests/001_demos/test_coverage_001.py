@@ -24,7 +24,7 @@ class TestSpike001(unittest.TestCase):
     def test_main_server_resource(self):
         self.assertEqual(main_server.get_test_resource(), "This is a test resource")
 
-    @patch.object(main_server, 'mcp')
+    @patch.object(main_server, "mcp")
     def test_main_server_main(self, mock_mcp):
         main_server.main()
         mock_mcp.run.assert_called_with(transport="streamable-http")
@@ -38,10 +38,11 @@ class TestSpike001(unittest.TestCase):
     def test_main_mcp_server_resource(self):
         self.assertEqual(main_mcp_server.get_test_resource(), "This is a test resource")
 
-    @patch.object(main_mcp_server, 'mcp')
+    @patch.object(main_mcp_server, "mcp")
     def test_main_mcp_server_main(self, mock_mcp):
         main_mcp_server.main()
         mock_mcp.run.assert_called_with(transport="streamable-http")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

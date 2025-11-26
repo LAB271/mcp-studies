@@ -16,6 +16,7 @@ except ImportError:
     print("Install with: pip install neo4j")
     sys.exit(1)
 
+
 class Neo4jLoader:
     """Load documents and embeddings to Neo4j."""
 
@@ -62,12 +63,13 @@ class Neo4jLoader:
         count = 0
         for text_file in text_files:
             try:
-                with open(text_file, encoding='utf-8') as f:
+                with open(text_file, encoding="utf-8") as f:
                     content = f.read()
 
                 doc_id = f"doc_{text_file.stem}"
 
-                self.session.run("""
+                self.session.run(
+                    """
                 MERGE (d:Document {id: $id})
                 SET d.title = $title,
                     d.type = $type,
@@ -75,11 +77,11 @@ class Neo4jLoader:
                     d.size_bytes = $size,
                     d.created = datetime()
                 """,
-                id=doc_id,
-                title=text_file.stem,
-                type=text_file.suffix.lstrip('.'),
-                content=content[:10000],  # Store first 10k chars
-                size=len(content)
+                    id=doc_id,
+                    title=text_file.stem,
+                    type=text_file.suffix.lstrip("."),
+                    content=content[:10000],  # Store first 10k chars
+                    size=len(content),
                 )
 
                 print(f"✓ Loaded {text_file.name}")
@@ -103,17 +105,18 @@ class Neo4jLoader:
         total_chunks = 0
         for embedding_file in embedding_files:
             try:
-                with open(embedding_file, encoding='utf-8') as f:
+                with open(embedding_file, encoding="utf-8") as f:
                     embeddings = json.load(f)
 
-                source_name = embedding_file.stem.replace('_embeddings', '')
+                source_name = embedding_file.stem.replace("_embeddings", "")
                 doc_id = f"doc_{source_name}"
 
                 # Load first few embeddings as samples
-                for i, emb_data in enumerate(embeddings[:10]):  # Limit to first 10 for demo
-                    chunk_id = emb_data['id']
+                for _i, emb_data in enumerate(embeddings[:10]):  # Limit to first 10 for demo
+                    chunk_id = emb_data["id"]
 
-                    self.session.run("""
+                    self.session.run(
+                        """
                     MATCH (d:Document {id: $doc_id})
                     MERGE (c:Chunk {id: $chunk_id})
                     SET c.text = $text,
@@ -121,10 +124,10 @@ class Neo4jLoader:
                         c.created = datetime()
                     MERGE (d)-[:CONTAINS]->(c)
                     """,
-                    doc_id=doc_id,
-                    chunk_id=chunk_id,
-                    text=emb_data['text'],
-                    position=emb_data.get('position', 0)
+                        doc_id=doc_id,
+                        chunk_id=chunk_id,
+                        text=emb_data["text"],
+                        position=emb_data.get("position", 0),
                     )
 
                 print(f"✓ Loaded embeddings from {embedding_file.name} (first 10 chunks)")
@@ -164,6 +167,7 @@ class Neo4jLoader:
         if self.session:
             self.session.close()
         self.driver.close()
+
 
 def main():
     """Load documents and embeddings to Neo4j."""
@@ -222,6 +226,7 @@ def main():
 
     finally:
         loader.close()
+
 
 if __name__ == "__main__":
     main()

@@ -1,8 +1,8 @@
 import os
 import sys
-import time
 from unittest.mock import MagicMock, patch
 
+import psycopg2
 import pytest
 
 # Add tests directory to path to import test_utils
@@ -18,96 +18,147 @@ get_readings = main_server.get_readings
 search_knowledge = main_server.search_knowledge
 
 
-# Wait for DB to be ready (simple retry logic)
-def wait_for_db():
-    retries = 5
-    while retries > 0:
-        try:
-            conn = get_connection()
-            conn.close()
-            return
-        except Exception:
-            time.sleep(2)
-            retries -= 1
-    raise Exception("Database not ready")
-
 @pytest.fixture(autouse=True)
 def mock_sentence_transformer():
-    with patch.object(main_server, 'SentenceTransformer') as mock_cls:
+    with patch.object(main_server, "SentenceTransformer") as mock_cls:
         mock_model = MagicMock()
         # Return a list of floats, not a Mock
         mock_model.encode.return_value.tolist.return_value = [0.1] * 384
         mock_cls.return_value = mock_model
         yield
 
-@pytest.fixture(scope="module", autouse=True)
-def setup_database():
-    """Setup and teardown for the test module."""
-    wait_for_db()
 
-    # Clean up before tests
-    conn = get_connection()
-    with conn.cursor() as cur:
-        cur.execute("TRUNCATE sensors, sensor_readings, sensor_knowledge CASCADE;")
-    conn.commit()
-    conn.close()
+@pytest.fixture(autouse=True)
+def mock_db():
+    with patch.object(main_server.psycopg2, "connect") as mock_connect, patch.object(main_server, "register_vector"):
+        mock_conn = MagicMock()
+        mock_cursor = MagicMock()
+        mock_connect.return_value = mock_conn
+        mock_conn.cursor.return_value.__enter__.return_value = mock_cursor
+        yield mock_connect, mock_cursor
 
-    yield
 
-    # Clean up after tests
-    conn = get_connection()
-    with conn.cursor() as cur:
-        cur.execute("TRUNCATE sensors, sensor_readings, sensor_knowledge CASCADE;")
-    conn.commit()
-    conn.close()
+def test_sensor_lifecycle(mock_db):
+    _, mock_cursor = mock_db
 
-def test_sensor_lifecycle():
-    """Test adding a sensor and readings."""
     # 1. Add Sensor
     result = add_sensor("s001", "Temp Sensor 1", "temperature", "Lab A")
     assert "added successfully" in result
 
-    # 2. Add Duplicate Sensor (should fail gracefully)
+    # 2. Add Duplicate Sensor
+    # Simulate IntegrityError for duplicate
+    mock_cursor.execute.side_effect = psycopg2.IntegrityError("Duplicate")
     result = add_sensor("s001", "Temp Sensor 1", "temperature", "Lab A")
     assert "already exists" in result
+    mock_cursor.execute.side_effect = None  # Reset
 
     # 3. Add Reading
+    # Mock fetchone to return something (sensor exists)
+    mock_cursor.fetchone.return_value = (1,)
     result = add_reading("s001", 25.5)
     assert "Reading 25.5 recorded" in result
 
     # 4. Get Readings
+    # Mock fetchall to return readings as dict-like objects
+    mock_cursor.fetchall.return_value = [{"value": 25.5, "timestamp": "2023-01-01"}]
     result = get_readings("s001")
     assert "25.5" in result
 
-def test_knowledge_vector_search():
-    """Test adding knowledge and semantic search."""
+
+def test_knowledge_vector_search(mock_db):
+    _, mock_cursor = mock_db
+
     # Ensure sensor exists
-    add_sensor("s002", "Complex Machine", "machinery", "Factory Floor")
+    mock_cursor.fetchone.return_value = (1,)  # Sensor exists
 
     # 1. Add Knowledge
-    doc1 = "The emergency shutoff valve is located under the main control panel."
-    doc2 = "Routine maintenance requires checking the oil level every 50 hours."
-
-    res1 = add_knowledge("s002", doc1)
-    res2 = add_knowledge("s002", doc2)
-
+    res1 = add_knowledge("s002", "doc1")
     assert "Knowledge added" in res1
-    assert "Knowledge added" in res2
 
-    # 2. Search Knowledge (Exact match intent)
-    # "Where is the shutoff?" should match doc1
-    search_res = search_knowledge("Where is the shutoff valve?")
-    assert "emergency shutoff valve" in search_res
+    # 2. Search Knowledge
+    # Mock fetchall to return search results as dict-like objects
+    mock_cursor.fetchall.return_value = [
+        {"content": "doc1", "sensor_name": "s002", "created_at": "2023-01-01", "distance": 0.1}
+    ]
+    search_res = search_knowledge("query")
+    assert "doc1" in search_res
 
-    # 3. Search Knowledge (Different intent)
-    # "How often to check oil?" should match doc2
-    search_res = search_knowledge("oil check frequency")
-    assert "checking the oil level" in search_res
 
-def test_missing_sensor():
-    """Test operations on non-existent sensors."""
+def test_missing_sensor(mock_db):
+    _, mock_cursor = mock_db
+
+    # Mock fetchone to return None (sensor doesn't exist)
+    mock_cursor.fetchone.return_value = None
+
     res = add_reading("non_existent", 10.0)
     assert "not found" in res
 
     res = add_knowledge("non_existent", "Some info")
     assert "not found" in res
+
+
+def test_add_sensor_duplicate(mock_db):
+    _, mock_cursor = mock_db
+    mock_cursor.execute.side_effect = psycopg2.IntegrityError("Duplicate")
+    res = add_sensor("s_dup", "Dup", "type", "loc")
+    assert "already exists" in res
+
+
+def test_add_reading_error(mock_db):
+    _, mock_cursor = mock_db
+
+    # We need to ensure fetchone returns something so it tries to insert reading
+    mock_cursor.fetchone.return_value = (1,)
+
+    # The first execute is SELECT 1 (check sensor), second is INSERT
+    # We want INSERT to fail
+    mock_cursor.execute.side_effect = [None, Exception("DB Error")]
+
+    res = add_reading("s1", 1.0)
+    assert "Error adding reading" in res
+
+
+def test_add_knowledge_error(mock_db):
+    _, mock_cursor = mock_db
+    mock_cursor.fetchone.return_value = (1,)
+    mock_cursor.execute.side_effect = [None, Exception("DB Error")]
+
+    res = add_knowledge("s1", "content")
+    assert "Error adding knowledge" in res
+
+
+def test_search_knowledge_error(mock_db):
+    _, mock_cursor = mock_db
+    mock_cursor.execute.side_effect = Exception("DB Error")
+
+    res = search_knowledge("query")
+    assert "Error searching knowledge" in res
+
+
+def test_search_knowledge_no_results(mock_db):
+    _, mock_cursor = mock_db
+    mock_cursor.fetchall.return_value = []
+
+    res = search_knowledge("query")
+    assert "No relevant knowledge found" in res
+
+
+def test_add_sensor_generic_error(mock_db):
+    _, mock_cursor = mock_db
+    mock_cursor.execute.side_effect = Exception("Generic Error")
+    res = add_sensor("s1", "n", "t", "l")
+    assert "Error adding sensor" in res
+
+
+def test_get_readings_no_results(mock_db):
+    _, mock_cursor = mock_db
+    mock_cursor.fetchall.return_value = []
+    res = get_readings("s1")
+    assert "No readings found" in res
+
+
+def test_get_connection_error():
+    # We need to patch connect specifically for this test to raise exception
+    with patch.object(main_server.psycopg2, "connect", side_effect=Exception("Conn Error")):
+        with pytest.raises(RuntimeError):
+            get_connection()

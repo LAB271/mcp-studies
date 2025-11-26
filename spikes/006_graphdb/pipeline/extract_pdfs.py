@@ -20,12 +20,12 @@ def extract_pdf_text(pdf_path, output_path):
             for i, page in enumerate(pdf.pages):
                 page_text = page.extract_text()
                 if page_text:
-                    text += f"--- Page {i+1} ---\n{page_text}\n\n"
+                    text += f"--- Page {i + 1} ---\n{page_text}\n\n"
                 if (i + 1) % 10 == 0:
-                    print(f"  Processed {i+1} pages...")
+                    print(f"  Processed {i + 1} pages...")
 
             # Save extracted text
-            with open(output_path, 'w', encoding='utf-8') as f:
+            with open(output_path, "w", encoding="utf-8") as f:
                 f.write(text)
 
             print(f"✓ Extracted {len(pdf.pages)} pages to {output_path.name}")
@@ -35,6 +35,7 @@ def extract_pdf_text(pdf_path, output_path):
     except Exception as e:
         print(f"✗ Error extracting {pdf_path.name}: {e}")
         return False
+
 
 def main():
     """Extract all PDFs in documents folder."""
@@ -55,7 +56,7 @@ def main():
 
     success_count = 0
     for pdf_file in pdf_files:
-        output_file = pdf_file.with_suffix('.txt')
+        output_file = pdf_file.with_suffix(".txt")
 
         # Skip if already extracted
         if output_file.exists():
@@ -66,6 +67,7 @@ def main():
             success_count += 1
 
     print(f"\n✓ Successfully extracted {success_count}/{len(pdf_files)} PDFs")
+
 
 if __name__ == "__main__":
     main()

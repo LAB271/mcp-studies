@@ -44,10 +44,11 @@ class TestStdioServer(unittest.TestCase):
         result = get_test_resource()
         self.assertEqual(result, "This is a test resource")
 
-    @patch.object(mcp, 'run')
+    @patch.object(mcp, "run")
     def test_main(self, mock_run):
         main()
         mock_run.assert_called_once_with(transport="stdio")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

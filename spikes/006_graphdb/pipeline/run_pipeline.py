@@ -12,40 +12,47 @@ from pathlib import Path
 
 
 class Colors:
-    BLUE = '\033[0;34m'
-    GREEN = '\033[0;32m'
-    RED = '\033[0;31m'
-    YELLOW = '\033[1;33m'
-    RESET = '\033[0m'
+    BLUE = "\033[0;34m"
+    GREEN = "\033[0;32m"
+    RED = "\033[0;31m"
+    YELLOW = "\033[1;33m"
+    RESET = "\033[0m"
+
 
 def print_section(title):
     print(f"\n{Colors.BLUE}{'=' * 60}")
     print(f"→ {title}")
     print(f"{'=' * 60}{Colors.RESET}\n")
 
+
 def print_success(msg):
     print(f"{Colors.GREEN}✓ {msg}{Colors.RESET}")
+
 
 def print_error(msg):
     print(f"{Colors.RED}✗ {msg}{Colors.RESET}")
 
+
 def print_warning(msg):
     print(f"{Colors.YELLOW}⚠ {msg}{Colors.RESET}")
+
 
 def check_docker():
     """Check if Docker is running."""
     try:
         subprocess.run(["docker", "ps"], capture_output=True, check=True)
         return True
-    except:
+    except Exception:
         return False
+
 
 def check_neo4j_ready():
     """Check if Neo4j is ready."""
     try:
         from neo4j import GraphDatabase
+
         print("    [Neo4j] Attempting connection to bolt://localhost:7687...")
-        driver = GraphDatabase.driver('bolt://localhost:7687', auth=('neo4j', 'neo4jpassword'))
+        driver = GraphDatabase.driver("bolt://localhost:7687", auth=("neo4j", "neo4jpassword"))
         session = driver.session(database="neo4j")
         result = session.run("RETURN 1")
         result.consume()
@@ -56,6 +63,7 @@ def check_neo4j_ready():
     except Exception as e:
         print(f"    [Neo4j] Connection failed: {str(e)}")
         return False
+
 
 def main():
     print(f"\n{Colors.BLUE}╔════════════════════════════════════════════════════════════╗")
@@ -68,11 +76,7 @@ def main():
     # Step 0: Check dependencies
     print_section("Step 0: Checking Dependencies")
 
-    dependencies = {
-        'pdfplumber': 'pdfplumber',
-        'sentence_transformers': 'sentence-transformers',
-        'neo4j': 'neo4j'
-    }
+    dependencies = {"pdfplumber": "pdfplumber", "sentence_transformers": "sentence-transformers", "neo4j": "neo4j"}
 
     for module, package in dependencies.items():
         try:
@@ -178,6 +182,7 @@ def main():
     print("  cd spikes/006_graphdb && docker-compose down\n")
 
     return True
+
 
 if __name__ == "__main__":
     success = main()

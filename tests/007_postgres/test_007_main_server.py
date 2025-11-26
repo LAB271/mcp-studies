@@ -16,12 +16,15 @@ sys.modules["mcp.server.fastmcp"] = mock_mcp_module
 sys.modules["psycopg2"] = MagicMock()
 sys.modules["psycopg2.extras"] = MagicMock()
 
+
 # Configure FastMCP to act as a pass-through decorator
 # This ensures that @mcp.tool() doesn't replace the function with a Mock
 def tool_decorator_factory(*args, **kwargs):
     def decorator(func):
         return func
+
     return decorator
+
 
 mock_mcp_instance = MagicMock()
 mock_mcp_instance.tool.side_effect = tool_decorator_factory
@@ -29,7 +32,7 @@ mock_mcp_module.FastMCP.return_value = mock_mcp_instance
 
 # Add tests directory to path to import test_utils
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
-from tests.test_utils import load_spike_module
+from tests.test_utils import load_spike_module  # noqa: E402
 
 try:
     main_server = load_spike_module("007_postgres", "main_server")
@@ -88,7 +91,7 @@ class TestPostgresMCP(unittest.TestCase):
         # In the code: row['column_name'], row['data_type'], row['is_nullable']
         mock_cursor.fetchall.return_value = [
             {"column_name": "id", "data_type": "integer", "is_nullable": "NO"},
-            {"column_name": "name", "data_type": "varchar", "is_nullable": "YES"}
+            {"column_name": "name", "data_type": "varchar", "is_nullable": "YES"},
         ]
 
         result = describe_table("users")
@@ -122,10 +125,7 @@ class TestPostgresMCP(unittest.TestCase):
         # Mock description for headers
         mock_cursor.description = [("id",), ("username",)]
         # Mock rows
-        mock_cursor.fetchall.return_value = [
-            [1, "jdoe"],
-            [2, "asmith"]
-        ]
+        mock_cursor.fetchall.return_value = [[1, "jdoe"], [2, "asmith"]]
 
         result = execute_read_query("SELECT * FROM users")
 
@@ -161,6 +161,20 @@ class TestPostgresMCP(unittest.TestCase):
         with patch.object(main_server, "logger"):
             with self.assertRaises(RuntimeError):
                 list_tables()
+
+    @patch.object(main_server.psycopg2, "connect")
+    def test_execute_read_query_error(self, mock_connect):
+        mock_conn = MagicMock()
+        mock_cursor = MagicMock()
+        mock_connect.return_value = mock_conn
+        mock_conn.cursor.return_value.__enter__.return_value = mock_cursor
+
+        mock_cursor.execute.side_effect = Exception("Query Error")
+
+        result = execute_read_query("SELECT * FROM users")
+
+        self.assertIn("Query execution error", result)
+
 
 if __name__ == "__main__":
     unittest.main()

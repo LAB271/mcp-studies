@@ -26,18 +26,12 @@ from uvicorn.config import LOGGING_CONFIG
 
 # CLEAN LOGGING CONFIGURATION
 def setup_clean_logging(
-    level: str = "INFO",
-    app_name: str = "mcp_server",
-    show_uvicorn: bool = False,
-    show_mcp_internals: bool = True
+    level: str = "INFO", app_name: str = "mcp_server", show_uvicorn: bool = False, show_mcp_internals: bool = True
 ) -> logging.Logger:
     """Set up clean, minimal logging."""
 
     # Custom formatter for clean output
-    formatter = logging.Formatter(
-        fmt='%(asctime)s [%(levelname)8s] %(name)s: %(message)s',
-        datefmt='%H:%M:%S'
-    )
+    formatter = logging.Formatter(fmt="%(asctime)s [%(levelname)8s] %(name)s: %(message)s", datefmt="%H:%M:%S")
 
     # Configure root logger
     root_logger = logging.getLogger()
@@ -55,8 +49,7 @@ def setup_clean_logging(
     # Use uvicorn's formatter instead of custom one
     try:
         uvicorn_formatter = logging.Formatter(
-            LOGGING_CONFIG["formatters"]["default"]["fmt"],
-            LOGGING_CONFIG["formatters"]["default"]["datefmt"]
+            LOGGING_CONFIG["formatters"]["default"]["fmt"], LOGGING_CONFIG["formatters"]["default"]["datefmt"]
         )
         console_handler.setFormatter(uvicorn_formatter)
     except (ImportError, KeyError):
@@ -110,41 +103,38 @@ class PostOfficeDatabase:
 
     def get_packages_for_delivery_guy(self, delivery_guy: int) -> list[dict[str, Any]]:
         """Get all packages assigned to a specific delivery guy."""
-        return [p for p in self.packages if int(p['delivery_guy']) == delivery_guy]
+        return [p for p in self.packages if int(p["delivery_guy"]) == delivery_guy]
 
     def get_package_details(self, package_id: str) -> dict[str, Any] | None:
         """Get details for a specific package."""
         for p in self.packages:
-            if p['package_id'] == package_id:
+            if p["package_id"] == package_id:
                 return p
         return None
 
     def get_delivery_guy_stats(self, delivery_guy: int) -> dict[str, Any]:
         """Get statistics for a delivery guy."""
         packages = self.get_packages_for_delivery_guy(delivery_guy)
-        total_weight = sum(float(p['weight_kg']) for p in packages)
+        total_weight = sum(float(p["weight_kg"]) for p in packages)
         total_packages = len(packages)
-        fragile_count = sum(1 for p in packages if p['label'] == 'FRAGILE')
-        urgent_count = sum(1 for p in packages if p['label'] == 'URGENT')
+        fragile_count = sum(1 for p in packages if p["label"] == "FRAGILE")
+        urgent_count = sum(1 for p in packages if p["label"] == "URGENT")
 
         return {
-            'delivery_guy': delivery_guy,
-            'total_packages': total_packages,
-            'total_weight_kg': round(total_weight, 2),
-            'fragile_packages': fragile_count,
-            'urgent_packages': urgent_count
+            "delivery_guy": delivery_guy,
+            "total_packages": total_packages,
+            "total_weight_kg": round(total_weight, 2),
+            "fragile_packages": fragile_count,
+            "urgent_packages": urgent_count,
         }
 
     def get_all_delivery_guys(self) -> list[int]:
         """Get all unique delivery guys."""
-        guys = set(int(p['delivery_guy']) for p in self.packages)
-        return sorted(list(guys))
+        guys = {int(p["delivery_guy"]) for p in self.packages}
+        return sorted(guys)
 
 
-def mcp_factory(
-    app_name: str,
-    logger: logging.Logger = None
-) -> FastMCP:
+def mcp_factory(app_name: str, logger: logging.Logger = None) -> FastMCP:
     """Create and return a Post Office MCP server instance."""
     if logger is None:
         logger = logging.getLogger(app_name)
@@ -239,7 +229,7 @@ def mcp_factory(
         """Search packages by label type (FRAGILE, STANDARD, URGENT)."""
         logger.info(f"Searching packages with label: {label}")
         try:
-            matching = [p for p in db.packages if p['label'] == label.upper()]
+            matching = [p for p in db.packages if p["label"] == label.upper()]
             if not matching:
                 return f"No packages found with label: {label}"
 
@@ -259,7 +249,7 @@ def mcp_factory(
         """Get all packages with a specific state (pending, delivered, in_transit)."""
         logger.info(f"Fetching packages with state: {state}")
         try:
-            matching = [p for p in db.packages if p['state'].lower() == state.lower()]
+            matching = [p for p in db.packages if p["state"].lower() == state.lower()]
             if not matching:
                 return f"No packages found with state: {state}"
 
@@ -283,11 +273,11 @@ def mcp_factory(
             if not pkg:
                 return f"Package {package_id} not found"
 
-            old_state = pkg['state']
-            pkg['state'] = new_state
+            old_state = pkg["state"]
+            pkg["state"] = new_state
 
             # Save changes back to CSV
-            with open(db.csv_path, 'w', newline='') as f:
+            with open(db.csv_path, "w", newline="") as f:
                 fieldnames = pkg.keys()
                 writer = csv.DictWriter(f, fieldnames=fieldnames)
                 writer.writeheader()
@@ -306,7 +296,7 @@ def mcp_factory(
             db.packages.append(package_data)
 
             # Save changes back to CSV
-            with open(db.csv_path, 'w', newline='') as f:
+            with open(db.csv_path, "w", newline="") as f:
                 fieldnames = package_data.keys()
                 writer = csv.DictWriter(f, fieldnames=fieldnames)
                 writer.writeheader()
@@ -329,7 +319,7 @@ def mcp_factory(
             db.packages.remove(pkg)
 
             # Save changes back to CSV
-            with open(db.csv_path, 'w', newline='') as f:
+            with open(db.csv_path, "w", newline="") as f:
                 fieldnames = pkg.keys()
                 writer = csv.DictWriter(f, fieldnames=fieldnames)
                 writer.writeheader()
@@ -354,7 +344,7 @@ def mcp_factory(
 
             # Save changes back to CSV
             if deleted_count > 0:
-                with open(db.csv_path, 'w', newline='') as f:
+                with open(db.csv_path, "w", newline="") as f:
                     fieldnames = db.packages[0].keys() if db.packages else []
                     writer = csv.DictWriter(f, fieldnames=fieldnames)
                     writer.writeheader()
@@ -368,8 +358,6 @@ def mcp_factory(
     return mcp
 
 
-
-
 def main(app_name: str = "post_office_server"):
     """Run the server with clean logging."""
     logger = setup_clean_logging(level="DEBUG", app_name=app_name)
@@ -380,7 +368,9 @@ def main(app_name: str = "post_office_server"):
 
     logger.info("🚀 Starting Post Office MCP Server")
     logger.info(f"📍 Endpoint: http://{host}:{port}/mcp")
-    logger.info("🔧 Tools: get_packages_for_delivery_guy, get_package_details, get_delivery_guy_stats, get_all_delivery_guys, search_packages_by_label")
+    logger.info(
+        "🔧 Tools: get_packages_for_delivery_guy, get_package_details, get_delivery_guy_stats, get_all_delivery_guys, search_packages_by_label"
+    )
     logger.info("📦 Database: Loading packages from CSV")
 
     try:

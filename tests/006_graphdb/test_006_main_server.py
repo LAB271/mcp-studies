@@ -5,23 +5,23 @@ from unittest.mock import MagicMock, patch
 
 # Save original modules
 original_modules = {
-    'mcp': sys.modules.get('mcp'),
-    'mcp.server': sys.modules.get('mcp.server'),
-    'mcp.server.fastmcp': sys.modules.get('mcp.server.fastmcp'),
-    'uvicorn': sys.modules.get('uvicorn'),
-    'uvicorn.config': sys.modules.get('uvicorn.config'),
+    "mcp": sys.modules.get("mcp"),
+    "mcp.server": sys.modules.get("mcp.server"),
+    "mcp.server.fastmcp": sys.modules.get("mcp.server.fastmcp"),
+    "uvicorn": sys.modules.get("uvicorn"),
+    "uvicorn.config": sys.modules.get("uvicorn.config"),
 }
 
 # Mock mcp and uvicorn modules before importing main_server
-sys.modules['mcp'] = MagicMock()
-sys.modules['mcp.server'] = MagicMock()
-sys.modules['mcp.server.fastmcp'] = MagicMock()
-sys.modules['uvicorn'] = MagicMock()
-sys.modules['uvicorn.config'] = MagicMock()
+sys.modules["mcp"] = MagicMock()
+sys.modules["mcp.server"] = MagicMock()
+sys.modules["mcp.server.fastmcp"] = MagicMock()
+sys.modules["uvicorn"] = MagicMock()
+sys.modules["uvicorn.config"] = MagicMock()
 
 # Add tests directory to path to import test_utils
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
-from tests.test_utils import load_spike_module
+from tests.test_utils import load_spike_module  # noqa: E402
 
 try:
     main_server = load_spike_module("006_graphdb", "main_server")
@@ -50,7 +50,7 @@ class TestGraphDatabase(unittest.TestCase):
         self.assertIsNone(self.db.driver)
         self.assertIsNone(self.db.session)
 
-    @patch.object(GraphDatabase, 'connect')
+    @patch.object(GraphDatabase, "connect")
     def test_get_session(self, mock_connect):
         self.db.driver = MagicMock()
         self.db.driver.session.return_value = "mock_session"
@@ -60,7 +60,7 @@ class TestGraphDatabase(unittest.TestCase):
         self.assertEqual(session, "mock_session")
         self.db.driver.session.assert_called_with(database="neo4j")
 
-    @patch.object(GraphDatabase, 'get_session')
+    @patch.object(GraphDatabase, "get_session")
     def test_query_success(self, mock_get_session):
         mock_session = MagicMock()
         mock_result = MagicMock()
@@ -73,7 +73,7 @@ class TestGraphDatabase(unittest.TestCase):
         self.assertEqual(result, [{"key": "value"}])
         mock_session.run.assert_called_with("MATCH (n) RETURN n")
 
-    @patch.object(GraphDatabase, 'get_session')
+    @patch.object(GraphDatabase, "get_session")
     def test_query_failure(self, mock_get_session):
         mock_session = MagicMock()
         mock_session.run.side_effect = Exception("DB Error")
@@ -84,7 +84,7 @@ class TestGraphDatabase(unittest.TestCase):
 
         self.assertIn("Database query failed", str(context.exception))
 
-    @patch.object(GraphDatabase, 'query')
+    @patch.object(GraphDatabase, "query")
     def test_get_all_documents(self, mock_query):
         mock_query.return_value = [{"id": "1", "title": "Doc 1"}]
 
@@ -94,7 +94,7 @@ class TestGraphDatabase(unittest.TestCase):
         mock_query.assert_called_once()
         self.assertIn("MATCH (d:Document)", mock_query.call_args[0][0])
 
-    @patch.object(GraphDatabase, 'query')
+    @patch.object(GraphDatabase, "query")
     def test_search_chunks(self, mock_query):
         mock_query.return_value = [{"text": "chunk text", "position": 1}]
 
@@ -104,10 +104,10 @@ class TestGraphDatabase(unittest.TestCase):
         mock_query.assert_called_once()
         args, kwargs = mock_query.call_args
         self.assertIn("MATCH (c:Chunk)", args[0])
-        self.assertEqual(kwargs['text'], "search term")
-        self.assertEqual(kwargs['limit'], 10)
+        self.assertEqual(kwargs["text"], "search term")
+        self.assertEqual(kwargs["limit"], 10)
 
-    @patch.object(GraphDatabase, 'query')
+    @patch.object(GraphDatabase, "query")
     def test_get_document_chunks(self, mock_query):
         mock_query.return_value = [{"text": "chunk text", "position": 1}]
 
@@ -117,16 +117,16 @@ class TestGraphDatabase(unittest.TestCase):
         mock_query.assert_called_once()
         args, kwargs = mock_query.call_args
         self.assertIn("MATCH (d:Document)-[:CONTAINS]->(c:Chunk)", args[0])
-        self.assertEqual(kwargs['title'], "Doc Title")
-        self.assertEqual(kwargs['limit'], 5)
+        self.assertEqual(kwargs["title"], "Doc Title")
+        self.assertEqual(kwargs["limit"], 5)
 
-    @patch.object(GraphDatabase, 'query')
+    @patch.object(GraphDatabase, "query")
     def test_get_database_stats(self, mock_query):
         # Mock return values for 3 consecutive calls
         mock_query.side_effect = [
-            [{"count": 10}], # documents
-            [{"count": 100}], # chunks
-            [{"count": 50}]   # relationships
+            [{"count": 10}],  # documents
+            [{"count": 100}],  # chunks
+            [{"count": 50}],  # relationships
         ]
 
         stats = self.db.get_database_stats()
@@ -136,7 +136,7 @@ class TestGraphDatabase(unittest.TestCase):
         self.assertEqual(stats["relationships"], 50)
         self.assertEqual(mock_query.call_count, 3)
 
-    @patch.object(GraphDatabase, 'query')
+    @patch.object(GraphDatabase, "query")
     def test_search_by_keywords(self, mock_query):
         mock_query.return_value = [{"text": "chunk text", "position": 1}]
 
@@ -162,10 +162,10 @@ class TestGraphDatabase(unittest.TestCase):
         self.db.session.close.assert_called_once()
         self.db.driver.close.assert_called_once()
 
-    @patch.object(GraphDatabase, 'get_session')
+    @patch.object(GraphDatabase, "get_session")
     def test_connect_import_error(self, mock_get_session):
         # We need to patch the import inside connect
-        with patch.dict('sys.modules', {'neo4j': None}):
+        with patch.dict("sys.modules", {"neo4j": None}):
             # Force reload or just call connect if we can mock the import
             # Since 'neo4j' is imported inside the method, we can mock it by removing it from sys.modules
             # But sys.modules['neo4j'] = None might cause ImportError
@@ -174,34 +174,34 @@ class TestGraphDatabase(unittest.TestCase):
     def test_connect_import_error_direct(self):
         # Mocking the import inside the method is tricky with patch.dict if it's not already imported
         # Instead, we can patch builtins.__import__ or use side_effect on the import
-        with patch.dict('sys.modules', {'neo4j': None}):
-             with self.assertRaises(ImportError):
-                 # We need to reset driver to None to force connect
-                 self.db.driver = None
-                 # This might not trigger the specific ImportError if 'neo4j' is already imported in the module scope
-                 # But in the code it is: from neo4j import GraphDatabase as Neo4jDriver
-                 # inside the method.
-                 try:
-                     self.db.connect()
-                 except ImportError as e:
-                     self.assertEqual(str(e), "neo4j package not installed")
-                     raise
+        with patch.dict("sys.modules", {"neo4j": None}):
+            with self.assertRaises(ImportError):
+                # We need to reset driver to None to force connect
+                self.db.driver = None
+                # This might not trigger the specific ImportError if 'neo4j' is already imported in the module scope
+                # But in the code it is: from neo4j import GraphDatabase as Neo4jDriver
+                # inside the method.
+                try:
+                    self.db.connect()
+                except ImportError as e:
+                    self.assertEqual(str(e), "neo4j package not installed")
+                    raise
 
     def test_connect_exception(self):
         self.db.driver = None
-        with patch.object(GraphDatabase, 'connect') as mock_connect:
-             # We can't patch the method we are testing easily if we want to test its internals
-             # We need to patch neo4j.GraphDatabase.driver
-             pass
+        with patch.object(GraphDatabase, "connect"):
+            # We can't patch the method we are testing easily if we want to test its internals
+            # We need to patch neo4j.GraphDatabase.driver
+            pass
 
-    @patch.object(GraphDatabase, 'get_session')
+    @patch.object(GraphDatabase, "get_session")
     def test_connect_driver_exception(self, mock_get_session):
         self.db.driver = None
         # We need to mock the local import of neo4j
         mock_neo4j = MagicMock()
         mock_neo4j.GraphDatabase.driver.side_effect = Exception("Connection failed")
 
-        with patch.dict('sys.modules', {'neo4j': mock_neo4j}):
+        with patch.dict("sys.modules", {"neo4j": mock_neo4j}):
             with self.assertRaises(Exception) as context:
                 self.db.connect()
             self.assertIn("Failed to connect", str(context.exception))
@@ -227,7 +227,7 @@ class TestGraphDatabase(unittest.TestCase):
 
     def test_setup_clean_logging_options(self):
         # from main_server import setup_clean_logging
-        with patch.object(main_server, 'logging') as mock_logging:
+        with patch.object(main_server, "logging") as mock_logging:
             mock_logger = MagicMock()
             mock_logging.getLogger.return_value = mock_logger
 
@@ -239,18 +239,18 @@ class TestGraphDatabase(unittest.TestCase):
 
     def test_setup_clean_logging_import_error(self):
         # from main_server import setup_clean_logging
-        with patch.object(main_server, 'LOGGING_CONFIG', side_effect=ImportError):
-             # This simulates ImportError when accessing LOGGING_CONFIG or importing it
-             # But LOGGING_CONFIG is imported at module level.
-             # The code has: try: uvicorn_formatter = ... except (ImportError, KeyError):
-             # We can patch LOGGING_CONFIG in the module
-             with patch.object(main_server, 'LOGGING_CONFIG', new={}):
-                 # This might trigger KeyError
-                 setup_clean_logging()
+        with patch.object(main_server, "LOGGING_CONFIG", side_effect=ImportError):
+            # This simulates ImportError when accessing LOGGING_CONFIG or importing it
+            # But LOGGING_CONFIG is imported at module level.
+            # The code has: try: uvicorn_formatter = ... except (ImportError, KeyError):
+            # We can patch LOGGING_CONFIG in the module
+            with patch.object(main_server, "LOGGING_CONFIG", new={}):
+                # This might trigger KeyError
+                setup_clean_logging()
 
     def test_setup_clean_logging_defaults(self):
         # from main_server import setup_clean_logging
-        with patch.object(main_server, 'logging') as mock_logging:
+        with patch.object(main_server, "logging") as mock_logging:
             mock_logger = MagicMock()
             mock_logging.getLogger.return_value = mock_logger
 
@@ -259,9 +259,10 @@ class TestGraphDatabase(unittest.TestCase):
             # Verify defaults
             mock_logging.getLogger.assert_called()
 
+
 class TestMCPFactory(unittest.TestCase):
-    @patch.object(main_server, 'FastMCP')
-    @patch.object(main_server, 'GraphDatabase')
+    @patch.object(main_server, "FastMCP")
+    @patch.object(main_server, "GraphDatabase")
     def test_mcp_factory(self, mock_db, mock_fastmcp):
         mock_mcp_instance = MagicMock()
         mock_fastmcp.return_value = mock_mcp_instance
@@ -272,6 +273,7 @@ class TestMCPFactory(unittest.TestCase):
         mock_fastmcp.assert_called()
         mock_db.assert_called()
 
+
 class TestMCPTools(unittest.TestCase):
     def setUp(self):
         self.tools = {}
@@ -280,15 +282,16 @@ class TestMCPTools(unittest.TestCase):
             def wrapper(func):
                 self.tools[func.__name__] = func
                 return func
+
             return wrapper
 
-        self.fastmcp_patcher = patch.object(main_server, 'FastMCP')
+        self.fastmcp_patcher = patch.object(main_server, "FastMCP")
         self.mock_fastmcp_class = self.fastmcp_patcher.start()
         self.mock_mcp_instance = MagicMock()
         self.mock_fastmcp_class.return_value = self.mock_mcp_instance
         self.mock_mcp_instance.tool.side_effect = tool_decorator
 
-        self.graphdb_patcher = patch.object(main_server, 'GraphDatabase')
+        self.graphdb_patcher = patch.object(main_server, "GraphDatabase")
         self.mock_graphdb_class = self.graphdb_patcher.start()
         self.mock_db = MagicMock()
         self.mock_graphdb_class.return_value = self.mock_db
@@ -299,11 +302,9 @@ class TestMCPTools(unittest.TestCase):
 
     def test_get_all_documents_tool_success(self):
         mcp_factory("test")
-        tool = self.tools['get_all_documents']
+        tool = self.tools["get_all_documents"]
 
-        self.mock_db.get_all_documents.return_value = [
-            {"id": "1", "title": "Test Doc", "type": "pdf", "size": 100}
-        ]
+        self.mock_db.get_all_documents.return_value = [{"id": "1", "title": "Test Doc", "type": "pdf", "size": 100}]
 
         result = tool()
 
@@ -313,7 +314,7 @@ class TestMCPTools(unittest.TestCase):
 
     def test_get_all_documents_tool_empty(self):
         mcp_factory("test")
-        tool = self.tools['get_all_documents']
+        tool = self.tools["get_all_documents"]
 
         self.mock_db.get_all_documents.return_value = []
 
@@ -323,21 +324,16 @@ class TestMCPTools(unittest.TestCase):
 
     def test_get_all_documents_tool_error(self):
         mcp_factory("test")
-        tool = self.tools['get_all_documents']
-
+        tool = self.tools["get_all_documents"]
         self.mock_db.get_all_documents.side_effect = Exception("DB Error")
-
         result = tool()
-
         self.assertIn("Error: DB Error", result)
 
     def test_search_chunks_tool_success(self):
         mcp_factory("test")
-        tool = self.tools['search_chunks']
+        tool = self.tools["search_chunks"]
 
-        self.mock_db.search_chunks.return_value = [
-            {"text": "Found text", "position": 5}
-        ]
+        self.mock_db.search_chunks.return_value = [{"text": "Found text", "position": 5}]
 
         result = tool("query")
 
@@ -347,7 +343,7 @@ class TestMCPTools(unittest.TestCase):
 
     def test_search_chunks_tool_empty(self):
         mcp_factory("test")
-        tool = self.tools['search_chunks']
+        tool = self.tools["search_chunks"]
 
         self.mock_db.search_chunks.return_value = []
 
@@ -355,41 +351,54 @@ class TestMCPTools(unittest.TestCase):
 
         self.assertIn("No chunks found", result)
 
+    def test_search_chunks_tool_error(self):
+        mcp_factory("test")
+        tool = self.tools["search_chunks"]
+        self.mock_db.search_chunks.side_effect = Exception("DB Error")
+        result = tool("query")
+        self.assertIn("Error: DB Error", result)
+
     def test_get_document_chunks_tool(self):
         mcp_factory("test")
-        tool = self.tools['get_document_chunks']
+        tool = self.tools["get_document_chunks"]
 
-        self.mock_db.get_document_chunks.return_value = [
-            {"text": "Chunk text", "position": 1}
-        ]
+        self.mock_db.get_document_chunks.return_value = [{"text": "Chunk text", "position": 1}]
 
         result = tool("Doc 1")
 
         self.assertIn("Chunks from 'Doc 1'", result)
         self.assertIn("Chunk text", result)
 
+    def test_get_document_chunks_tool_error(self):
+        mcp_factory("test")
+        tool = self.tools["get_document_chunks"]
+        self.mock_db.get_document_chunks.side_effect = Exception("DB Error")
+        result = tool("title")
+        self.assertIn("Error: DB Error", result)
+
     def test_get_database_stats_tool(self):
         mcp_factory("test")
-        tool = self.tools['get_database_stats']
+        tool = self.tools["get_database_stats"]
 
-        self.mock_db.get_database_stats.return_value = {
-            "documents": 10,
-            "chunks": 100,
-            "relationships": 50
-        }
+        self.mock_db.get_database_stats.return_value = {"documents": 10, "chunks": 100, "relationships": 50}
 
         result = tool()
 
         self.assertIn("Total Documents: 10", result)
         self.assertIn("Total Chunks: 100", result)
 
+    def test_get_database_stats_tool_error(self):
+        mcp_factory("test")
+        tool = self.tools["get_database_stats"]
+        self.mock_db.get_database_stats.side_effect = Exception("DB Error")
+        result = tool()
+        self.assertIn("Error: DB Error", result)
+
     def test_search_by_keywords_tool(self):
         mcp_factory("test")
-        tool = self.tools['search_by_keywords']
+        tool = self.tools["search_by_keywords"]
 
-        self.mock_db.search_by_keywords.return_value = [
-            {"text": "Keyword text", "position": 2}
-        ]
+        self.mock_db.search_by_keywords.return_value = [{"text": "Keyword text", "position": 2}]
 
         result = tool("key1, key2")
 
@@ -397,13 +406,20 @@ class TestMCPTools(unittest.TestCase):
         self.assertIn("Keyword text", result)
         self.mock_db.search_by_keywords.assert_called_with(["key1", "key2"], 5)
 
+    def test_search_by_keywords_error(self):
+        mcp_factory("test")
+        tool = self.tools["search_by_keywords"]
+        self.mock_db.search_by_keywords.side_effect = Exception("DB Error")
+        result = tool("key")
+        self.assertIn("Error: DB Error", result)
+
     def test_get_embeddings_info_tool(self):
         mcp_factory("test")
-        tool = self.tools['get_embeddings_info']
+        tool = self.tools["get_embeddings_info"]
 
         self.mock_db.get_embeddings_info.return_value = {
             "total_files": 2,
-            "embedding_files": ["file1.json", "file2.json"]
+            "embedding_files": ["file1.json", "file2.json"],
         }
 
         result = tool()
@@ -411,9 +427,17 @@ class TestMCPTools(unittest.TestCase):
         self.assertIn("Total Embedding Files: 2", result)
         self.assertIn("file1.json", result)
 
+    def test_get_embeddings_info_tool_error(self):
+        mcp_factory("test")
+        tool = self.tools["get_embeddings_info"]
+        self.mock_db.get_embeddings_info.side_effect = Exception("DB Error")
+        result = tool()
+        self.assertIn("Error: DB Error", result)
+
+
 class TestLogging(unittest.TestCase):
-    @patch.object(main_server, 'logging')
-    @patch.object(main_server, 'sys')
+    @patch.object(main_server, "logging")
+    @patch.object(main_server, "sys")
     def test_setup_clean_logging(self, mock_sys, mock_logging):
         mock_logger = MagicMock()
         mock_logging.getLogger.return_value = mock_logger
@@ -426,9 +450,10 @@ class TestLogging(unittest.TestCase):
         # Verify handlers were cleared and added
         mock_logger.handlers.clear.assert_called()
 
+
 class TestMain(unittest.TestCase):
-    @patch.object(main_server, 'mcp_factory')
-    @patch.object(main_server, 'setup_clean_logging')
+    @patch.object(main_server, "mcp_factory")
+    @patch.object(main_server, "setup_clean_logging")
     def test_main(self, mock_logging, mock_factory):
         mock_mcp = MagicMock()
         mock_factory.return_value = mock_mcp
@@ -439,8 +464,8 @@ class TestMain(unittest.TestCase):
         mock_factory.assert_called()
         mock_mcp.run.assert_called()
 
-    @patch.object(main_server, 'mcp_factory')
-    @patch.object(main_server, 'setup_clean_logging')
+    @patch.object(main_server, "mcp_factory")
+    @patch.object(main_server, "setup_clean_logging")
     def test_main_keyboard_interrupt(self, mock_logging, mock_factory):
         mock_mcp = MagicMock()
         mock_mcp.run.side_effect = KeyboardInterrupt
@@ -452,13 +477,13 @@ class TestMain(unittest.TestCase):
         # Should handle interrupt gracefully
         mock_mcp.run.assert_called()
 
-    @patch.object(main_server, 'mcp_factory')
-    @patch.object(main_server, 'setup_clean_logging')
+    @patch.object(main_server, "mcp_factory")
+    @patch.object(main_server, "setup_clean_logging")
     def test_main_error(self, mock_logging, mock_factory):
         mock_mcp = MagicMock()
         mock_mcp.run.side_effect = Exception("Fatal error")
         mock_factory.return_value = mock_mcp
 
         # from main_server import main
-        with self.assertRaises(Exception):
+        with self.assertRaises(Exception):  # noqa: B017
             main()

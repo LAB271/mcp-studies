@@ -1,0 +1,28 @@
+🔍 Running ruff linting...
+All checks passed!
+🎨 Running ruff formatting check...
+Would reformat: spikes/001_demos/main_server.py
+Would reformat: spikes/002_logging/main_server.py
+Would reformat: spikes/003_docker/main_server.py
+Would reformat: spikes/004_csv_data/main_server.py
+Would reformat: spikes/006_graphdb/main_server.py
+Would reformat: spikes/006_graphdb/pipeline/extract_pdfs.py
+Would reformat: spikes/006_graphdb/pipeline/generate_embeddings.py
+Would reformat: spikes/006_graphdb/pipeline/load_to_neo4j.py
+Would reformat: spikes/006_graphdb/pipeline/run_pipeline.py
+Would reformat: spikes/007_postgres/main_server.py
+Would reformat: spikes/008_pgvector/generate_data.py
+Would reformat: spikes/008_pgvector/main_server.py
+Would reformat: tests/000_stdio/test_000_main_mcp_server.py
+Would reformat: tests/001_demos/test_001_demos.py
+Would reformat: tests/001_demos/test_coverage_001.py
+Would reformat: tests/002_logging/test_coverage_002.py
+Would reformat: tests/003_docker/test_003_main_mcp_server.py
+Would reformat: tests/003_docker/test_003_main_server.py
+Would reformat: tests/004_csv_data/test_004_main_server.py
+Would reformat: tests/006_graphdb/test_006_main_server.py
+Would reformat: tests/006_graphdb/test_pipeline.py
+Would reformat: tests/007_postgres/test_007_main_server.py
+Would reformat: tests/008_pgvector/test_008_pgvector.py
+23 files would be reformatted, 8 files already formatted
+make: *** [lint] Error 1
