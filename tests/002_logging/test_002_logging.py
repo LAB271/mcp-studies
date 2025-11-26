@@ -22,10 +22,13 @@ from unittest.mock import MagicMock, patch
 
 import aiohttp
 
-# Add parent directory to path to import main_server
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+# Add tests directory to path to import test_utils
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
+from tests.test_utils import load_spike_module
 
-from main_server import mcp_factory, setup_clean_logging
+main_server = load_spike_module("002_logging", "main_server")
+mcp_factory = main_server.mcp_factory
+setup_clean_logging = main_server.setup_clean_logging
 
 
 class TestMCPFactoryMethod(unittest.TestCase):

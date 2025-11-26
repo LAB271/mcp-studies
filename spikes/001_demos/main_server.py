@@ -54,6 +54,7 @@ def greet_user(name: str, style: str = "friendly") -> str:
 
     return f"{styles.get(style, styles['friendly'])} for someone named {name}."
 
+
 # Add a simple resource to test resources endpoint
 @mcp.resource("example://test")
 def get_test_resource() -> str:
@@ -79,5 +80,5 @@ def main():
 
 
 # Run server with streamable-http transport (with error handling)
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     main()

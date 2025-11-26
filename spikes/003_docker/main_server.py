@@ -24,18 +24,12 @@ from uvicorn.config import LOGGING_CONFIG
 
 # CLEAN LOGGING CONFIGURATION
 def setup_clean_logging(
-    level: str = "INFO",
-    app_name: str = "mcp_server",
-    show_uvicorn: bool = False,
-    show_mcp_internals: bool = True
+    level: str = "INFO", app_name: str = "mcp_server", show_uvicorn: bool = False, show_mcp_internals: bool = True
 ) -> logging.Logger:
     """Set up clean, minimal logging."""
 
-   # Custom formatter for clean output
-    formatter = logging.Formatter(
-        fmt='%(asctime)s [%(levelname)8s] %(name)s: %(message)s',
-        datefmt='%H:%M:%S'
-    )
+    # Custom formatter for clean output
+    formatter = logging.Formatter(fmt="%(asctime)s [%(levelname)8s] %(name)s: %(message)s", datefmt="%H:%M:%S")
 
     # Configure root logger
     root_logger = logging.getLogger()
@@ -53,8 +47,7 @@ def setup_clean_logging(
     # Use uvicorn's formatter instead of custom one
     try:
         uvicorn_formatter = logging.Formatter(
-            LOGGING_CONFIG["formatters"]["default"]["fmt"],
-            LOGGING_CONFIG["formatters"]["default"]["datefmt"]
+            LOGGING_CONFIG["formatters"]["default"]["fmt"], LOGGING_CONFIG["formatters"]["default"]["datefmt"]
         )
         console_handler.setFormatter(uvicorn_formatter)
     except (ImportError, KeyError):
@@ -88,11 +81,7 @@ def setup_clean_logging(
     return app_logger
 
 
-
-def mcp_factory(
-    app_name: str,
-    logger: logging.Logger = None
-) -> FastMCP:
+def mcp_factory(app_name: str, logger: logging.Logger = None) -> FastMCP:
     """Create and return a Clean MCP server instance."""
     if logger is None:
         logger = logging.getLogger(app_name)
@@ -103,7 +92,6 @@ def mcp_factory(
 
     # Create server
     mcp = FastMCP(app_name, host=host, port=port, stateless_http=True, json_response=True)
-
 
     @mcp.tool()
     def greet(name: str = "World") -> str:
@@ -116,7 +104,7 @@ def mcp_factory(
         """Safely calculate a simple math expression."""
         try:
             # Only allow basic math operations for safety
-            allowed_chars = set('0123456789+-*/.() ')
+            allowed_chars = set("0123456789+-*/.() ")
             if not all(c in allowed_chars for c in expression):
                 return "Error: Only basic math operations allowed"
 
@@ -156,8 +144,6 @@ def mcp_factory(
     return mcp
 
 
-
-
 def main(app_name: str = "clean_server"):
     """Run the server with clean logging."""
     logger = setup_clean_logging(level="DEBUG", app_name=app_name)
@@ -184,5 +170,5 @@ def main(app_name: str = "clean_server"):
             raise
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     main()

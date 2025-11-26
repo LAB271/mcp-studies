@@ -25,18 +25,12 @@ from uvicorn.config import LOGGING_CONFIG
 
 # CLEAN LOGGING CONFIGURATION
 def setup_clean_logging(
-    level: str = "INFO",
-    app_name: str = "mcp_server",
-    show_uvicorn: bool = False,
-    show_mcp_internals: bool = True
+    level: str = "INFO", app_name: str = "mcp_server", show_uvicorn: bool = False, show_mcp_internals: bool = True
 ) -> logging.Logger:
     """Set up clean, minimal logging."""
 
     # Custom formatter for clean output
-    formatter = logging.Formatter(
-        fmt='%(asctime)s [%(levelname)8s] %(name)s: %(message)s',
-        datefmt='%H:%M:%S'
-    )
+    formatter = logging.Formatter(fmt="%(asctime)s [%(levelname)8s] %(name)s: %(message)s", datefmt="%H:%M:%S")
 
     # Configure root logger
     root_logger = logging.getLogger()
@@ -53,8 +47,7 @@ def setup_clean_logging(
     # Use uvicorn's formatter instead of custom one
     try:
         uvicorn_formatter = logging.Formatter(
-            LOGGING_CONFIG["formatters"]["default"]["fmt"],
-            LOGGING_CONFIG["formatters"]["default"]["datefmt"]
+            LOGGING_CONFIG["formatters"]["default"]["fmt"], LOGGING_CONFIG["formatters"]["default"]["datefmt"]
         )
         console_handler.setFormatter(uvicorn_formatter)
     except (ImportError, KeyError):
@@ -103,9 +96,10 @@ class GraphDatabase:
         """Establish connection to Neo4j (lazy initialization)."""
         if self.driver is not None:
             return
-        
+
         try:
             from neo4j import GraphDatabase as Neo4jDriver
+
             self.Neo4jDriver = Neo4jDriver
             self.driver = Neo4jDriver.driver(f"bolt://{self.host}:{self.port}", auth=(self.user, self.password))
         except ImportError as e:
@@ -137,9 +131,9 @@ class GraphDatabase:
     def search_chunks(self, search_text: str, limit: int = 5) -> list[dict[str, Any]]:
         """Search for chunks containing specific text."""
         query = """
-        MATCH (c:Chunk) 
-        WHERE c.text CONTAINS $text 
-        RETURN c.text as text, c.position as position 
+        MATCH (c:Chunk)
+        WHERE c.text CONTAINS $text
+        RETURN c.text as text, c.position as position
         LIMIT $limit
         """
         return self.query(query, text=search_text, limit=limit)
@@ -160,11 +154,11 @@ class GraphDatabase:
             docs = self.query("MATCH (d:Document) RETURN COUNT(d) as count")
             chunks = self.query("MATCH (c:Chunk) RETURN COUNT(c) as count")
             rels = self.query("MATCH ()-[r:CONTAINS]->() RETURN COUNT(r) as count")
-            
+
             return {
                 "documents": docs[0]["count"] if docs else 0,
                 "chunks": chunks[0]["count"] if chunks else 0,
-                "relationships": rels[0]["count"] if rels else 0
+                "relationships": rels[0]["count"] if rels else 0,
             }
         except Exception:
             return {"documents": 0, "chunks": 0, "relationships": 0}
@@ -180,8 +174,12 @@ class GraphDatabase:
     def get_embeddings_info(self) -> dict[str, Any]:
         """Get information about embeddings in the database."""
         return {
-            "embedding_files": ["ps2man_embeddings.json", "ps3man_embeddings.json", "ic_datasheets_reference_embeddings.json"],
-            "total_files": 3
+            "embedding_files": [
+                "ps2man_embeddings.json",
+                "ps3man_embeddings.json",
+                "ic_datasheets_reference_embeddings.json",
+            ],
+            "total_files": 3,
         }
 
     def close(self):
@@ -192,10 +190,7 @@ class GraphDatabase:
             self.driver.close()
 
 
-def mcp_factory(
-    app_name: str,
-    logger: logging.Logger = None
-) -> FastMCP:
+def mcp_factory(app_name: str, logger: logging.Logger = None) -> FastMCP:
     """Create and return a Graph Database MCP server instance."""
     if logger is None:
         logger = logging.getLogger(app_name)
@@ -232,7 +227,7 @@ def mcp_factory(
             for doc in documents:
                 result += f"\n{doc['title']} ({doc['type']})\n"
                 result += f"  ID: {doc['id']}\n"
-                if doc['size']:
+                if doc["size"]:
                     result += f"  Size: {doc['size']} bytes\n"
             return result
         except Exception as e:
@@ -250,7 +245,7 @@ def mcp_factory(
 
             result = f"Found {len(chunks)} chunks containing '{query}':\n"
             for i, chunk in enumerate(chunks, 1):
-                text = chunk['text'][:150] + "..." if len(chunk['text']) > 150 else chunk['text']
+                text = chunk["text"][:150] + "..." if len(chunk["text"]) > 150 else chunk["text"]
                 result += f"\n{i}. Position {chunk['position']}:\n   {text}\n"
             return result
         except Exception as e:
@@ -265,10 +260,10 @@ def mcp_factory(
             chunks = db.get_document_chunks(document_title, limit)
             if not chunks:
                 return f"No chunks found for document '{document_title}'"
-            
+
             result = f"Chunks from '{document_title}' (showing {len(chunks)} of available):\n"
             for i, chunk in enumerate(chunks, 1):
-                text = chunk['text'][:100] + "..." if len(chunk['text']) > 100 else chunk['text']
+                text = chunk["text"][:100] + "..." if len(chunk["text"]) > 100 else chunk["text"]
                 result += f"\n{i}. Position {chunk['position']}:\n   {text}\n"
             return result
         except Exception as e:
@@ -299,10 +294,10 @@ def mcp_factory(
             chunks = db.search_by_keywords(keyword_list, limit)
             if not chunks:
                 return f"No chunks found containing any of: {keywords}"
-            
+
             result = f"Found {len(chunks)} chunks containing keywords:\n"
             for i, chunk in enumerate(chunks, 1):
-                text = chunk['text'][:150] + "..." if len(chunk['text']) > 150 else chunk['text']
+                text = chunk["text"][:150] + "..." if len(chunk["text"]) > 150 else chunk["text"]
                 result += f"\n{i}. Position {chunk['position']}:\n   {text}\n"
             return result
         except Exception as e:
@@ -318,7 +313,7 @@ def mcp_factory(
             result = "Embeddings Information:\n"
             result += f"Total Embedding Files: {info['total_files']}\n"
             result += "Files:\n"
-            for file in info['embedding_files']:
+            for file in info["embedding_files"]:
                 result += f"  - {file}\n"
             return result
         except Exception as e:
@@ -338,7 +333,9 @@ def main(app_name: str = "graph_database_server"):
 
     logger.info("🚀 Starting Graph Database MCP Server")
     logger.info(f"📍 Endpoint: http://{host}:{port}/mcp")
-    logger.info("🔧 Tools: get_all_documents, search_chunks, get_document_chunks, get_database_stats, search_by_keywords, get_embeddings_info")
+    logger.info(
+        "🔧 Tools: get_all_documents, search_chunks, get_document_chunks, get_database_stats, search_by_keywords, get_embeddings_info"
+    )
     logger.info("📊 Database: Lazy connection - will connect on first use")
 
     try:

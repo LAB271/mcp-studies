@@ -339,13 +339,7 @@ class TestMCPServerHTTPEndpoint(unittest.TestCase):
             "jsonrpc": "2.0",
             "id": "prompts-2",
             "method": "prompts/get",
-            "params": {
-                "name": "greet_user",
-                "arguments": {
-                    "name": "TestUser",
-                    "style": "friendly"
-                }
-            }
+            "params": {"name": "greet_user", "arguments": {"name": "TestUser", "style": "friendly"}},
         }
 
         async with aiohttp.ClientSession() as session:
@@ -384,7 +378,6 @@ class TestMCPServerHTTPEndpoint(unittest.TestCase):
     def test_prompts_get_endpoint(self):
         """Test that prompts get endpoint works"""
         asyncio.run(self._test_prompts_get_endpoint())
-
 
 
 class TestMCPServerConfiguration(unittest.TestCase):

@@ -12,6 +12,7 @@ logger = logging.getLogger("postgres_mcp")
 # Initialize FastMCP
 mcp = FastMCP("postgres_explorer")
 
+
 def get_connection():
     """Get a connection to the PostgreSQL database."""
     try:
@@ -20,12 +21,13 @@ def get_connection():
             port=os.environ.get("POSTGRES_PORT", "5432"),
             user=os.environ.get("POSTGRES_USER", "mcp_user"),
             password=os.environ.get("POSTGRES_PASSWORD", "mcp_password"),
-            dbname=os.environ.get("POSTGRES_DB", "mcp_db")
+            dbname=os.environ.get("POSTGRES_DB", "mcp_db"),
         )
         return conn
     except Exception as e:
         logger.error(f"Failed to connect to database: {e}")
         raise RuntimeError(f"Database connection failed: {e}") from e
+
 
 @mcp.tool()
 def list_tables() -> str:
@@ -43,6 +45,7 @@ def list_tables() -> str:
     finally:
         conn.close()
 
+
 @mcp.tool()
 def describe_table(table_name: str) -> str:
     """Get the schema information for a specific table."""
@@ -51,12 +54,15 @@ def describe_table(table_name: str) -> str:
         with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
             # Check if table exists to avoid SQL injection in the next query if we were concatenating
             # But here we use parameters for the schema query
-            cur.execute("""
+            cur.execute(
+                """
                 SELECT column_name, data_type, is_nullable
                 FROM information_schema.columns
                 WHERE table_schema = 'public' AND table_name = %s
                 ORDER BY ordinal_position
-            """, (table_name,))
+            """,
+                (table_name,),
+            )
 
             rows = cur.fetchall()
             if not rows:
@@ -65,12 +71,13 @@ def describe_table(table_name: str) -> str:
             result = f"Schema for table '{table_name}':\n"
             for row in rows:
                 result += f"- {row['column_name']} ({row['data_type']})"
-                if row['is_nullable'] == 'YES':
+                if row["is_nullable"] == "YES":
                     result += " [NULLABLE]"
                 result += "\n"
             return result
     finally:
         conn.close()
+
 
 @mcp.tool()
 def execute_read_query(query: str) -> str:
@@ -101,7 +108,7 @@ def execute_read_query(query: str) -> str:
             # Get headers
             headers = [desc[0] for desc in cur.description]
             result += " | ".join(headers) + "\n"
-            result += "-" * (len(result.split('\n')[-1])) + "\n"
+            result += "-" * (len(result.split("\n")[-1])) + "\n"
 
             for row in rows:
                 # Convert all values to string
@@ -113,6 +120,7 @@ def execute_read_query(query: str) -> str:
         return f"Query execution error: {e}"
     finally:
         conn.close()
+
 
 if __name__ == "__main__":
     mcp.run()
