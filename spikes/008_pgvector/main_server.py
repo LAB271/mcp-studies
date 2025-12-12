@@ -161,6 +161,26 @@ def get_readings(sensor_id: str, limit: int = 10) -> str:
         conn.close()
 
 
+# Create an mcp to retrieve all the sensors
+@mcp.tool()
+def list_sensors() -> str:
+    """List all registered sensors."""
+    conn = get_connection()
+    try:
+        with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
+            cur.execute("SELECT id, name, type, location FROM sensors ORDER BY name ASC")
+            rows = cur.fetchall()
+            if not rows:
+                return "No sensors registered."
+
+            result = "Registered Sensors:\n"
+            for row in rows:
+                result += f"- ID: {row['id']}, Name: {row['name']}, Type: {row['type']}, Location: {row['location']}\n"
+            return result
+    finally:
+        conn.close()
+
+
 @mcp.tool()
 def search_knowledge(query: str, limit: int = 5) -> str:
     """
