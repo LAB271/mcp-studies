@@ -5,6 +5,9 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+spikes/008_pgvector/mock_data/
+spikes/008_pgvector/mock_data
+
 cline_mcp_settings.json
 
 # C extensions
