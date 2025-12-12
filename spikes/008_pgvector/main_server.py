@@ -160,9 +160,10 @@ def get_readings(sensor_id: str, limit: int = 10) -> str:
     finally:
         conn.close()
 
+
 # Create an mcp to retrieve all the sensors
 @mcp.tool()
-def list_sensors() -> str:  
+def list_sensors() -> str:
     """List all registered sensors."""
     conn = get_connection()
     try:
@@ -178,7 +179,6 @@ def list_sensors() -> str:
             return result
     finally:
         conn.close()
-    
 
 
 @mcp.tool()
